@@ -17,6 +17,7 @@
 		ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */; };
 		EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */; };
 		EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */; };
+		EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
+		EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
+		EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */,
 				EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
+				EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */,
 				ED12BC0722AEB53700DBFE60 /* LaunchScreen.storyboard */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
 				ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */,
@@ -221,6 +224,7 @@
 				EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */,
 				ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */,
 				ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */,
+				EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

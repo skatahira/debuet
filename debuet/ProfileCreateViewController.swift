@@ -11,45 +11,52 @@ import FlexibleSteppedProgressBar
 
 class ProfileCreateViewController: UIViewController {
     
-    var progressBar: FlexibleSteppedProgressBar!
+    @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
+    
+    
+    // ContainerViewにEmbedしたUIPageViewontrollerのインスタンスを保持する
+    fileprivate var pageViewController: UIPageViewController?
+    
+    // チュートリアル画面に表示する要素
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pr()
+        setupStepIndicator()
         
     }
+    
+    // ステップインジケータ表示の初期表示に関するセッティングをするメソッド
+    private func setupStepIndicator() {
+        stepIndicator.delegate = self
+        
+        // ステップインジケータの表示数を設定する
+        stepIndicator.numberOfPoints = 3
+        
+        // ステップインジケータの線幅を設定する
+        stepIndicator.lineHeight = 4
+        
+        // ステップインジケータの配色および外枠を設定する
+        stepIndicator.selectedOuterCircleLineWidth = 4.0
+        stepIndicator.selectedOuterCircleStrokeColor = UIColor.orange
+        stepIndicator.currentSelectedCenterColor = UIColor.white
+        
+        // ステップインディケータのアニメーション秒数を設定する
+        stepIndicator.stepAnimationDuration = 0.26
+        
+        // ステップインジケータの現在位置を設定する
+        stepIndicator.currentIndex = 0
+    }
+    
 }
 
 // プログレスバー関連処理
 extension ProfileCreateViewController: FlexibleSteppedProgressBarDelegate {
-    func pr() {
-        progressBar = FlexibleSteppedProgressBar()
-        progressBar.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(progressBar)
-        
-        let horizontalConstraint = progressBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        let verticalConstraint = progressBar.topAnchor.constraint(
-            equalTo: view.topAnchor,
-            constant: 80
-        )
-        
-       // let widthConstraint = progressBar.widthAnchor.constraint(equalTo: nil, constant: 500)
-        // let widthConstraint = progressBar.widthAnchor.constraintEqualToAnchor(nil, constant: 500)
-        //let heightConstraint = progressBar.heightAnchor.constraintEqualToAnchor(nil, constant: 150)
-        //NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-        
-        // Customise the progress bar here
-        progressBar.numberOfPoints = 5
-        progressBar.lineHeight = 9
-        progressBar.radius = 15
-        progressBar.progressRadius = 25
-        progressBar.progressLineHeight = 3
-        progressBar.delegate = self
-    }
     
+    //  ステップインジケータを選択した際に実行されるメソッド
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      didSelectItemAtIndex index: Int) {
         print("Index selected!")
+        stepIndicator.currentIndex = index
     }
     
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
@@ -57,25 +64,15 @@ extension ProfileCreateViewController: FlexibleSteppedProgressBarDelegate {
         print("Index selected!")
     }
     
+    // ステップインジケータの選択可否設定するメソッド
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      canSelectItemAtIndex index: Int) -> Bool {
-        return true
+//        return true
+        return false
     }
     
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      textAtIndex index: Int, position: FlexibleSteppedProgressBarTextLocation) -> String {
-        //if position == FlexibleSteppedProgressBarTextLocation.BOTTOM {
-            switch index {
-                
-            case 0: return "First"
-            case 1: return "Second"
-            case 2: return "Third"
-            case 3: return "Fourth"
-            case 4: return "Fifth"
-            default: return "Date"
-                
-            }
-     //   }
         return ""
     }
 }
