@@ -9,21 +9,28 @@
 import UIKit
 import FlexibleSteppedProgressBar
 
-class ProfileCreateViewController: UIViewController {
+class ProfileCreateViewController: UIViewController, FlexibleSteppedProgressBarDelegate {
     
     @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
     
-    
     // ContainerViewにEmbedしたUIPageViewontrollerのインスタンスを保持する
     fileprivate var pageViewController: UIPageViewController?
-    
-    // チュートリアル画面に表示する要素
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStepIndicator()
         
     }
+    
+    // viewを押下時にキーボードを閉じる処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+// プログレスバー関連処理
+extension ProfileCreateViewController {
     
     // ステップインジケータ表示の初期表示に関するセッティングをするメソッド
     private func setupStepIndicator() {
@@ -37,8 +44,9 @@ class ProfileCreateViewController: UIViewController {
         
         // ステップインジケータの配色および外枠を設定する
         stepIndicator.selectedOuterCircleLineWidth = 4.0
-        stepIndicator.selectedOuterCircleStrokeColor = UIColor.orange
+        stepIndicator.selectedOuterCircleStrokeColor = UIColor.hex(string: "#F9759D", alpha: 1)
         stepIndicator.currentSelectedCenterColor = UIColor.white
+        stepIndicator.stepTextColor = UIColor.black
         
         // ステップインディケータのアニメーション秒数を設定する
         stepIndicator.stepAnimationDuration = 0.26
@@ -46,33 +54,38 @@ class ProfileCreateViewController: UIViewController {
         // ステップインジケータの現在位置を設定する
         stepIndicator.currentIndex = 0
     }
-    
-}
 
-// プログレスバー関連処理
-extension ProfileCreateViewController: FlexibleSteppedProgressBarDelegate {
-    
     //  ステップインジケータを選択した際に実行されるメソッド
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      didSelectItemAtIndex index: Int) {
         print("Index selected!")
         stepIndicator.currentIndex = index
     }
-    
+
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      willSelectItemAtIndex index: Int) {
         print("Index selected!")
     }
-    
+
     // ステップインジケータの選択可否設定するメソッド
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      canSelectItemAtIndex index: Int) -> Bool {
-//        return true
         return false
     }
-    
+
+    // ステップインジケータの各ステップの名称を設定
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      textAtIndex index: Int, position: FlexibleSteppedProgressBarTextLocation) -> String {
+        if position == FlexibleSteppedProgressBarTextLocation.bottom {
+            switch index {
+            case 0: return "Step1"
+            case 1: return "Step2"
+            case 2: return "Step3"
+            default: return ""
+            }
+        }
         return ""
     }
 }
+
+

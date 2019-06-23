@@ -12,4 +12,6 @@ target 'debuet' do
   pod 'Firebase/Storage'
   pod 'IQKeyboardManagerSwift'
   pod 'FlexibleSteppedProgressBar'
+  pod 'Validator'
+
 end
