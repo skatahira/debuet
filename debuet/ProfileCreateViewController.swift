@@ -8,23 +8,59 @@
 
 import UIKit
 import FlexibleSteppedProgressBar
+import Firebase
 
-class ProfileCreateViewController: UIViewController, FlexibleSteppedProgressBarDelegate {
+
+class ProfileCreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FlexibleSteppedProgressBarDelegate {
     
     @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
+    @IBOutlet weak var userImageView: EnhancedCircleImageView!
+    @IBOutlet weak var nickNameTextField: UITextField!
     
     // ContainerViewにEmbedしたUIPageViewontrollerのインスタンスを保持する
     fileprivate var pageViewController: UIPageViewController?
     
+    let picker = UIImagePickerController()
+    //let storage = StorageReference?.self
+    // [1]ストレージ サービスへの参照を取得
+    // let storage = FIRStorage.storage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        picker.delegate = self
         setupStepIndicator()
         
+    }
+    
+    // 写真選択ボタン押下時
+    @IBAction func didTapSelectImageBtn(_ sender: Any) {
+        
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    // 次へボタン押下時
+    @IBAction func didClickNextBtn(_ sender: Any) {
+        
+        guard nickNameTextField.text != "" else{ return }
+        
+//         let storage = FIRS
     }
     
     // viewを押下時にキーボードを閉じる処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        //            self.userImageView.image = image
+        //        }
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
