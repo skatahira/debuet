@@ -30,6 +30,8 @@ class RegisterViewController: UIViewController {
     // 登録判断フラグ true=可 false=登録不可
     var registerFlg = true
     
+    let errormessage = ErrorMessage.self()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +42,21 @@ class RegisterViewController: UIViewController {
 
     // アカウント登録ボタン押下時
     @IBAction func didTapRegisterBtn(_ sender: Any) {
+        
+        registerFlg = true
         // バリデーションチェック
         // 登録
         didClickBtnValidationCheck()
     }
+    
+    // 次画面に渡す値を指定する
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "toNext" {
+//            let retrySendMailViewController = segue.destination as! RetrySendMailViewController
+//            retrySendMailViewController.emailText = sender as! String
+//        }
+//    }
     
     // viewを押下時にキーボードを閉じる処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,15 +71,15 @@ extension RegisterViewController {
     func register(email: String, password: String) {
         // Firebaseの認証機能にユーザー登録処理があるのでそれを利用
         // メールアドレスとパスワードを渡すだけ
-        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+        Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
             
             if let e = err {
-                self.resultLabel.text = "アカウント登録に失敗しました"
+                self.resultLabel.text = self.errormessage.showErrorIfNeeded(e)
                 print("Fail : \(e)")
             }
-            if let r = result {
-                print("Success : \(r.user.email!)")
-                self.performSegue(withIdentifier: "toUserInfomation1", sender: nil)
+            if let user = user {
+                print("Success : \(user.user.email!)")
+                self.performSegue(withIdentifier: "toUserInfomation1", sender: user)
             }
         }
     }

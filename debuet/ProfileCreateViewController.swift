@@ -9,45 +9,93 @@
 import UIKit
 import FlexibleSteppedProgressBar
 import Firebase
+import Validator
 
-
+// ユーザ画像・ニックネーム登録画面
 class ProfileCreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FlexibleSteppedProgressBarDelegate {
     
     @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
     @IBOutlet weak var userImageView: EnhancedCircleImageView!
     @IBOutlet weak var nickNameTextField: UITextField!
+    @IBOutlet weak var nickNameState: UILabel!
+    @IBOutlet weak var nickNameCheckLabel: UILabel!
     
     // ContainerViewにEmbedしたUIPageViewontrollerのインスタンスを保持する
     fileprivate var pageViewController: UIPageViewController?
     
     let picker = UIImagePickerController()
-    //let storage = StorageReference?.self
-    // [1]ストレージ サービスへの参照を取得
-    // let storage = FIRStorage.storage()
+    
+    // 前画面からメールアドレスを受け取る
+    //var user:String = ""
+    
+    // バリデーションチェックルール
+    let lengthRule = ValidationRuleLength(min: 1, max: 15, error: ValidationErrorType("💩"))
+    
+    // 画面遷移判断フラグ true=可 false=不可
+    var transitionableFlg = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        self.parent?.navigationItem.title = "ユーザー情報入力"
+        
+        nickNameCheck()
         picker.delegate = self
         setupStepIndicator()
+        
+        // ストレージサービスへの参照を取得
+        let storage = Storage.storage()
+        // ストレージへの参照を取得
+        let storageRef = storage.reference(forURL: "gs://debuet-7732b.appspot.com/")
+        // ツリーの下位への参照を作成
+        let imageRef = storageRef.child("users")
+        // Dataを作成
+      //  let imageData = UIImage
+        
+        // 枠線の色
+//        self.userImageView.layer.borderColor = UIColor.black.cgColor
+//        // 枠線の太さ
+//        self.userImageView.layer.borderWidth = 2
+        
+        
         
     }
     
     // 写真選択ボタン押下時
     @IBAction func didTapSelectImageBtn(_ sender: Any) {
         
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
-        
-        present(picker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            print("フォトライブラリが使用できません")
+        }
     }
     
     // 次へボタン押下時
     @IBAction func didClickNextBtn(_ sender: Any) {
         
+        transitionableFlg = true
+        // ニックネーム空文字チェック
+        if nickNameTextField.text == "" {
+            nickNameCheckLabel.text = "ニックネームを入力してください"
+            transitionableFlg = false
+        }
+
         guard nickNameTextField.text != "" else{ return }
         
-//         let storage = FIRS
+        if nickNameState.text == "💩" {
+            nickNameCheckLabel.text = "15文字以内で入力してください"
+            transitionableFlg = false
+        }
+        
+        if transitionableFlg {
+            self.performSegue(withIdentifier: "toNext", sender: nil)
+        }
+        
     }
     
     // viewを押下時にキーボードを閉じる処理
@@ -55,14 +103,46 @@ class ProfileCreateViewController: UIViewController, UIImagePickerControllerDele
         self.view.endEditing(true)
     }
     
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        //        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
-        //            self.userImageView.image = image
-        //        }
-        self.dismiss(animated: true, completion: nil)
+    // imagePickerController
+    // 撮影または選択後に実行される処理
+    // picker 表示しているカメラ画面あるいはライブラリ画面
+    // info 撮影された画像または選択された画像
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // infoから画像を取り出す
+        if let pickedImage = info[.originalImage] as? UIImage {
+            // 画像の設定
+            userImageView.image = pickedImage
+            userImageView.contentMode = .scaleAspectFit
+        }
+        // 表示しているカメラ画面またはライブラリ画面を閉じる処理
+        picker.dismiss(animated: true, completion: nil)
     }
     
+}
+
+// バリデーション関連処理
+extension ProfileCreateViewController {
+    // テキストが変更されたタイミングで実行される
+    // ニックネーム入力チェック
+    func nickNameCheck() {
+        nickNameTextField.validationRules = ValidationRuleSet()
+        nickNameTextField.validationRules?.add(rule: lengthRule)
+        nickNameTextField.validateOnInputChange(enabled: true)
+        nickNameTextField.validationHandler = {
+            result in self.updateValidationNameState(result: result)
+        }
+    }
+    
+    // ニックネーム文字数チェック
+    func updateValidationNameState(result: ValidationResult) {
+        nickNameCheckLabel.text = ""
+        switch result {
+        case .valid:
+            nickNameState.text = "😎"
+        case .invalid(let failures):
+            nickNameState.text = (failures.first as? ValidationErrorType)?.message
+        }
+    }
 }
 
 // プログレスバー関連処理
@@ -90,25 +170,25 @@ extension ProfileCreateViewController {
         // ステップインジケータの現在位置を設定する
         stepIndicator.currentIndex = 0
     }
-
+    
     //  ステップインジケータを選択した際に実行されるメソッド
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      didSelectItemAtIndex index: Int) {
         print("Index selected!")
         stepIndicator.currentIndex = index
     }
-
+    
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      willSelectItemAtIndex index: Int) {
         print("Index selected!")
     }
-
+    
     // ステップインジケータの選択可否設定するメソッド
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      canSelectItemAtIndex index: Int) -> Bool {
         return false
     }
-
+    
     // ステップインジケータの各ステップの名称を設定
     func progressBar(_ progressBar: FlexibleSteppedProgressBar,
                      textAtIndex index: Int, position: FlexibleSteppedProgressBarTextLocation) -> String {

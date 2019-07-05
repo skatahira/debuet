@@ -19,10 +19,13 @@ class LoginViewController: UIViewController, Error {
     @IBOutlet weak var passwordState: UILabel!
     @IBOutlet weak var emailCheckLabel: UILabel!
     @IBOutlet weak var passwordCheckLabel: UILabel!
+    @IBOutlet weak var errorState: UILabel!
     
     // バリデーションチェックルール
     let lengthRule = ValidationRuleLength(min: 8, max: 128, error: ValidationErrorType("💩"))
     let emailRule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: ValidationErrorType("💩"))
+    
+    let errormessage = ErrorMessage.self()
     // ログイン判断フラグ true=可 false=登録不可
     var loginFlg = true
     
@@ -36,6 +39,7 @@ class LoginViewController: UIViewController, Error {
     // ログインボタン押下時
     @IBAction func didTapLoginBtn(_ sender: Any) {
         
+        loginFlg = true
         didClickBtnValidationCheck()
     }
     
@@ -52,6 +56,7 @@ extension LoginViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
             if let e = err {
                 print("Fail : \(e)")
+                self.errorState.text = self.errormessage.showErrorIfNeeded(e)
                 // 失敗した場合はここで処理終了
                 return
             }
@@ -60,6 +65,7 @@ extension LoginViewController {
                 // ログイン成功時に次の画面に遷移
                 self.performSegue(withIdentifier: "toHome", sender: nil)
             }
+            
         }
     }
 }
