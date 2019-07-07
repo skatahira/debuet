@@ -25,6 +25,8 @@ class ProfileCreateViewController: UIViewController, UIImagePickerControllerDele
     
     let picker = UIImagePickerController()
     
+    // ユーザインフォメーションインスタンス作成
+    let userInfomation = UserInfomation()
     // 前画面からメールアドレスを受け取る
     //var user:String = ""
     
@@ -43,22 +45,6 @@ class ProfileCreateViewController: UIViewController, UIImagePickerControllerDele
         nickNameCheck()
         picker.delegate = self
         setupStepIndicator()
-        
-        // ストレージサービスへの参照を取得
-        let storage = Storage.storage()
-        // ストレージへの参照を取得
-        let storageRef = storage.reference(forURL: "gs://debuet-7732b.appspot.com/")
-        // ツリーの下位への参照を作成
-        let imageRef = storageRef.child("users")
-        // Dataを作成
-      //  let imageData = UIImage
-        
-        // 枠線の色
-//        self.userImageView.layer.borderColor = UIColor.black.cgColor
-//        // 枠線の太さ
-//        self.userImageView.layer.borderWidth = 2
-        
-        
         
     }
     
@@ -93,9 +79,22 @@ class ProfileCreateViewController: UIViewController, UIImagePickerControllerDele
         }
         
         if transitionableFlg {
-            self.performSegue(withIdentifier: "toNext", sender: nil)
+            guard let userName = nickNameTextField.text else { return }
+            userInfomation.setUserName(userName: userName)
+            guard let userPicture = userImageView.image else { return }
+            userInfomation.setUserPicture(userPicture: userPicture)
+            
+            self.performSegue(withIdentifier: "toNext", sender: userInfomation)
         }
+    }
+    
+    // 次画面に渡す値を指定する
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "toNext" {
+            var userDetailEditViewController = segue.destination as! UserDetailEditViewController
+            userDetailEditViewController.userInfomation = sender as! UserInfomation
+        }
     }
     
     // viewを押下時にキーボードを閉じる処理

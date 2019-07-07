@@ -12,29 +12,50 @@ import FlexibleSteppedProgressBar
 
 // ユーザ目標記録画面
 class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBarDelegate {
-
+    
     @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
     @IBOutlet weak var goalTextView: UITextView!
     
     var defaultStore : Firestore!
     let db = Firestore.firestore()
-    //defaultStore = Firestore.firestore()
+    
+    // 前画面からユーザ情報を受け取る
+    var userInfomation:UserInfomation = UserInfomation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // プログレスバー関連処理呼び出し
         setupStepIndicator()
     }
-
+    
     // 完了ボタン押下時
     @IBAction func didClickDoneBtn(_ sender: Any) {
         
+        // ユーザ情報登録処理
+        createUserInfomation()
+    }
+}
+
+// Firebase関連処理
+extension UserGoalCreateViewController {
+    
+    // ユーザ情報登録処理
+    func createUserInfomation() {
+        
+        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                print("認証済み")
+            } else {
+                print("認証済みでない")
+            }
+            
+        }
         // ユーザネームを設定
         let user = Auth.auth().currentUser
         if let user = user {
             let changeRequest = user.createProfileChangeRequest()
-            changeRequest.displayName = "hogehoge"
+            changeRequest.displayName = userInfomation.userName
             changeRequest.commitChanges { error in
                 
                 if let error = error {
@@ -43,7 +64,7 @@ class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBar
                 }
                 let when = DispatchTime.now() + 2
                 DispatchQueue.main.asyncAfter(deadline: when) {
-                     self.performSegue(withIdentifier: "toHome", sender: nil)
+                    //self.performSegue(withIdentifier: "toHome", sender: nil)
                 }
             }
             
@@ -56,12 +77,19 @@ class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBar
             return
         }
         
-        let goalText: String = goalTextView.text
         
+        // データベースに格納する情報
+        let data: [String: Any] = [
+            "birth": userInfomation.birth as Any,
+            "sex": userInfomation.sex,
+            "physicalActiveLevel": userInfomation.physicalActiveLevel,
+            "goalText": goalTextView.text!
+        ]
         
-        ref = db.collection("users").addDocument(data: [
-            "goalText" : goalText
-        ]) { err in
+        // 画像登録処理
+        //uploadImage()
+        
+        ref = db.collection("users").addDocument(data: data) { err in
             if err != nil {
                 print("Error adding document")
             } else {
@@ -71,8 +99,29 @@ class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBar
         
         performSegue(withIdentifier: "toHome", sender: nil)
     }
+    
+    // ユーザ画像登録処理
+    func uploadImage() {
+        // ストレージサービスへの参照を取得
+        let storage = Storage.storage()
+        // ストレージへの参照を取得
+        let storageRef = storage.reference(forURL: "gs://debuet-7732b.appspot.com/")
+        // 画像
+        let image = userInfomation.userPicture
+        let userName = userInfomation.userName
+        print("ユーザーネーム\(userName)")
+        // imageをNSDataに変換
+        let data = image!.jpegData(compressionQuality: 1.0)! as NSData
+        // Storageに保存
+        storageRef.putData(data as Data, metadata: nil) { (data, error) in
+            if error != nil {
+                return
+            }
+        }
+        self.dismiss(animated: true, completion: nil)
+        
+    }
 }
-
 
 // プログレスバー関連処理
 extension UserGoalCreateViewController {

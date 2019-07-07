@@ -49,15 +49,6 @@ class RegisterViewController: UIViewController {
         didClickBtnValidationCheck()
     }
     
-    // 次画面に渡す値を指定する
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "toNext" {
-//            let retrySendMailViewController = segue.destination as! RetrySendMailViewController
-//            retrySendMailViewController.emailText = sender as! String
-//        }
-//    }
-    
     // viewを押下時にキーボードを閉じる処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -78,7 +69,7 @@ extension RegisterViewController {
                 print("Fail : \(e)")
             }
             if let user = user {
-                print("Success : \(user.user.email!)")
+                print("Success : \(user.user.email!)")                
                 self.performSegue(withIdentifier: "toUserInfomation1", sender: user)
             }
         }

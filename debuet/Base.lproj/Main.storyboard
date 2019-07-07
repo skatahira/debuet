@@ -67,7 +67,7 @@
                                 <color key="highlightedColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburgerTop" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-Fv-Ezz">
-                                <rect key="frame" x="107" y="206" width="200" height="199.00000000000011"/>
+                                <rect key="frame" x="107" y="206" width="200" height="199"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dtf-Fv-Ezz" secondAttribute="height" multiplier="200:199" id="TmJ-jQ-p9L"/>
                                     <constraint firstAttribute="width" constant="200" id="zuc-TN-dIQ"/>
@@ -874,13 +874,6 @@ gb7jgZfjgZ8
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="その他" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCX-be-61d">
-                                <rect key="frame" x="281" y="315" width="52" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="身体活動レベル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhq-Se-0Hl">
                                 <rect key="frame" x="44" y="376" width="122" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -895,11 +888,6 @@ gb7jgZfjgZ8
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tHv-eZ-3O9" customClass="LTHRadioButton" customModule="debuet" customModuleProvider="target">
                                 <rect key="frame" x="163" y="316" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usr-C6-XxF" customClass="LTHRadioButton" customModule="debuet" customModuleProvider="target">
-                                <rect key="frame" x="253" y="316" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -981,7 +969,6 @@ gb7jgZfjgZ8
                         <outlet property="physicalActiveLowBtn" destination="h0W-4D-ip7" id="AXT-Ix-GqF"/>
                         <outlet property="physicalActiveUsuallyBtn" destination="CbH-5F-wyg" id="NSJ-T4-sea"/>
                         <outlet property="sexFemaleRadioBtn" destination="tHv-eZ-3O9" id="0hl-Ge-0Ay"/>
-                        <outlet property="sexLGBTRadioBtn" destination="usr-C6-XxF" id="HXr-84-ErU"/>
                         <outlet property="sexMaleRadioBtn" destination="7h4-MD-PeR" id="VMp-1e-8nN"/>
                         <outlet property="stepIndicator" destination="JUS-NC-DXz" id="bIT-3s-kNS"/>
                         <segue destination="pIw-dh-1vu" kind="show" identifier="toBack" id="eJu-g3-oAF"/>
@@ -1095,9 +1082,8 @@ gb7jgZfjgZ8
         <image name="hamburgerTop" width="570" height="394"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tjt-mF-1ik"/>
-        <segue reference="dAO-CH-4D9"/>
-        <segue reference="Hid-NL-O5s"/>
+        <segue reference="eJu-g3-oAF"/>
+        <segue reference="s3u-3S-JIO"/>
         <segue reference="E6x-rI-JRT"/>
     </inferredMetricsTieBreakers>
 </document>

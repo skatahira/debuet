@@ -16,7 +16,6 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
     @IBOutlet weak var birthDatePicker: UIDatePicker!
     @IBOutlet weak var sexMaleRadioBtn: LTHRadioButton!
     @IBOutlet weak var sexFemaleRadioBtn: LTHRadioButton!
-    @IBOutlet weak var sexLGBTRadioBtn: LTHRadioButton!
     @IBOutlet weak var physicalActiveLowBtn: LTHRadioButton!
     @IBOutlet weak var physicalActiveUsuallyBtn: LTHRadioButton!
     @IBOutlet weak var physicalActiveHighBtn: LTHRadioButton!
@@ -27,8 +26,13 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
     let dateFormat = DateFormatter()
     let inputDatePicker = UIDatePicker()
     
+    // 前画面からユーザ情報を受け取る
+    var userInfomation:UserInfomation = UserInfomation()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("\(userInfomation.userName)")
         
         // プログレスバー関連処理呼び出し
         setupStepIndicator()
@@ -37,7 +41,6 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
         physicalActiveLevelRadio()
         
         birthDatePicker.maximumDate = nowDate as Date
-        
     }
     
     // 前へボタン処理
@@ -47,9 +50,20 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
     
     // 次へボタン押下
     @IBAction func didClickNextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "toNext", sender: nil)
+        
+        let birth = birthDatePicker.date
+        userInfomation.setBirth(birth: birth)
+        performSegue(withIdentifier: "toNext", sender: userInfomation)
     }
     
+    // 次画面に渡す値を指定する
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toNext" {
+            var userGoalCreateViewController = segue.destination as! UserGoalCreateViewController
+            userGoalCreateViewController.userInfomation = sender as! UserInfomation
+        }
+    }
 }
 
 
@@ -65,22 +79,14 @@ extension UserDetailEditViewController {
     func sexRadio() {
         sexMaleRadioBtn.selectedColor = UIColor.hex(string: "#F9759D", alpha: 1)
         sexFemaleRadioBtn.selectedColor = UIColor.hex(string: "#F9759D", alpha: 1)
-        sexLGBTRadioBtn.selectedColor = UIColor.hex(string: "#F9759D", alpha: 1)
         
         // 男性を選択
         sexMaleRadioBtn.onSelect {
             self.sexFemaleRadioBtn.deselect()
-            self.sexLGBTRadioBtn.deselect()
         }
         // 女性を選択
         sexFemaleRadioBtn.onSelect {
             self.sexMaleRadioBtn.deselect()
-            self.sexLGBTRadioBtn.deselect()
-        }
-        // その他を選択
-        sexLGBTRadioBtn.onSelect {
-            self.sexMaleRadioBtn.deselect()
-            self.sexFemaleRadioBtn.deselect()
         }
     }
     
