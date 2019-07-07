@@ -34,7 +34,7 @@ class Calculation {
     // 男性基礎代謝量計算
     func manCalcBasalMetabolicRate(weight: Float, height: Float, age:Int) -> Int {
         let basalMetabolicRate0: Double = Double(13.397 * weight)
-        let basalMetabolicRate1: Double = Double(4.799 * height)
+        let basalMetabolicRate1: Double = Double(4.799 * (height * 100))
         let basalMetabolicRate2: Double =  Double(-5.677 * Float(age) + 88.362)
         let basalMetabolicRate: Int = Int(floor(basalMetabolicRate0 + basalMetabolicRate1 + basalMetabolicRate2))
 
@@ -43,8 +43,10 @@ class Calculation {
     
     // 女性基礎代謝量計算
     func womanCalcBasalMetabolicRate(weight: Float, height: Float, age:Int) -> Int {
-        let basalMetabolicRate: Int = 0
-        //basalMetabolicRate = floor(13.397 * weight + 4.799 * height - 5.677 * age + 88.362)
+        let basalMetabolicRate0: Double = Double(9.247 * weight)
+        let basalMetabolicRate1: Double = Double(3.098 * (height * 100))
+        let basalMetabolicRate2: Double =  Double(-4.33 * Float(age) + 447.593)
+        let basalMetabolicRate: Int = Int(floor(basalMetabolicRate0 + basalMetabolicRate1 + basalMetabolicRate2))
         return basalMetabolicRate
     }
     
@@ -71,5 +73,11 @@ class Calculation {
         let now = DateComponents(calendar: calendar, year: nowY, month: nowM, day: nowD).date!
         let age = calendar.dateComponents([.year], from: birthDate, to: now).year!
         return age
+    }
+    
+    // 必要食事量計算
+    func calcAmountOfFood(requiredEnergy : Int) -> Float {
+        let amountOfFood: Float = floor(Float(requiredEnergy / 200) * 10) / 10
+        return amountOfFood
     }
 }

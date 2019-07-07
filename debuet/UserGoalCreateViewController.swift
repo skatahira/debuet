@@ -15,9 +15,13 @@ class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBar
     
     @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
     @IBOutlet weak var goalTextView: UITextView!
+    @IBOutlet weak var resultLabel: UILabel!
     
     var defaultStore : Firestore!
     let db = Firestore.firestore()
+    
+    // エラーメッセージ
+    let errormessage = ErrorMessage.self()
     
     // 前画面からユーザ情報を受け取る
     var userInfomation:UserInfomation = UserInfomation()
@@ -43,7 +47,7 @@ extension UserGoalCreateViewController {
     // ユーザ情報登録処理
     func createUserInfomation() {
         
-        _ = Auth.auth().addStateDidChangeListener { (auth, user) in
+        let user = Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 print("認証済み")
             } else {
@@ -53,11 +57,9 @@ extension UserGoalCreateViewController {
         }
         var ref: DocumentReference? = nil
         
-        
         guard goalTextView.text != "" else {
             return
         }
-        
         
         // データベースに格納する情報
         let data: [String: Any] = [
@@ -77,8 +79,10 @@ extension UserGoalCreateViewController {
         // 画像登録処理
         //uploadImage()
         
+        
         ref = db.collection("users").addDocument(data: data) { err in
             if err != nil {
+                self.resultLabel.text = self.errormessage.showErrorIfNeeded(err)
                 print("Error adding document")
             } else {
                 print("Document added with ID: \(ref!.documentID)")

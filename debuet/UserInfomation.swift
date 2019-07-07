@@ -26,7 +26,7 @@ class UserInfomation {
     var height: String = "0.0"
     // 目標
     var goalText: String = ""
-    // 必要推定エネルギー
+    // 必要食事量
     var amountOfFood: Float = 0.0
     // BMI
     var bmi: Float = 0.0

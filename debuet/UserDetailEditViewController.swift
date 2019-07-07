@@ -157,10 +157,15 @@ extension UserDetailEditViewController {
         } else {
             requiredEnergy = calculation.calcRequiredEnergy(basalMetabolicRate: basalMetabolicRateman, physicalActiveLevel: 2.0)
         }
+        
+        // 必要食事量計算
+        let amountOfFood = calculation.calcAmountOfFood(requiredEnergy: requiredEnergy)
+        
         userInfomation.setAge(age: age)
         userInfomation.setStandardWeight(standardWeight: standardWeight)
         userInfomation.setBasalMetabolicRate(basalMetabolicRate: basalMetabolicRateman)
         userInfomation.setRequiredEnergy(requiredEnergy: requiredEnergy)
+        userInfomation.setAmountOfFood(amountOfFood: amountOfFood)
         
     }
 }

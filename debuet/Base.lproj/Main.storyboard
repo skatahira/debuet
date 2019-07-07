@@ -1098,12 +1098,21 @@ gb7jgZfjgZ8
                                     <navigationItem title="ユーザー情報入力" id="vdv-AS-6Wm"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fc-8I-spe">
+                                <rect key="frame" x="84" y="565" width="280" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Sst-fh-gB5"/>
                     </view>
                     <connections>
                         <outlet property="goalTextView" destination="x4G-eZ-fiF" id="pkb-dd-q1v"/>
+                        <outlet property="resultLabel" destination="2fc-8I-spe" id="hXu-J7-tl0"/>
                         <outlet property="stepIndicator" destination="VqR-x3-egz" id="aCQ-vv-SHJ"/>
                         <segue destination="ybP-1l-WCz" kind="show" identifier="toHome" id="s3u-3S-JIO"/>
                     </connections>
@@ -1136,9 +1145,8 @@ gb7jgZfjgZ8
         <image name="hamburgerTop" width="570" height="394"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q7O-4c-ylO"/>
         <segue reference="eJu-g3-oAF"/>
-        <segue reference="Hid-NL-O5s"/>
+        <segue reference="s3u-3S-JIO"/>
         <segue reference="E6x-rI-JRT"/>
     </inferredMetricsTieBreakers>
 </document>
