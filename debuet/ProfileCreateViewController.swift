@@ -27,8 +27,6 @@ class ProfileCreateViewController: UIViewController, UIImagePickerControllerDele
     
     // ユーザインフォメーションインスタンス作成
     let userInfomation = UserInfomation()
-    // 前画面からメールアドレスを受け取る
-    //var user:String = ""
     
     // バリデーションチェックルール
     let lengthRule = ValidationRuleLength(min: 1, max: 15, error: ValidationErrorType("💩"))

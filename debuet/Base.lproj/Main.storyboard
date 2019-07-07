@@ -723,7 +723,7 @@ gb7jgZfjgZ8
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="nickname"/>
                             </textField>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EUm-pM-ihX" customClass="FlexibleSteppedProgressBar" customModule="FlexibleSteppedProgressBar">
                                 <rect key="frame" x="58" y="129" width="283" height="26"/>
@@ -959,15 +959,69 @@ gb7jgZfjgZ8
                                 </date>
                                 <locale key="locale" localeIdentifier="ja_JP"/>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="身長" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76l-DZ-0Lb">
+                                <rect key="frame" x="44" y="452" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(必須)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvx-zE-AAo">
+                                <rect key="frame" x="87" y="452" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="160" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4xb-4J-D2T">
+                                <rect key="frame" x="69" y="481" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHt-pL-To2">
+                                <rect key="frame" x="160" y="490" width="24" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="💩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMi-dq-1vD">
+                                <rect key="frame" x="191" y="486" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gay-Di-ikb">
+                                <rect key="frame" x="69" y="515" width="281" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPM-T2-ZPT">
+                                <rect key="frame" x="60" y="648" width="281" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QCL-k5-GHQ"/>
                     </view>
                     <connections>
                         <outlet property="birthDatePicker" destination="27W-2q-XcY" id="X1m-Nw-fXt"/>
+                        <outlet property="heightCheckLabel" destination="Gay-Di-ikb" id="olm-Nu-Ay7"/>
+                        <outlet property="heightState" destination="vMi-dq-1vD" id="2bS-FM-kOf"/>
+                        <outlet property="heightTextField" destination="4xb-4J-D2T" id="CnD-yF-O6w"/>
+                        <outlet property="nextBtn" destination="Iur-tX-ohp" id="zq8-Qz-MGg"/>
                         <outlet property="physicalActiveHighBtn" destination="fsj-w5-2h0" id="E0Y-l6-e9G"/>
                         <outlet property="physicalActiveLowBtn" destination="h0W-4D-ip7" id="AXT-Ix-GqF"/>
                         <outlet property="physicalActiveUsuallyBtn" destination="CbH-5F-wyg" id="NSJ-T4-sea"/>
+                        <outlet property="resultLabel" destination="oPM-T2-ZPT" id="fZ4-wb-q9Z"/>
                         <outlet property="sexFemaleRadioBtn" destination="tHv-eZ-3O9" id="0hl-Ge-0Ay"/>
                         <outlet property="sexMaleRadioBtn" destination="7h4-MD-PeR" id="VMp-1e-8nN"/>
                         <outlet property="stepIndicator" destination="JUS-NC-DXz" id="bIT-3s-kNS"/>
@@ -977,7 +1031,7 @@ gb7jgZfjgZ8
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRU-kh-mHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="844"/>
+            <point key="canvasLocation" x="2605.7971014492755" y="843.75"/>
         </scene>
         <!--User Goal Create View Controller-->
         <scene sceneID="L5Q-zW-1MY">
@@ -1082,8 +1136,9 @@ gb7jgZfjgZ8
         <image name="hamburgerTop" width="570" height="394"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Q7O-4c-ylO"/>
         <segue reference="eJu-g3-oAF"/>
-        <segue reference="s3u-3S-JIO"/>
+        <segue reference="Hid-NL-O5s"/>
         <segue reference="E6x-rI-JRT"/>
     </inferredMetricsTieBreakers>
 </document>

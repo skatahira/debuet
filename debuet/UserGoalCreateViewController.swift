@@ -51,25 +51,6 @@ extension UserGoalCreateViewController {
             }
             
         }
-        // ユーザネームを設定
-        let user = Auth.auth().currentUser
-        if let user = user {
-            let changeRequest = user.createProfileChangeRequest()
-            changeRequest.displayName = userInfomation.userName
-            changeRequest.commitChanges { error in
-                
-                if let error = error {
-                    print(error)
-                    return
-                }
-                let when = DispatchTime.now() + 2
-                DispatchQueue.main.asyncAfter(deadline: when) {
-                    //self.performSegue(withIdentifier: "toHome", sender: nil)
-                }
-            }
-            
-        }
-        
         var ref: DocumentReference? = nil
         
         
@@ -80,10 +61,17 @@ extension UserGoalCreateViewController {
         
         // データベースに格納する情報
         let data: [String: Any] = [
-            "birth": userInfomation.birth as Any,
-            "sex": userInfomation.sex,
-            "physicalActiveLevel": userInfomation.physicalActiveLevel,
-            "goalText": goalTextView.text!
+            "ニックネーム": userInfomation.userName,
+            "年齢": userInfomation.age,
+            "誕生日": userInfomation.birth as Any,
+            "性別": userInfomation.sex,
+            "身体活動レベル": userInfomation.physicalActiveLevel,
+            "身長": userInfomation.height,
+            "目標": goalTextView.text!,
+            "1日の目標食事量": userInfomation.amountOfFood,
+            "推奨標準体重": userInfomation.standardWeight,
+            "基礎代謝量": userInfomation.basalMetabolicRate,
+            "必要推定エネルギー量": userInfomation.requiredEnergy
         ]
         
         // 画像登録処理
