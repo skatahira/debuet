@@ -27,7 +27,7 @@ class Calculation {
     func calcStandardWeight(height: Float) -> Float {
         var standardWeight:Float = 0.0
         standardWeight = (height * height) * standardWeightCalcNum
-        standardWeight = floor(standardWeight * 100) / 100
+        standardWeight = floor(standardWeight * 10) / 10
         return standardWeight
     }
     

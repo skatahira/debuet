@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburger" translatesAutoresizingMaskIntoConstraints="NO" id="6wS-YN-0AG">
-                                <rect key="frame" x="119.5" y="387.5" width="175" height="121"/>
+                                <rect key="frame" x="199" y="440" width="16" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96754878759999996" green="0.83100861309999996" blue="0.85490256549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -32,7 +32,7 @@
                     <connections>
                         <outlet property="imageView" destination="6wS-YN-0AG" id="KfI-NK-XsG"/>
                         <segue destination="wjf-5x-mGZ" kind="show" identifier="toTop" id="c7o-Xv-nQw"/>
-                        <segue destination="ybP-1l-WCz" kind="show" id="yXS-dQ-YPC"/>
+                        <segue destination="ybP-1l-WCz" kind="show" identifier="toHome" id="yXS-dQ-YPC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kO-rC-Xhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -61,20 +61,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="debuet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxh-zA-Hjz">
-                                <rect key="frame" x="146.5" y="148" width="121" height="48"/>
+                                <rect key="frame" x="146.5" y="104" width="121" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="highlightedColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburgerTop" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-Fv-Ezz">
-                                <rect key="frame" x="107" y="206" width="200" height="199.00000000000011"/>
+                                <rect key="frame" x="107" y="162" width="200" height="199"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dtf-Fv-Ezz" secondAttribute="height" multiplier="200:199" id="TmJ-jQ-p9L"/>
                                     <constraint firstAttribute="width" constant="200" id="zuc-TN-dIQ"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lnx-qz-oei">
-                                <rect key="frame" x="105" y="450" width="204" height="36"/>
+                                <rect key="frame" x="105" y="406" width="204" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="メールアドレスで登録">
                                     <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -104,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="89.732142857142847"/>
         </scene>
-        <!--Retry Send Mail View Controller-->
+        <!--メール送信完了-->
         <scene sceneID="KTr-lg-dVh">
             <objects>
                 <viewController id="njm-MB-tMO" customClass="RetrySendMailViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
@@ -164,6 +164,7 @@ gb7jgZfjgZ8
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="01p-bb-BC2"/>
                     </view>
+                    <navigationItem key="navigationItem" title="メール送信完了" id="xQx-8A-aET"/>
                     <connections>
                         <outlet property="stateLabel" destination="5QG-2B-4Ip" id="XQ0-1r-Ebq"/>
                     </connections>
@@ -172,7 +173,7 @@ gb7jgZfjgZ8
             </objects>
             <point key="canvasLocation" x="-2037.68115942029" y="848.4375"/>
         </scene>
-        <!--Pass Forget View Controller-->
+        <!--パスワードをお忘れの方-->
         <scene sceneID="qQp-zy-63A">
             <objects>
                 <viewController id="9Ht-Gu-8cs" customClass="PassForgetViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,6 +234,7 @@ gb7jgZfjgZ8
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0Sl-Gp-6t0"/>
                     </view>
+                    <navigationItem key="navigationItem" title="パスワードをお忘れの方" id="STC-vh-f2W"/>
                     <connections>
                         <outlet property="emailCheckLabel" destination="s9d-3y-LZ0" id="clz-Gb-140"/>
                         <outlet property="emailState" destination="FAQ-BO-QKg" id="qCj-eC-aJv"/>
@@ -245,7 +247,7 @@ gb7jgZfjgZ8
             </objects>
             <point key="canvasLocation" x="-1346.376811594203" y="846.42857142857144"/>
         </scene>
-        <!--Login View Controller-->
+        <!--ログイン-->
         <scene sceneID="00s-zo-b7K">
             <objects>
                 <viewController id="a3a-QB-0Xx" customClass="LoginViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
@@ -341,6 +343,7 @@ gb7jgZfjgZ8
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ogh-ce-hOQ"/>
                     </view>
+                    <navigationItem key="navigationItem" title="ログイン" id="fIM-uM-zaR"/>
                     <connections>
                         <outlet property="emailCheckLabel" destination="xHx-Te-Ttd" id="RS6-wP-af6"/>
                         <outlet property="emailState" destination="N9j-2R-pUu" id="tlS-Zg-uyO"/>
@@ -355,6 +358,42 @@ gb7jgZfjgZ8
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tr4-NR-ZpI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-643.47826086956525" y="843.75"/>
+        </scene>
+        <!--User Infomation Edit View Controller-->
+        <scene sceneID="xDL-6v-fDw">
+            <objects>
+                <viewController id="8KB-sG-bF3" customClass="UserInfomationEditViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AH7-V7-Ko3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Es-J5-Kdi">
+                                <rect key="frame" x="169" y="195" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ログアウト"/>
+                                <connections>
+                                    <action selector="didClickLogOutBtn:" destination="8KB-sG-bF3" eventType="touchUpInside" id="YCP-26-Uug"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZQ-0n-ai8">
+                                <rect key="frame" x="154" y="289" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="アカウント削除"/>
+                                <connections>
+                                    <action selector="didClickAccountDeleteBtn:" destination="8KB-sG-bF3" eventType="touchUpInside" id="hdl-2X-13U"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uVF-8k-AXY"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toTop" id="hFr-0d-tCs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pyB-gX-L1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1417.3913043478262" y="1602.4553571428571"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="q9g-pP-Bkn">
@@ -508,17 +547,37 @@ gb7jgZfjgZ8
                                 </state>
                                 <connections>
                                     <action selector="didTapRegisterBtn:" destination="515-1Z-Hy1" eventType="touchUpInside" id="kAu-tF-0Bf"/>
+                                    <action selector="todayRecord:" destination="ybP-1l-WCz" eventType="touchUpInside" id="W0G-jP-cuW"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzU-YY-lol" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="104" y="349" width="277" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-Mq-wo7">
+                                <rect key="frame" x="49" y="590" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="8KB-sG-bF3" kind="show" id="uyG-ps-VpO"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NY3-Fe-hp5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ホーム" id="hSF-UB-wIl"/>
+                    <navigationItem key="navigationItem" title="ホーム" leftItemsSupplementBackButton="YES" id="q3b-Vd-ONh"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="targetWeight" destination="Ndv-fX-pNa" id="WQC-UD-FUU"/>
+                        <outlet property="todayBreakfast" destination="uzU-YY-lol" id="fFU-ey-n4x"/>
+                        <outlet property="todayWeightTextField" destination="gal-pb-CDf" id="f7C-Q3-BtG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRD-IS-1Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="1602"/>
+            <point key="canvasLocation" x="547.82608695652175" y="1601.7857142857142"/>
         </scene>
         <!--アカウント登録-->
         <scene sceneID="LQl-wE-iCK">
@@ -1094,7 +1153,8 @@ gb7jgZfjgZ8
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eJu-g3-oAF"/>
-        <segue reference="s3u-3S-JIO"/>
-        <segue reference="E6x-rI-JRT"/>
+        <segue reference="Hid-NL-O5s"/>
+        <segue reference="epn-hA-aYu"/>
+        <segue reference="hFr-0d-tCs"/>
     </inferredMetricsTieBreakers>
 </document>

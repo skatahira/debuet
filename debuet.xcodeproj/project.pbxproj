@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E5267ED054C28B901490AD22 /* Pods_debuet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D4D5A9263700B3FF3F72D3 /* Pods_debuet.framework */; };
 		ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1E522D1E43B00E0C349 /* Calculation.swift */; };
+		ED09F1E822D3A84800E0C349 /* UserInfomationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */; };
 		ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */; };
 		ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC0022AEB53400DBFE60 /* ViewController.swift */; };
 		ED12BC0422AEB53400DBFE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC0222AEB53400DBFE60 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		74D4D5A9263700B3FF3F72D3 /* Pods_debuet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_debuet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54E8487CF5BDB88EC991707 /* Pods-debuet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debuet.release.xcconfig"; path = "Target Support Files/Pods-debuet/Pods-debuet.release.xcconfig"; sourceTree = "<group>"; };
 		ED09F1E522D1E43B00E0C349 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
+		ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomationEditViewController.swift; sourceTree = "<group>"; };
 		ED12BBFB22AEB53400DBFE60 /* debuet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debuet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED12BC0022AEB53400DBFE60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +50,7 @@
 		ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrySendMailViewController.swift; sourceTree = "<group>"; };
-		EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomation.swift; sourceTree = "<group>"; };
 		EDB62A2022CCB928006F8B85 /* UserGoalCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalCreateViewController.swift; sourceTree = "<group>"; };
 		EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassForgetViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */,
 				EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */,
 				EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */,
+				ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
 				ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */,
@@ -268,6 +271,7 @@
 				EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */,
 				ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */,
 				EDA5B99E22CE87F30080BE8F /* RetrySendMailViewController.swift in Sources */,
+				ED09F1E822D3A84800E0C349 /* UserInfomationEditViewController.swift in Sources */,
 				EDA5B9A022CE97E10080BE8F /* HomeViewController.swift in Sources */,
 				EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */,
 				EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */,

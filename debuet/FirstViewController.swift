@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController {
 
@@ -40,7 +41,17 @@ class FirstViewController: UIViewController {
         },
             completion: { (Bool) in
                 self.imageView.removeFromSuperview()
-                self.performSegue(withIdentifier: "toTop", sender: nil)
+                // 画面遷移判断処理
+                if Auth.auth().currentUser != nil {
+                    // ログインしている場合
+                    // ホーム画面に遷移
+                    self.performSegue(withIdentifier: "toHome", sender: nil)
+                } else {
+                    // ログインしていない場合
+                    // TOP画面に遷移
+                    self.performSegue(withIdentifier: "toTop", sender: nil)
+                }
+                
         })
         
     }
