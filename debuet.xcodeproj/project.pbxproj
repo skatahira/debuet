@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E5267ED054C28B901490AD22 /* Pods_debuet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D4D5A9263700B3FF3F72D3 /* Pods_debuet.framework */; };
+		ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1E522D1E43B00E0C349 /* Calculation.swift */; };
 		ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */; };
 		ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC0022AEB53400DBFE60 /* ViewController.swift */; };
 		ED12BC0422AEB53400DBFE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC0222AEB53400DBFE60 /* Main.storyboard */; };
@@ -15,14 +16,27 @@
 		ED12BC0922AEB53700DBFE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC0722AEB53700DBFE60 /* LaunchScreen.storyboard */; };
 		ED12BC3322AFBD4C00DBFE60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */; };
 		ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */; };
+		EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */; };
+		EDA5B99E22CE87F30080BE8F /* RetrySendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */; };
+		EDA5B9A022CE97E10080BE8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */; };
+		EDA5B9A222CF1E340080BE8F /* UserInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */; };
+		EDB62A2122CCB928006F8B85 /* UserGoalCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB62A2022CCB928006F8B85 /* UserGoalCreateViewController.swift */; };
+		EDB62A2322CE608A006F8B85 /* PassForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */; };
 		EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */; };
 		EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */; };
+		EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */; };
+		EDFD5BCE22BA1788002E5592 /* EnhancedCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BCD22BA1788002E5592 /* EnhancedCircleImageView.swift */; };
+		EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BCF22BB6BC9002E5592 /* Color.swift */; };
+		EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BD922BF5D3D002E5592 /* ValidationErrorType.swift */; };
+		EDFD5BDC22BFFC37002E5592 /* UserDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BDB22BFFC37002E5592 /* UserDetailEditViewController.swift */; };
+		EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		61CD7C6583BA0EA8473CB737 /* Pods-debuet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debuet.debug.xcconfig"; path = "Target Support Files/Pods-debuet/Pods-debuet.debug.xcconfig"; sourceTree = "<group>"; };
 		74D4D5A9263700B3FF3F72D3 /* Pods_debuet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_debuet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54E8487CF5BDB88EC991707 /* Pods-debuet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debuet.release.xcconfig"; path = "Target Support Files/Pods-debuet/Pods-debuet.release.xcconfig"; sourceTree = "<group>"; };
+		ED09F1E522D1E43B00E0C349 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		ED12BBFB22AEB53400DBFE60 /* debuet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debuet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED12BC0022AEB53400DBFE60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,8 +46,20 @@
 		ED12BC0A22AEB53700DBFE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrySendMailViewController.swift; sourceTree = "<group>"; };
+		EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomation.swift; sourceTree = "<group>"; };
+		EDB62A2022CCB928006F8B85 /* UserGoalCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalCreateViewController.swift; sourceTree = "<group>"; };
+		EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassForgetViewController.swift; sourceTree = "<group>"; };
 		EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
+		EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
+		EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		EDFD5BCD22BA1788002E5592 /* EnhancedCircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedCircleImageView.swift; sourceTree = "<group>"; };
+		EDFD5BCF22BB6BC9002E5592 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		EDFD5BD922BF5D3D002E5592 /* ValidationErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationErrorType.swift; sourceTree = "<group>"; };
+		EDFD5BDB22BFFC37002E5592 /* UserDetailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailEditViewController.swift; sourceTree = "<group>"; };
+		EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTHRadioButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,13 +113,26 @@
 			isa = PBXGroup;
 			children = (
 				ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */,
+				EDFD5BD922BF5D3D002E5592 /* ValidationErrorType.swift */,
+				EDFD5BCD22BA1788002E5592 /* EnhancedCircleImageView.swift */,
+				EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */,
+				EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */,
+				EDFD5BCF22BB6BC9002E5592 /* Color.swift */,
+				EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */,
+				ED09F1E522D1E43B00E0C349 /* Calculation.swift */,
+				ED12BC0222AEB53400DBFE60 /* Main.storyboard */,
+				ED12BC0722AEB53700DBFE60 /* LaunchScreen.storyboard */,
+				EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */,
 				ED12BC0022AEB53400DBFE60 /* ViewController.swift */,
 				ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */,
-				ED12BC0222AEB53400DBFE60 /* Main.storyboard */,
-				EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */,
 				EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */,
+				EDFD5BDB22BFFC37002E5592 /* UserDetailEditViewController.swift */,
+				EDB62A2022CCB928006F8B85 /* UserGoalCreateViewController.swift */,
+				EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */,
+				EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */,
+				EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */,
+				EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
-				ED12BC0722AEB53700DBFE60 /* LaunchScreen.storyboard */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
 				ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */,
 			);
@@ -216,11 +255,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA5B9A222CF1E340080BE8F /* UserInfomation.swift in Sources */,
+				ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */,
 				EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */,
 				ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */,
+				EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */,
+				EDB62A2322CE608A006F8B85 /* PassForgetViewController.swift in Sources */,
+				EDFD5BDC22BFFC37002E5592 /* UserDetailEditViewController.swift in Sources */,
 				EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */,
+				EDFD5BCE22BA1788002E5592 /* EnhancedCircleImageView.swift in Sources */,
+				EDB62A2122CCB928006F8B85 /* UserGoalCreateViewController.swift in Sources */,
+				EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */,
 				ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */,
+				EDA5B99E22CE87F30080BE8F /* RetrySendMailViewController.swift in Sources */,
+				EDA5B9A022CE97E10080BE8F /* HomeViewController.swift in Sources */,
+				EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */,
+				EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */,
 				ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */,
+				EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

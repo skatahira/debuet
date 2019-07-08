@@ -15,11 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
+        /*
+        if let _ = Auth.auth().currentUser {
+            // ログイン中
+            let storyboard: UIStoryboard = UIStoryboard(name: "ProfileCreateViewController", bundle: nil)
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "ProfileCreateViewController")
+        }
+         */
+        
         return true
     }
 
