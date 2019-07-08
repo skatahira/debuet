@@ -1,175 +1,172 @@
-//
-//  UserGoalCreateViewController.swift
-//  debuet
-//
-//  Created by 片平駿介 on 2019/07/03.
-//  Copyright © 2019 ShunsukeKatahira. All rights reserved.
-//
-
-import UIKit
-import Firebase
-import FlexibleSteppedProgressBar
-
-// ユーザ目標記録画面
-class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBarDelegate {
+    //
+    //  UserGoalCreateViewController.swift
+    //  debuet
+    //
+    //  Created by 片平駿介 on 2019/07/03.
+    //  Copyright © 2019 ShunsukeKatahira. All rights reserved.
+    //
     
-    @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
-    @IBOutlet weak var goalTextView: UITextView!
-    @IBOutlet weak var resultLabel: UILabel!
+    import UIKit
+    import Firebase
+    import FlexibleSteppedProgressBar
     
-    var defaultStore : Firestore!
-    let db = Firestore.firestore()
-    
-    // エラーメッセージ
-    let errormessage = ErrorMessage.self()
-    
-    // 前画面からユーザ情報を受け取る
-    var userInfomation:UserInfomation = UserInfomation()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // ユーザ目標記録画面
+    class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBarDelegate {
         
-        // プログレスバー関連処理呼び出し
-        setupStepIndicator()
+        @IBOutlet weak var stepIndicator: FlexibleSteppedProgressBar!
+        @IBOutlet weak var goalTextView: UITextView!
+        @IBOutlet weak var resultLabel: UILabel!
+        
+        var defaultStore : Firestore!
+        let db = Firestore.firestore()
+        
+        // エラーメッセージ
+        let errormessage = ErrorMessage.self()
+        
+        // 前画面からユーザ情報を受け取る
+        var userInfomation:UserInfomation = UserInfomation()
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            // プログレスバー関連処理呼び出し
+            setupStepIndicator()
+        }
+        
+        // 完了ボタン押下時
+        @IBAction func didClickDoneBtn(_ sender: Any) {
+            
+            // ユーザ情報登録処理
+            createUserInfomation()
+        }
     }
     
-    // 完了ボタン押下時
-    @IBAction func didClickDoneBtn(_ sender: Any) {
+    // Firebase関連処理
+    extension UserGoalCreateViewController {
         
         // ユーザ情報登録処理
-        createUserInfomation()
-    }
-}
-
-// Firebase関連処理
-extension UserGoalCreateViewController {
-    
-    // ユーザ情報登録処理
-    func createUserInfomation() {
-        
-        let user = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil {
-                print("認証済み")
-            } else {
-                print("認証済みでない")
-            }
+        func createUserInfomation() {
             
-        }
-        var ref: DocumentReference? = nil
-        
-        guard goalTextView.text != "" else {
-            return
-        }
-        
-        // データベースに格納する情報
-        let data: [String: Any] = [
-            "ニックネーム": userInfomation.userName,
-            "年齢": userInfomation.age,
-            "誕生日": userInfomation.birth as Any,
-            "性別": userInfomation.sex,
-            "身体活動レベル": userInfomation.physicalActiveLevel,
-            "身長": userInfomation.height,
-            "目標": goalTextView.text!,
-            "1日の目標食事量": userInfomation.amountOfFood,
-            "推奨標準体重": userInfomation.standardWeight,
-            "基礎代謝量": userInfomation.basalMetabolicRate,
-            "必要推定エネルギー量": userInfomation.requiredEnergy
-        ]
-        
-        // 画像登録処理
-        //uploadImage()
-        
-        
-        ref = db.collection("users").addDocument(data: data) { err in
-            if err != nil {
-                self.resultLabel.text = self.errormessage.showErrorIfNeeded(err)
-                print("Error adding document")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-        
-        performSegue(withIdentifier: "toHome", sender: nil)
-    }
-    
-    // ユーザ画像登録処理
-    func uploadImage() {
-        // ストレージサービスへの参照を取得
-        let storage = Storage.storage()
-        // ストレージへの参照を取得
-        let storageRef = storage.reference(forURL: "gs://debuet-7732b.appspot.com/")
-        // 画像
-        let image = userInfomation.userPicture
-        let userName = userInfomation.userName
-        print("ユーザーネーム\(userName)")
-        // imageをNSDataに変換
-        let data = image!.jpegData(compressionQuality: 1.0)! as NSData
-        // Storageに保存
-        storageRef.putData(data as Data, metadata: nil) { (data, error) in
-            if error != nil {
+            guard goalTextView.text != "" else {
                 return
             }
-        }
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-}
-
-// プログレスバー関連処理
-extension UserGoalCreateViewController {
-    
-    // ステップインジケータ表示の初期表示に関するセッティングをするメソッド
-    private func setupStepIndicator() {
-        stepIndicator.delegate = self
-        
-        // ステップインジケータの表示数を設定する
-        stepIndicator.numberOfPoints = 3
-        
-        // ステップインジケータの線幅を設定する
-        stepIndicator.lineHeight = 4
-        
-        // ステップインジケータの配色および外枠を設定する
-        stepIndicator.selectedOuterCircleLineWidth = 4.0
-        stepIndicator.selectedOuterCircleStrokeColor = UIColor.hex(string: "#F9759D", alpha: 1)
-        stepIndicator.currentSelectedCenterColor = UIColor.white
-        stepIndicator.stepTextColor = UIColor.black
-        
-        // ステップインディケータのアニメーション秒数を設定する
-        stepIndicator.stepAnimationDuration = 0.26
-        
-        // ステップインジケータの現在位置を設定する
-        stepIndicator.currentIndex = 2
-    }
-    
-    //  ステップインジケータを選択した際に実行されるメソッド
-    func progressBar(_ progressBar: FlexibleSteppedProgressBar,
-                     didSelectItemAtIndex index: Int) {
-        print("Index selected!")
-        stepIndicator.currentIndex = index
-    }
-    
-    func progressBar(_ progressBar: FlexibleSteppedProgressBar,
-                     willSelectItemAtIndex index: Int) {
-        print("Index selected!")
-    }
-    
-    // ステップインジケータの選択可否設定するメソッド
-    func progressBar(_ progressBar: FlexibleSteppedProgressBar,
-                     canSelectItemAtIndex index: Int) -> Bool {
-        return false
-    }
-    
-    // ステップインジケータの各ステップの名称を設定
-    func progressBar(_ progressBar: FlexibleSteppedProgressBar,
-                     textAtIndex index: Int, position: FlexibleSteppedProgressBarTextLocation) -> String {
-        if position == FlexibleSteppedProgressBarTextLocation.bottom {
-            switch index {
-            case 0: return "Step1"
-            case 1: return "Step2"
-            case 2: return "Step3"
-            default: return ""
+            
+            // データベースに格納する情報
+            let data: [String: Any] = [
+                "ニックネーム": userInfomation.userName,
+                "年齢": userInfomation.age,
+                "誕生日": userInfomation.birth as Any,
+                "性別": userInfomation.sex,
+                "身体活動レベル": userInfomation.physicalActiveLevel,
+                "身長": userInfomation.height,
+                "目標": goalTextView.text!,
+                "1日の目標食事量": userInfomation.amountOfFood,
+                "推奨標準体重": userInfomation.standardWeight,
+                "基礎代謝量": userInfomation.basalMetabolicRate,
+                "必要推定エネルギー量": userInfomation.requiredEnergy
+            ]
+            
+            
+            guard let uid = Auth.auth().currentUser?.uid else {
+                print("uid is nil")
+                return
+            }
+            // 画像登録処理
+            uploadImage(uid: uid)
+            
+            db.collection("users").document(uid).setData(data) { err in
+                if err != nil {
+                    self.resultLabel.text = self.errormessage.showErrorIfNeeded(err)
+                    print("ユーザ情報登録失敗！！")
+                } else {
+                    print("ユーザ情報登録成功！！")
+                    self.performSegue(withIdentifier: "toHome", sender: nil)
+                }
             }
         }
-        return ""
+        
+        // ユーザ画像登録処理
+        func uploadImage(uid: String) {
+            // ストレージサービスへの参照を取得
+            let storage = Storage.storage()
+            //保存するURLを指定
+            let storageRef = storage.reference(forURL: "gs://debuet-7732b.appspot.com/")
+            //ディレクトリを指定
+            let imageRef = storageRef.child("User").child(uid)
+            guard let data = userInfomation.userPicture else { return }
+            //保存を実行して、metadataにURLが含まれているので、あとはよしなに加工
+            let imageData = data.jpegData(compressionQuality: 0.1)! as NSData
+            imageRef.putData(imageData as Data, metadata: nil) { metadata, error in
+                if (error != nil) {
+                    self.resultLabel.text = self.errormessage.showErrorIfNeeded(error)
+                    print("画像登録失敗！！")
+                } else {
+                    print("画像登録成功！！")
+                }
+            }
+        }
+        
+        // viewを押下時にキーボードを閉じる処理
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
     }
-}
+    
+    // プログレスバー関連処理
+    extension UserGoalCreateViewController {
+        
+        // ステップインジケータ表示の初期表示に関するセッティングをするメソッド
+        private func setupStepIndicator() {
+            stepIndicator.delegate = self
+            
+            // ステップインジケータの表示数を設定する
+            stepIndicator.numberOfPoints = 3
+            
+            // ステップインジケータの線幅を設定する
+            stepIndicator.lineHeight = 4
+            
+            // ステップインジケータの配色および外枠を設定する
+            stepIndicator.selectedOuterCircleLineWidth = 4.0
+            stepIndicator.selectedOuterCircleStrokeColor = UIColor.hex(string: "#F9759D", alpha: 1)
+            stepIndicator.currentSelectedCenterColor = UIColor.white
+            stepIndicator.stepTextColor = UIColor.black
+            
+            // ステップインディケータのアニメーション秒数を設定する
+            stepIndicator.stepAnimationDuration = 0.26
+            
+            // ステップインジケータの現在位置を設定する
+            stepIndicator.currentIndex = 2
+        }
+        
+        //  ステップインジケータを選択した際に実行されるメソッド
+        func progressBar(_ progressBar: FlexibleSteppedProgressBar,
+                         didSelectItemAtIndex index: Int) {
+            print("Index selected!")
+            stepIndicator.currentIndex = index
+        }
+        
+        func progressBar(_ progressBar: FlexibleSteppedProgressBar,
+                         willSelectItemAtIndex index: Int) {
+            print("Index selected!")
+        }
+        
+        // ステップインジケータの選択可否設定するメソッド
+        func progressBar(_ progressBar: FlexibleSteppedProgressBar,
+                         canSelectItemAtIndex index: Int) -> Bool {
+            return false
+        }
+        
+        // ステップインジケータの各ステップの名称を設定
+        func progressBar(_ progressBar: FlexibleSteppedProgressBar,
+                         textAtIndex index: Int, position: FlexibleSteppedProgressBarTextLocation) -> String {
+            if position == FlexibleSteppedProgressBarTextLocation.bottom {
+                switch index {
+                case 0: return "Step1"
+                case 1: return "Step2"
+                case 2: return "Step3"
+                default: return ""
+                }
+            }
+            return ""
+        }
+    }

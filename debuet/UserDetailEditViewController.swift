@@ -26,7 +26,6 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     
-    //変数を宣言する
     //今日の日付を代入
     let nowDate = NSDate()
     let dateFormat = DateFormatter()
@@ -43,8 +42,6 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("\(userInfomation.userName)")
         
         // プログレスバー関連処理呼び出し
         setupStepIndicator()
