@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// ユーザインフォメーションクラス
+// ユーザ情報クラス
 class UserInfomation {
  
     // ユーザ名

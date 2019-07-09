@@ -8,6 +8,7 @@
 
 import UIKit
 
+//  プロフィール画像丸く切り取るクラス
 open class EnhancedCircleImageView: UIImageView {
     
     open override func awakeFromNib() {

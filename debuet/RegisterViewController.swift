@@ -37,7 +37,6 @@ class RegisterViewController: UIViewController {
         
         // 入力チェック処理呼び出し
         registerValidationCheck()
-
     }
 
     // アカウント登録ボタン押下時
@@ -45,7 +44,6 @@ class RegisterViewController: UIViewController {
         
         registerFlg = true
         // バリデーションチェック
-        // 登録
         didClickBtnValidationCheck()
     }
     

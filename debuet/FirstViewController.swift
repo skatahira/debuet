@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+// スプラッシュ画面
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
