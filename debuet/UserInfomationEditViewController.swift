@@ -12,10 +12,10 @@ import Firebase
 class UserInfomationEditViewController: UIViewController {
     
     let errormessage = ErrorMessage.self()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     // ログアウトボタン押下時

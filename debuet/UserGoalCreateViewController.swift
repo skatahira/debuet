@@ -8,6 +8,7 @@
     
     import UIKit
     import Firebase
+    import FirebaseDatabase
     import FlexibleSteppedProgressBar
     
     // ユーザ目標記録画面
@@ -19,6 +20,8 @@
         
         var defaultStore : Firestore!
         let db = Firestore.firestore()
+        var refe: DatabaseReference!
+        
         
         // エラーメッセージ
         let errormessage = ErrorMessage.self()
@@ -73,6 +76,8 @@
             }
             // 画像登録処理
             uploadImage(uid: uid)
+            
+            refe = Database.database().reference()
             
             db.collection("users").document(uid).setData(data) { err in
                 if err != nil {

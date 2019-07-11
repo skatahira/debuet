@@ -12,7 +12,7 @@ import Validator
 
 // ログイン画面
 class LoginViewController: UIViewController, Error {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var emailState: UILabel!
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, Error {
         super.viewDidLoad()
         
         registerValidationCheck()
-
+        
     }
     
     // ログインボタン押下時
@@ -57,13 +57,25 @@ extension LoginViewController {
             if let e = err {
                 print("Fail : \(e)")
                 self.errorState.text = self.errormessage.showErrorIfNeeded(e)
-                // 失敗した場合はここで処理終了
+                // 失敗した場合は処理終了
                 return
             }
             if let r = result {
                 print("Success : \(r.user.email!)")
-                // ログイン成功時に次の画面に遷移
-                self.performSegue(withIdentifier: "toHome", sender: nil)
+                
+                let user = Auth.auth().currentUser
+                let userRef = Firestore.firestore().collection("users").document(user!.uid)
+                
+                userRef.getDocument { (document, error) in
+                    // 画面遷移判断
+                    if let document = document, document.exists {
+                        // ユーザ情報登録完了している場合
+                        self.performSegue(withIdentifier: "toHome", sender: nil)
+                    } else {
+                        // ユーザ情報登録をしていない場合
+                        self.performSegue(withIdentifier: "toCreate", sender: nil)
+                    }
+                }
             }
             
         }

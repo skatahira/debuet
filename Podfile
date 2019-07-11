@@ -10,6 +10,7 @@ target 'debuet' do
   pod 'Firebase/Firestore'  
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   pod 'IQKeyboardManagerSwift'
   pod 'FlexibleSteppedProgressBar'
   pod 'Validator'
