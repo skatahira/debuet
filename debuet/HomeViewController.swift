@@ -10,6 +10,7 @@ import UIKit
 import Cosmos
 import Firebase
 
+// ホーム画面
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var targetWeight: UILabel!
@@ -25,6 +26,10 @@ class HomeViewController: UIViewController {
     let db = Firestore.firestore()
     // エラーメッセージ
     let errormessage = ErrorMessage.self()
+    // 日付関連クラス
+    let dateRelation = DateRelation()
+    // TODOを格納するための配列
+    var todayRecord:[TodayRecord] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +56,7 @@ extension HomeViewController {
     // ユーザ情報登録処理
     func createTodayRecord() {
         
-        let nowDate = NSDate()
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let calcNow:String = dateFormatter.string(from: nowDate as Date)
+        let now = dateRelation.todayYMDString()
         
         guard ((todayWeightTextField?.text) != nil) else { return }
         
@@ -66,7 +67,7 @@ extension HomeViewController {
         
         // データベースに格納する情報
         let data: [String: Any] = [
-            "Day": calcNow,
+            "day": now,
             "weight": todayWeight!,
             "breakfast": breakfastAmountFood,
             "lunch": lunchAmountFood,
@@ -105,19 +106,47 @@ extension HomeViewController {
 
 // Cosmos関連処理
 extension HomeViewController {
+    // 初期表示時
     func setCosmos() {
-        // 本日の朝食
+        
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("uid is nil")
+            return
+        }
+        let now = dateRelation.todayYMDString()
+        
         todayBreakfast.rating = 0
+        todayLunch.rating = 0
+        todayDinner.rating = 0
+        
+        let docRef = db.collection("users").document(uid).collection("record").whereField("day", isEqualTo: now)
+        docRef.getDocuments { (docu, error) in
+            if error != nil {
+                // エラー発生した場合
+                print("Error")
+                return
+            } else {
+                for document in docu!.documents {
+                    
+                    print(document.documentID)
+                    self.todayWeightTextField.text = (document.data()["weight"] as! String)
+                    self.todayBreakfast.rating = Double(document.data()["breakfast"] as! Int)
+                    self.todayLunch.rating = Double(document.data()["lunch"] as! Int)
+                    self.todayDinner.rating = Double(document.data()["dinner"] as! Int)
+                }
+                print(docu!.documents)
+            }
+        }
+        
+        // 本日の朝食
         todayBreakfast.settings.minTouchRating = 0
         todayBreakfast.settings.filledImage = UIImage(named: "onigiri1.png")
         todayBreakfast.settings.emptyImage = UIImage(named: "onigiri2.png")
         // 本日の昼食
-        todayLunch.rating = 0
         todayLunch.settings.minTouchRating = 0
         todayLunch.settings.filledImage = UIImage(named: "onigiri1.png")
         todayLunch.settings.emptyImage = UIImage(named: "onigiri2.png")
         // 本日の夕飯
-        todayDinner.rating = 0
         todayDinner.settings.minTouchRating = 0
         todayDinner.settings.filledImage = UIImage(named: "onigiri1.png")
         todayDinner.settings.emptyImage = UIImage(named: "onigiri2.png")

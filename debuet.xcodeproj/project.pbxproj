@@ -10,6 +10,8 @@
 		E5267ED054C28B901490AD22 /* Pods_debuet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D4D5A9263700B3FF3F72D3 /* Pods_debuet.framework */; };
 		ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1E522D1E43B00E0C349 /* Calculation.swift */; };
 		ED09F1E822D3A84800E0C349 /* UserInfomationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */; };
+		ED09F1EA22D808FE00E0C349 /* DateRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1E922D808FE00E0C349 /* DateRelation.swift */; };
+		ED09F1EC22D84DFC00E0C349 /* TodayRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09F1EB22D84DFC00E0C349 /* TodayRecord.swift */; };
 		ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */; };
 		ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC0022AEB53400DBFE60 /* ViewController.swift */; };
 		ED12BC0422AEB53400DBFE60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC0222AEB53400DBFE60 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 		C54E8487CF5BDB88EC991707 /* Pods-debuet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-debuet.release.xcconfig"; path = "Target Support Files/Pods-debuet/Pods-debuet.release.xcconfig"; sourceTree = "<group>"; };
 		ED09F1E522D1E43B00E0C349 /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomationEditViewController.swift; sourceTree = "<group>"; };
+		ED09F1E922D808FE00E0C349 /* DateRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRelation.swift; sourceTree = "<group>"; };
+		ED09F1EB22D84DFC00E0C349 /* TodayRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayRecord.swift; sourceTree = "<group>"; };
 		ED12BBFB22AEB53400DBFE60 /* debuet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = debuet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED12BBFE22AEB53400DBFE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED12BC0022AEB53400DBFE60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */,
 				EDFD5BCF22BB6BC9002E5592 /* Color.swift */,
 				EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */,
+				ED09F1EB22D84DFC00E0C349 /* TodayRecord.swift */,
+				ED09F1E922D808FE00E0C349 /* DateRelation.swift */,
 				ED09F1E522D1E43B00E0C349 /* Calculation.swift */,
 				ED12BC0222AEB53400DBFE60 /* Main.storyboard */,
 				ED12BC0722AEB53700DBFE60 /* LaunchScreen.storyboard */,
@@ -261,6 +267,7 @@
 				EDA5B9A222CF1E340080BE8F /* UserInfomation.swift in Sources */,
 				ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */,
 				EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */,
+				ED09F1EC22D84DFC00E0C349 /* TodayRecord.swift in Sources */,
 				ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */,
 				EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */,
 				EDB62A2322CE608A006F8B85 /* PassForgetViewController.swift in Sources */,
@@ -269,6 +276,7 @@
 				EDFD5BCE22BA1788002E5592 /* EnhancedCircleImageView.swift in Sources */,
 				EDB62A2122CCB928006F8B85 /* UserGoalCreateViewController.swift in Sources */,
 				EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */,
+				ED09F1EA22D808FE00E0C349 /* DateRelation.swift in Sources */,
 				ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */,
 				EDA5B99E22CE87F30080BE8F /* RetrySendMailViewController.swift in Sources */,
 				ED09F1E822D3A84800E0C349 /* UserInfomationEditViewController.swift in Sources */,
