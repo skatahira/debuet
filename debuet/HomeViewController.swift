@@ -31,6 +31,9 @@ class HomeViewController: UIViewController {
     // TODOを格納するための配列
     var todayRecord:[TodayRecord] = []
     
+    // ドキュメントID
+    var docuID = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,20 +88,107 @@ extension HomeViewController {
         var message = ""
         let okText = "OK"
         
+        let recordRef = db.collection("users").document(uid).collection("record")
+        
         // 本日の記録をデータベースに登録
-        db.collection("users").document(uid).collection("record").addDocument(data: data) { err in
-            if err != nil {
+        if docuID == "" {
+            // 本日の記録がされていなかった場合
+            recordRef.addDocument(data: data) { err in
+                if err != nil {
+                    // エラー発生した場合
+                    title = "記録できませんでした"
+                    message = self.errormessage.showErrorIfNeeded(err)
+                    // アラート処理呼び出す
+                    self.createAlert(title: title, message: message, okText: okText)
+                } else {
+                    // 登録できた場合
+                    title = "記録しました"
+                    message = "記録してくれてありがとう！！"
+                    // アラート処理呼び出す
+                    self.createAlert(title: title, message: message, okText: okText)
+                }
+            }
+        } else {
+            // 本日の記録がすでにされていた場合、アップデート
+            recordRef.document(docuID).setData(data) { err in
+                if err != nil {
+                    // エラー発生した場合
+                    title = "記録できませんでした"
+                    message = self.errormessage.showErrorIfNeeded(err)
+                    // アラート処理呼び出す
+                    self.createAlert(title: title, message: message, okText: okText)
+                } else {
+                    // 登録できた場合
+                    title = "記録しました"
+                    message = "記録してくれてありがとう！！"
+                    // アラート処理呼び出す
+                    self.createAlert(title: title, message: message, okText: okText)
+                }
+            }
+        }
+    }
+    
+    // ユーザ情報取得処理
+    func getUserInfomation(uid: String) {
+        // ユーザ情報取得
+        let docRef = db.collection("users").document(uid)
+        docRef.getDocument { (docu, error) in
+            if error != nil {
                 // エラー発生した場合
-                title = "記録できませんでした"
-                message = self.errormessage.showErrorIfNeeded(err)
-                // アラート処理呼び出す
-                self.createAlert(title: title, message: message, okText: okText)
+                print("Error")
+                return
             } else {
-                // 登録できた場合
-                title = "記録しました"
-                message = "記録してくれてありがとう！！"
-                // アラート処理呼び出す
-                self.createAlert(title: title, message: message, okText: okText)
+//                var  = (document.data()["weight"] as! String)
+//                self.todayBreakfast.rating = Double(document.data()["breakfast"] as! Int)
+//                self.todayLunch.rating = Double(document.data()["lunch"] as! Int)
+//                self.todayDinner.rating = Double(document.data()["dinner"] as! Int)
+            }
+        }
+    }
+    
+    // 本日の記録情報取得処理
+    func getTodayRecord(uid: String) {
+        let now = dateRelation.todayYMDString()
+        // 本日の記録取得
+        let docRef = db.collection("users").document(uid).collection("record").whereField("day", isEqualTo: now)
+        docRef.getDocuments { (docu, error) in
+            if error != nil {
+                // エラー発生した場合
+                print("Error")
+                return
+            } else {
+                for document in docu!.documents {
+                    self.docuID = document.documentID
+                    self.todayWeightTextField.text = (document.data()["weight"] as! String)
+                    self.todayBreakfast.rating = Double(document.data()["breakfast"] as! Int)
+                    self.todayLunch.rating = Double(document.data()["lunch"] as! Int)
+                    self.todayDinner.rating = Double(document.data()["dinner"] as! Int)
+                }
+            }
+        }
+    }
+    
+    // 前回の記録情報取得処理
+    func getLastRecord(uid: String) {
+        let now = dateRelation.todayYMDString()
+        // 前回の記録取得
+        let docRef = db.collection("users").document(uid).collection("record").order(by: "day").limit(to: 2)
+        docRef.getDocuments { (docu, error) in
+            if error != nil {
+                // エラー発生した場合
+                print("Error")
+                return
+            } else {
+                for document in docu!.documents {
+                    let getDay = document.data()["day"] as! String
+                    // 取得したデータが本日の場合は処理を飛ばす
+                    if getDay != now {
+                        self.lastWeight.text = (document.data()["weight"] as! String)
+                        self.lastBreakfast.rating = Double(document.data()["breakfast"] as! Int)
+                        self.lastLunch.rating = Double(document.data()["lunch"] as! Int)
+                        self.lastDinner.rating = Double(document.data()["dinner"] as! Int)
+                    }
+                }
             }
         }
     }
@@ -113,30 +203,20 @@ extension HomeViewController {
             print("uid is nil")
             return
         }
-        let now = dateRelation.todayYMDString()
         
+        // 本日の食事量を0に設定
         todayBreakfast.rating = 0
         todayLunch.rating = 0
         todayDinner.rating = 0
+        // 前回の食事量を0に設定
+        lastBreakfast.rating = 0
+        lastLunch.rating = 0
+        lastDinner.rating = 0
         
-        let docRef = db.collection("users").document(uid).collection("record").whereField("day", isEqualTo: now)
-        docRef.getDocuments { (docu, error) in
-            if error != nil {
-                // エラー発生した場合
-                print("Error")
-                return
-            } else {
-                for document in docu!.documents {
-                    
-                    print(document.documentID)
-                    self.todayWeightTextField.text = (document.data()["weight"] as! String)
-                    self.todayBreakfast.rating = Double(document.data()["breakfast"] as! Int)
-                    self.todayLunch.rating = Double(document.data()["lunch"] as! Int)
-                    self.todayDinner.rating = Double(document.data()["dinner"] as! Int)
-                }
-                print(docu!.documents)
-            }
-        }
+        // 本日の記録情報取得処理呼び出し
+        getTodayRecord(uid: uid)
+        // 前回の記録情報取得処理呼び出し
+        getLastRecord(uid: uid)
         
         // 本日の朝食
         todayBreakfast.settings.minTouchRating = 0
