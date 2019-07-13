@@ -16,10 +16,10 @@ class RetrySendMailViewController: UIViewController {
     // 前画面からメールアドレスを受け取る
     var emailText:String = ""
     let errormessage = ErrorMessage.self()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.hidesBackButton = true
     }
     
     // 再送信ボタン押下

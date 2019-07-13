@@ -13,5 +13,8 @@ target 'debuet' do
   pod 'IQKeyboardManagerSwift'
   pod 'FlexibleSteppedProgressBar'
   pod 'Validator'
+  pod 'Cosmos'
+  pod 'RAMAnimatedTabBarController'
+  pod 'Charts'
 
 end

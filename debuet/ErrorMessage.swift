@@ -11,6 +11,8 @@ import Firebase
 
 // エラーメッセージ関連クラス
 class ErrorMessage: UIViewController {
+    
+    // エラーメッセージ返却処理
     func showErrorIfNeeded(_ errorOrNil: Error?) -> String {
         
         // エラーがなければ何も処理を行わない
@@ -20,13 +22,9 @@ class ErrorMessage: UIViewController {
         let message = errorMessage(of: error)
         
         return message
-        
-//        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        present(alert, animated: true, completion: nil)
-        
     }
     
+    // エラー内容取得処理
     private func errorMessage(of error: Error) -> String {
         var message = "エラーが発生しました"
         guard let errcd = AuthErrorCode(rawValue: (error as NSError).code) else {

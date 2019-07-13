@@ -12,7 +12,7 @@ import Validator
 
 // パスワードリセットメール送信画面
 class PassForgetViewController: UIViewController {
-
+    
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var emailState: UILabel!
     @IBOutlet weak var emailCheckLabel: UILabel!
@@ -83,7 +83,7 @@ extension PassForgetViewController {
         // バリデーションルールセット
         mailTextField.validationRules = ValidationRuleSet()
         mailTextField.validationRules?.add(rule: emailRule)
-
+        
         
         // 入力が変更されたタイミングでValidationを有効にする
         mailTextField.validateOnInputChange(enabled: true)

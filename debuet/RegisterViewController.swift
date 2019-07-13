@@ -12,7 +12,7 @@ import Validator
 
 // アカウント登録画面
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var morePasswordTextField: UITextField!
@@ -37,15 +37,13 @@ class RegisterViewController: UIViewController {
         
         // 入力チェック処理呼び出し
         registerValidationCheck()
-
     }
-
+    
     // アカウント登録ボタン押下時
     @IBAction func didTapRegisterBtn(_ sender: Any) {
         
         registerFlg = true
         // バリデーションチェック
-        // 登録
         didClickBtnValidationCheck()
     }
     

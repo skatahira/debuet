@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// A radio button with a fill animation.
+// ラジオボタン関連処理
 public class LTHRadioButton: UIView {
     
     /// The view used for the rippling effect.

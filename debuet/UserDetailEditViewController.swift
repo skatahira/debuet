@@ -75,7 +75,7 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
             dateFormatter.dateFormat = "yyyyMMdd"
             let calcBirth:String = dateFormatter.string(from: birthDatePicker.date)
             let calcNow:String = dateFormatter.string(from: nowDate as Date)
-
+            
             let birth = birthDatePicker.date
             var sex = ""
             var physicalActiveLevel = ""

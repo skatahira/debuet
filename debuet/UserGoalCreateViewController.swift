@@ -53,17 +53,28 @@
             
             // データベースに格納する情報
             let data: [String: Any] = [
-                "ニックネーム": userInfomation.userName,
-                "年齢": userInfomation.age,
-                "誕生日": userInfomation.birth as Any,
-                "性別": userInfomation.sex,
-                "身体活動レベル": userInfomation.physicalActiveLevel,
-                "身長": userInfomation.height,
-                "目標": goalTextView.text!,
-                "1日の目標食事量": userInfomation.amountOfFood,
-                "推奨標準体重": userInfomation.standardWeight,
-                "基礎代謝量": userInfomation.basalMetabolicRate,
-                "必要推定エネルギー量": userInfomation.requiredEnergy
+                // ニックネーム
+                "nickName": userInfomation.userName,
+                // 年齢
+                "age": userInfomation.age,
+                // 誕生日
+                "birth": userInfomation.birth as Any,
+                // 性別
+                "sex": userInfomation.sex,
+                // 身体活動レベル
+                "physicalActiveLevel": userInfomation.physicalActiveLevel,
+                // 身長
+                "height": userInfomation.height,
+                // 目標
+                "goalText": goalTextView.text!,
+                // 1日の目標食事量
+                "oneDayAmountOfFood": userInfomation.amountOfFood,
+                // 推奨標準体重
+                "standardWeight": userInfomation.standardWeight,
+                // 基礎代謝量
+                "basalMetabolicRate": userInfomation.basalMetabolicRate,
+                // 必要推定エネルギー
+                "requiredEnergy": userInfomation.requiredEnergy
             ]
             
             

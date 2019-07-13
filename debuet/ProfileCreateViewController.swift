@@ -68,7 +68,7 @@ class ProfileCreateViewController: UIViewController, UIImagePickerControllerDele
             nickNameCheckLabel.text = "ニックネームを入力してください"
             transitionableFlg = false
         }
-
+        
         guard nickNameTextField.text != "" else{ return }
         
         if nickNameState.text == "💩" {
