@@ -497,7 +497,7 @@ gb7jgZfjgZ8
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndv-fX-pNa">
-                                <rect key="frame" x="132" y="119" width="46" height="36"/>
+                                <rect key="frame" x="125" y="119" width="63" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -540,7 +540,7 @@ gb7jgZfjgZ8
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epe-bm-gEz">
-                                <rect key="frame" x="245" y="322" width="7" height="18"/>
+                                <rect key="frame" x="236" y="322" width="22" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -678,6 +678,7 @@ gb7jgZfjgZ8
                         <outlet property="lastDinner" destination="suG-Po-zjC" id="E4t-nP-BQu"/>
                         <outlet property="lastLunch" destination="mXH-5g-cHj" id="Mhe-Pr-IAZ"/>
                         <outlet property="lastWeight" destination="JbS-Nu-tEo" id="Xu2-8m-ZIa"/>
+                        <outlet property="needFoods" destination="Epe-bm-gEz" id="pRT-10-a3f"/>
                         <outlet property="targetWeight" destination="Ndv-fX-pNa" id="WQC-UD-FUU"/>
                         <outlet property="todayBreakfast" destination="uzU-YY-lol" id="fFU-ey-n4x"/>
                         <outlet property="todayDinner" destination="ELY-Vz-UIW" id="lZ2-Yn-DbW"/>

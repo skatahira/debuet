@@ -14,6 +14,7 @@ import Firebase
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var targetWeight: UILabel!
+    @IBOutlet weak var needFoods: UILabel!
     @IBOutlet weak var todayWeightTextField: UITextField!
     @IBOutlet weak var todayBreakfast: CosmosView!
     @IBOutlet weak var todayLunch: CosmosView!
@@ -28,12 +29,12 @@ class HomeViewController: UIViewController {
     let errormessage = ErrorMessage.self()
     // 日付関連クラス
     let dateRelation = DateRelation()
-    // TODOを格納するための配列
-    var todayRecord:[TodayRecord] = []
-    
     // ドキュメントID
     var docuID = ""
+    var calcWeight = 0
+    var calcFoods = 0
     
+    // 初期表示時
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,11 +43,28 @@ class HomeViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    // 画面に表示される直前
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        
+    }
+    
     // 記録ボタン押下
     @IBAction func todayRecord(_ sender: Any) {
         
         // 本日の記録処理を呼び出す
         createTodayRecord()
+        
+        let breakfoods = todayBreakfast.rating
+        let lunchfoods = todayLunch.rating
+        let dinnerfoods = todayDinner.rating
+        // 残り食事量を計算
+        var resultFoods = calcFoods - Int(breakfoods) - Int(lunchfoods) - Int(dinnerfoods)
+        if resultFoods < 0 {
+            resultFoods = 0
+        }
+        needFoods.text = String(resultFoods)
         
     }
 }
@@ -102,6 +120,12 @@ extension HomeViewController {
                     self.createAlert(title: title, message: message, okText: okText)
                 } else {
                     // 登録できた場合
+                    if self.todayWeightTextField.text != "" {
+                        if let todayWeight: Int = Int(self.todayWeightTextField.text!) {
+                            let resultWeight = self.calcWeight - todayWeight
+                            self.targetWeight.text = String(resultWeight)
+                        }
+                    }
                     title = "記録しました"
                     message = "記録してくれてありがとう！！"
                     // アラート処理呼び出す
@@ -119,6 +143,19 @@ extension HomeViewController {
                     self.createAlert(title: title, message: message, okText: okText)
                 } else {
                     // 登録できた場合
+                    if self.todayWeightTextField.text != "" {
+                        if let todayWeight: Int = Int(self.todayWeightTextField.text!) {
+                            let resultWeight = self.calcWeight - todayWeight
+                            self.targetWeight.text = String(resultWeight)
+                        }
+                    } else if self.lastWeight.text != "" {
+                        if let lastWeight2: Int = Int(self.lastWeight.text!) {
+                            let resultWeight = self.calcWeight - lastWeight2
+                            self.targetWeight.text = String(resultWeight)
+                        }
+                    } else if self.lastWeight.text == "" {
+                        self.targetWeight.text = "-"
+                    }
                     title = "記録しました"
                     message = "記録してくれてありがとう！！"
                     // アラート処理呼び出す
@@ -132,16 +169,14 @@ extension HomeViewController {
     func getUserInfomation(uid: String) {
         // ユーザ情報取得
         let docRef = db.collection("users").document(uid)
-        docRef.getDocument { (docu, error) in
+        docRef.getDocument { (document, error) in
             if error != nil {
                 // エラー発生した場合
                 print("Error")
                 return
             } else {
-//                var  = (document.data()["weight"] as! String)
-//                self.todayBreakfast.rating = Double(document.data()["breakfast"] as! Int)
-//                self.todayLunch.rating = Double(document.data()["lunch"] as! Int)
-//                self.todayDinner.rating = Double(document.data()["dinner"] as! Int)
+                self.calcWeight = Int(document!.data()!["standardWeight"] as! Int)
+                self.calcFoods = document!.data()!["oneDayAmountOfFood"] as! Int
             }
         }
     }
@@ -164,6 +199,15 @@ extension HomeViewController {
                     self.todayLunch.rating = Double(document.data()["lunch"] as! Int)
                     self.todayDinner.rating = Double(document.data()["dinner"] as! Int)
                 }
+                let breakfoods = self.todayBreakfast.rating
+                let lunchfoods = self.todayLunch.rating
+                let dinnerfoods = self.todayDinner.rating
+                // 残り食事量を計算
+                var resultFoods = self.calcFoods - Int(breakfoods) - Int(lunchfoods) - Int(dinnerfoods)
+                if resultFoods < 0 {
+                    resultFoods = 0
+                }
+                self.needFoods.text = String(resultFoods)
             }
         }
     }
@@ -189,6 +233,18 @@ extension HomeViewController {
                         self.lastDinner.rating = Double(document.data()["dinner"] as! Int)
                     }
                 }
+                // 目標体重までの増量数設定
+                if self.todayWeightTextField.text != "" {
+                    if let todayWeight: Int = Int(self.todayWeightTextField.text!) {
+                        let resultWeight = self.calcWeight - todayWeight
+                        self.targetWeight.text = String(resultWeight)
+                    }
+                } else if self.lastWeight.text != "" {
+                    if let lastWeight2: Int = Int(self.lastWeight.text!) {
+                        let resultWeight = self.calcWeight - lastWeight2
+                        self.targetWeight.text = String(resultWeight)
+                    }
+                }
             }
         }
     }
@@ -212,6 +268,9 @@ extension HomeViewController {
         lastBreakfast.rating = 0
         lastLunch.rating = 0
         lastDinner.rating = 0
+        
+        // ユーザ情報取得
+        getUserInfomation(uid: uid)
         
         // 本日の記録情報取得処理呼び出し
         getTodayRecord(uid: uid)
