@@ -67,6 +67,7 @@ class HomeViewController: UIViewController {
         needFoods.text = String(resultFoods)
         
     }
+    
 }
 
 
