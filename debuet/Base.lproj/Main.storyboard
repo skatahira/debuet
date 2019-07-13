@@ -68,7 +68,7 @@
                                 <color key="highlightedColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburgerTop" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-Fv-Ezz">
-                                <rect key="frame" x="107" y="206" width="200" height="199.00000000000011"/>
+                                <rect key="frame" x="107" y="206" width="200" height="199"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dtf-Fv-Ezz" secondAttribute="height" multiplier="200:199" id="TmJ-jQ-p9L"/>
                                     <constraint firstAttribute="width" constant="200" id="zuc-TN-dIQ"/>
@@ -695,10 +695,17 @@ gb7jgZfjgZ8
         <!--マイページ-->
         <scene sceneID="w0Z-bO-whf">
             <objects>
-                <viewController id="Qtf-EX-Zwq" sceneMemberID="viewController">
+                <viewController id="Qtf-EX-Zwq" customClass="MyPageWeightViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="31h-Lx-TZ7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBa-0O-bF5" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="158" width="374" height="361"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YlU-0c-HPS"/>
                     </view>
@@ -707,6 +714,9 @@ gb7jgZfjgZ8
                             <outlet property="animation" destination="cRZ-ns-6r9" id="ecF-e4-Ul2"/>
                         </connections>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="chartView" destination="BBa-0O-bF5" id="PdO-GE-kGP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLq-Cf-0lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="cRZ-ns-6r9" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
@@ -1293,6 +1303,7 @@ gb7jgZfjgZ8
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Y2M-gi-RcI" customClass="RAMAnimatedTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aSa-gI-okU">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -1314,7 +1325,7 @@ gb7jgZfjgZ8
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yXS-dQ-YPC"/>
-        <segue reference="OvA-IS-R3Y"/>
+        <segue reference="eJu-g3-oAF"/>
         <segue reference="epn-hA-aYu"/>
         <segue reference="aBb-nL-NM4"/>
     </inferredMetricsTieBreakers>

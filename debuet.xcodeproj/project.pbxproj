@@ -24,6 +24,7 @@
 		EDA5B9A222CF1E340080BE8F /* UserInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */; };
 		EDB62A2122CCB928006F8B85 /* UserGoalCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB62A2022CCB928006F8B85 /* UserGoalCreateViewController.swift */; };
 		EDB62A2322CE608A006F8B85 /* PassForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */; };
+		EDFA9ED222DA422000E95B6F /* MyPageWeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFA9ED122DA422000E95B6F /* MyPageWeightViewController.swift */; };
 		EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */; };
 		EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */; };
 		EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */; };
@@ -56,6 +57,7 @@
 		EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfomation.swift; sourceTree = "<group>"; };
 		EDB62A2022CCB928006F8B85 /* UserGoalCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalCreateViewController.swift; sourceTree = "<group>"; };
 		EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassForgetViewController.swift; sourceTree = "<group>"; };
+		EDFA9ED122DA422000E95B6F /* MyPageWeightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageWeightViewController.swift; sourceTree = "<group>"; };
 		EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EDFD5B8522B58270002E5592 /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
 		EDFD5BA922B8CC87002E5592 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */,
 				EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */,
 				EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */,
+				EDFA9ED122DA422000E95B6F /* MyPageWeightViewController.swift */,
 				ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
@@ -263,6 +266,7 @@
 			files = (
 				EDA5B9A222CF1E340080BE8F /* UserInfomation.swift in Sources */,
 				ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */,
+				EDFA9ED222DA422000E95B6F /* MyPageWeightViewController.swift in Sources */,
 				EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */,
 				ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */,
 				EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */,

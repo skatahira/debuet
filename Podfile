@@ -15,5 +15,6 @@ target 'debuet' do
   pod 'Validator'
   pod 'Cosmos'
   pod 'RAMAnimatedTabBarController'
+  pod 'Charts'
 
 end
