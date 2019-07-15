@@ -9,10 +9,13 @@
 import UIKit
 import Cosmos
 import Firebase
+import GuillotineMenu
 
 // ホーム画面
 class HomeViewController: UIViewController {
     
+    
+    @IBOutlet weak var barButton: UIButton!
     @IBOutlet weak var targetWeight: UILabel!
     @IBOutlet weak var needFoods: UILabel!
     @IBOutlet weak var todayWeightTextField: UITextField!
@@ -35,10 +38,13 @@ class HomeViewController: UIViewController {
     var calcFoods = 0
     var calcHeight = 0
     
+    fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
+    
     // 初期表示時
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Cosmos関連処理呼び出し
         setCosmos()
     }
     
@@ -55,6 +61,17 @@ class HomeViewController: UIViewController {
         
     }
     
+    // メニューボタン押下時
+    @IBAction func didTapMenuBtn(_ sender: UIButton) {
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+        menuViewController.modalPresentationStyle = .custom
+        menuViewController.transitioningDelegate = (self as UIViewControllerTransitioningDelegate)
+        
+        presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
+        presentationAnimator.supportView = navigationController!.navigationBar
+        presentationAnimator.presentButton = sender
+        present(menuViewController, animated: true, completion: nil)
+    }
     // 記録ボタン押下
     @IBAction func todayRecord(_ sender: Any) {
         
@@ -142,7 +159,8 @@ extension HomeViewController {
         // 本日の記録をデータベースに登録
         if docuID == "" {
             // 本日の記録がされていなかった場合
-            recordRef.addDocument(data: data) { err in
+            var ref: DocumentReference? = nil
+            ref = recordRef.addDocument(data: data) { err in
                 if err != nil {
                     // エラー発生した場合
                     title = "記録できませんでした"
@@ -152,6 +170,8 @@ extension HomeViewController {
                 } else {
                     // 登録できた場合
                     if self.todayWeightTextField.text != "" {
+                        // ドキュメントIDの設定
+                        self.docuID = ref!.documentID
                         if let todayWeight: Int = Int(self.todayWeightTextField.text!) {
                             let resultWeight = self.calcWeight - todayWeight
                             self.targetWeight.text = String(resultWeight)
@@ -249,7 +269,7 @@ extension HomeViewController {
     func getLastRecord(uid: String) {
         let now = getNowDate()
         // 前回の記録取得
-        let docRef = db.collection("users").document(uid).collection("record").order(by: "day").limit(to: 2)
+        let docRef = db.collection("users").document(uid).collection("record").order(by: "day", descending: true).limit(to: 2)
         docRef.getDocuments { (docu, error) in
             if error != nil {
                 // エラー発生した場合
@@ -265,6 +285,7 @@ extension HomeViewController {
                         self.lastBreakfast.rating = Double(document.data()["breakfast"] as! Int)
                         self.lastLunch.rating = Double(document.data()["lunch"] as! Int)
                         self.lastDinner.rating = Double(document.data()["dinner"] as! Int)
+                        break
                     }
                 }
                 // 目標体重までの増量数設定
@@ -364,5 +385,18 @@ extension HomeViewController {
         let todayDateRounded =  dateRelation.roundDate(todayDate, calendar: calendar)
         
         return todayDateRounded
+    }
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .presentation
+        return presentationAnimator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .dismissal
+        return presentationAnimator
     }
 }

@@ -74,6 +74,24 @@ extension MyPageWeightViewController {
     // 現在の記録取得処理
     func getNowRecord(uid: String) {
         // 現在の記録取得
+        let docRef = db.collection("users").document(uid).collection("record").order(by: "day", descending: true).limit(to: 1)
+        docRef.getDocuments { (docu, error) in
+            if error != nil {
+                // エラー発生した場合
+                print("Error")
+                return
+            } else {
+                for document in docu!.documents {
+                    self.nowWeight.text = (document.data()["weight"] as! String)
+                    self.nowBMI.text = String(document.data()["BMI"] as! Float)
+                }
+            }
+        }
+    }
+    
+    // 体重記録取得処理
+    func getWeight(uid: String) {
+        // 現在の記録取得
         let docRef = db.collection("users").document(uid).collection("record").order(by: "day").limit(to: 1)
         docRef.getDocuments { (docu, error) in
             if error != nil {
@@ -102,7 +120,7 @@ extension MyPageWeightViewController {
         let rect = CGRect(x:0, y: 30, width: width, height: height)
         
         // グラフ表示部のインスタンス化
-        //        chartView = LineChartView(frame: rect)
+//        chartView = LineChartView(frame: rect)
         // 表示データの設定
         chartView?.data = getDataSet()
         // 画面に追加

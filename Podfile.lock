@@ -107,6 +107,7 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.2.2)
+  - GuillotineMenu (4.0)
   - IQKeyboardManagerSwift (6.3.0)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FlexibleSteppedProgressBar
+  - GuillotineMenu
   - IQKeyboardManagerSwift
   - RAMAnimatedTabBarController
   - Validator
@@ -149,6 +151,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - GuillotineMenu
     - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
@@ -174,6 +177,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  GuillotineMenu: 1345cc8c76e09c46b4096f37cf0cacfaee19e211
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
@@ -181,6 +185,6 @@ SPEC CHECKSUMS:
   RAMAnimatedTabBarController: ec36fba2fa4679fd36db55098e3477fe9bd79f52
   Validator: b34ab17a8fffd0c1ffd8f9002ead4d1e02cd9e6e
 
-PODFILE CHECKSUM: 5358d2a2f0310a75c828d782f9db534987ec6ca7
+PODFILE CHECKSUM: f4ed4400c6a2e5edc35fca54e3d2cbf0ba99ca00
 
 COCOAPODS: 1.7.0

@@ -401,53 +401,7 @@ gb7jgZfjgZ8
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyB-gX-L1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1417.3913043478262" y="1602.4553571428571"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="q9g-pP-Bkn">
-            <objects>
-                <viewController id="3wH-by-ezz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="23M-hf-X30">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="hamburgerTop" translatesAutoresizingMaskIntoConstraints="NO" id="Qmy-7x-H5u" customClass="EnhancedCircleImageView" customModule="debuet" customModuleProvider="target">
-                                <rect key="frame" x="104" y="87" width="207" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Qmy-7x-H5u" secondAttribute="height" multiplier="207:128" id="RFJ-Zg-azh"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oic-NZ-L02">
-                                <rect key="frame" x="104" y="239" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clL-Jw-fNH">
-                                <rect key="frame" x="319" y="164" width="52" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="編集">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="didClickNextBtn:" destination="pIw-dh-1vu" eventType="touchUpInside" id="Zua-IN-Bdh"/>
-                                    <action selector="didTapRegisterBtn:" destination="515-1Z-Hy1" eventType="touchUpInside" id="owE-Tm-onE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Qmy-7x-H5u" firstAttribute="width" secondItem="Qmy-7x-H5u" secondAttribute="height" multiplier="207:128" id="3pB-yr-rOf"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="JUg-hc-bTf"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GzZ-ob-WV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-643.47826086956525" y="1601.7857142857142"/>
+            <point key="canvasLocation" x="-1381" y="1741"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="Z7C-a5-Uzu">
@@ -672,9 +626,24 @@ gb7jgZfjgZ8
                             <outlet property="animation" destination="r3B-zH-aBY" id="Epd-gm-vxw"/>
                         </connections>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="ホーム" id="hlu-aI-tSU"/>
+                    <navigationItem key="navigationItem" title="ホーム" id="hlu-aI-tSU">
+                        <barButtonItem key="leftBarButtonItem" id="tYF-SK-BgX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pzX-VZ-j5p">
+                                <rect key="frame" x="20" y="6" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu"/>
+                                <connections>
+                                    <action selector="didTapMenuBtn:" destination="ybP-1l-WCz" eventType="touchUpInside" id="LsK-6O-ErV"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="didTapMenuBtn:" destination="ybP-1l-WCz" id="SFx-77-4fl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="barButton" destination="pzX-VZ-j5p" id="7Ol-yr-op7"/>
                         <outlet property="lastBreakfast" destination="6VW-m9-WMV" id="B52-I4-N20"/>
                         <outlet property="lastDinner" destination="suG-Po-zjC" id="E4t-nP-BQu"/>
                         <outlet property="lastLunch" destination="mXH-5g-cHj" id="Mhe-Pr-IAZ"/>
@@ -685,10 +654,11 @@ gb7jgZfjgZ8
                         <outlet property="todayDinner" destination="ELY-Vz-UIW" id="lZ2-Yn-DbW"/>
                         <outlet property="todayLunch" destination="q0l-hC-hnN" id="6Tn-Qk-ZBu"/>
                         <outlet property="todayWeightTextField" destination="gal-pb-CDf" id="f7C-Q3-BtG"/>
+                        <segue destination="hKi-4W-LeU" kind="show" identifier="toMenu" id="6DZ-gt-KAJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRD-IS-1Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="r3B-zH-aBY" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
+                <customObject id="r3B-zH-aBY" customClass="RAMFlipBottomTransitionItemAnimations" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
                             <color key="value" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -750,7 +720,7 @@ gb7jgZfjgZ8
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh3-sA-zb8">
-                                <rect key="frame" x="97" y="182" width="45" height="26"/>
+                                <rect key="frame" x="97" y="182" width="65" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
@@ -787,7 +757,7 @@ gb7jgZfjgZ8
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLq-Cf-0lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="cRZ-ns-6r9" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
+                <customObject id="cRZ-ns-6r9" customClass="RAMFlipBottomTransitionItemAnimations" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
                             <color key="value" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1476,17 +1446,146 @@ gb7jgZfjgZ8
             </objects>
             <point key="canvasLocation" x="75" y="1908"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="SSf-TJ-TAE">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" modalPresentationStyle="currentContext" id="hKi-4W-LeU" customClass="MenuViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iRy-ql-cq6"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZL9-uf-j09"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y6O-QA-5Is">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTC-Ac-QUd">
+                                <rect key="frame" x="57" y="323" width="300" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1K-ke-hV2">
+                                        <rect key="frame" x="54" y="202" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="SETTINGS"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ZIR-7y-hTf"/>
+                                            <constraint firstAttribute="width" constant="200" id="s9c-TC-Hfk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="設定" image="ic_settings@3x.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="hKi-4W-LeU" eventType="touchUpInside" id="8aN-Hw-4QM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSo-Ay-rXH">
+                                        <rect key="frame" x="50" y="8" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="PROFILE"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4qv-0H-NSg"/>
+                                            <constraint firstAttribute="width" constant="200" id="Xcm-9J-mSW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="プロフィール" image="ic_profile@3x.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="hKi-4W-LeU" eventType="touchUpInside" id="0pb-uv-5wa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1i-LI-NLD">
+                                        <rect key="frame" x="50" y="56" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="FEED"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ok2-4N-S2s"/>
+                                            <constraint firstAttribute="width" constant="200" id="nLt-2A-8hz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="FEED" image="ic_feed@3x.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="hKi-4W-LeU" eventType="touchUpInside" id="WAs-sK-JZY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdX-4w-VCX">
+                                        <rect key="frame" x="50" y="105" width="200" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" label="ACTIVITY"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Jta-dk-DEr"/>
+                                            <constraint firstAttribute="height" constant="40" id="YK8-V4-w2V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="ACTIVITY" image="ic_activity@3x.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="hKi-4W-LeU" eventType="touchUpInside" id="FCb-G0-xbd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="YdX-4w-VCX" firstAttribute="centerX" secondItem="m1i-LI-NLD" secondAttribute="centerX" id="5xR-CU-NnX"/>
+                                    <constraint firstItem="m1i-LI-NLD" firstAttribute="top" secondItem="cSo-Ay-rXH" secondAttribute="bottom" constant="8" id="CEB-do-1qT"/>
+                                    <constraint firstAttribute="height" constant="250" id="FNq-ZV-Uxq"/>
+                                    <constraint firstAttribute="centerX" secondItem="cSo-Ay-rXH" secondAttribute="centerX" id="IYl-Lt-vuq"/>
+                                    <constraint firstItem="YdX-4w-VCX" firstAttribute="top" secondItem="m1i-LI-NLD" secondAttribute="bottom" constant="9" id="Jym-n2-kOJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="T1K-ke-hV2" secondAttribute="bottom" constant="8" id="Kyi-bJ-Clw"/>
+                                    <constraint firstAttribute="width" constant="300" id="U9D-CL-pB2"/>
+                                    <constraint firstItem="cSo-Ay-rXH" firstAttribute="top" secondItem="nTC-Ac-QUd" secondAttribute="top" constant="8" id="hGd-fo-yWo"/>
+                                    <constraint firstItem="T1K-ke-hV2" firstAttribute="centerX" secondItem="YdX-4w-VCX" secondAttribute="centerX" constant="4" id="wJQ-Lv-F0p"/>
+                                    <constraint firstItem="cSo-Ay-rXH" firstAttribute="centerX" secondItem="m1i-LI-NLD" secondAttribute="centerX" id="wPX-Wp-958"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpV-fN-1yL">
+                                <rect key="frame" x="177.5" y="588" width="59" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMenu:" destination="hKi-4W-LeU" eventType="touchUpInside" id="jCF-Cj-jra"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25490196079999999" green="0.24313725489999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="nTC-Ac-QUd" secondAttribute="centerX" id="4Qa-Wm-ybM"/>
+                            <constraint firstAttribute="centerY" secondItem="nTC-Ac-QUd" secondAttribute="centerY" id="7T3-f0-ieE"/>
+                            <constraint firstItem="gpV-fN-1yL" firstAttribute="centerX" secondItem="y6O-QA-5Is" secondAttribute="centerX" id="LQs-hi-jhq"/>
+                            <constraint firstItem="gpV-fN-1yL" firstAttribute="top" secondItem="nTC-Ac-QUd" secondAttribute="bottom" constant="15" id="kKy-jT-FFz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="swT-pr-KVR"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7PN-t8-9uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-643" y="2312"/>
+        </scene>
     </scenes>
     <resources>
         <image name="graph" width="32" height="32"/>
         <image name="hamburger" width="175" height="121"/>
         <image name="hamburgerTop" width="570" height="394"/>
         <image name="home" width="32" height="32"/>
+        <image name="ic_activity@3x.png" width="16" height="16"/>
+        <image name="ic_feed@3x.png" width="16" height="16"/>
+        <image name="ic_profile@3x.png" width="16" height="16"/>
+        <image name="ic_settings@3x.png" width="16" height="16"/>
+        <image name="menu" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dT3-lA-2iR"/>
         <segue reference="cTs-Ho-gQC"/>
-        <segue reference="s3u-3S-JIO"/>
+        <segue reference="ad7-Uy-CAk"/>
         <segue reference="epn-hA-aYu"/>
     </inferredMetricsTieBreakers>
 </document>
