@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
     var docuID = ""
     var calcWeight = 0
     var calcFoods = 0
+    var calcHeight = 0
     
     // 初期表示時
     override func viewDidLoad() {
@@ -40,12 +41,7 @@ class HomeViewController: UIViewController {
         
         setCosmos()
         
-        // ナビゲーションバー関連処理
-        // 戻るボタン消す処理
-        self.navigationItem.hidesBackButton = true
-        let myBackButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = myBackButton
-        self.parent?.navigationItem.title = "ホーム"
+        
         
 
     }
@@ -54,7 +50,12 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        // ナビゲーションバー関連処理
+        // 戻るボタン消す処理
         self.navigationItem.hidesBackButton = true
+        let myBackButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = myBackButton
+        self.parent?.navigationItem.title = "ホーム"
         
     }
     
@@ -91,7 +92,8 @@ extension HomeViewController {
     // ユーザ情報登録処理
     func createTodayRecord() {
         
-        let now = dateRelation.todayYMDString()
+        //let now = dateRelation.todayYMDString()
+        let now = getNowDate()
         
         guard ((todayWeightTextField?.text) != nil) else { return }
         
@@ -99,11 +101,17 @@ extension HomeViewController {
         let breakfastAmountFood = todayBreakfast.rating
         let lunchAmountFood = todayLunch.rating
         let dinnerAmountFood = todayDinner.rating
+        var bMI:Float = 0.0
+        
+        if todayWeight != "" {
+            bMI = Float(todayWeight!)! / (Float(calcHeight) / 100.0)
+        }
         
         // データベースに格納する情報
         let data: [String: Any] = [
             "day": now,
             "weight": todayWeight!,
+            "BMI": bMI,
             "breakfast": breakfastAmountFood,
             "lunch": lunchAmountFood,
             "dinner": dinnerAmountFood
@@ -191,13 +199,15 @@ extension HomeViewController {
             } else {
                 self.calcWeight = Int(document!.data()!["standardWeight"] as! Int)
                 self.calcFoods = document!.data()!["oneDayAmountOfFood"] as! Int
+                self.calcHeight = Int(document!.data()!["height"] as! String)!
             }
         }
     }
     
     // 本日の記録情報取得処理
     func getTodayRecord(uid: String) {
-        let now = dateRelation.todayYMDString()
+        //let now = dateRelation.todayYMDString()
+        let now = getNowDate()
         // 本日の記録取得
         let docRef = db.collection("users").document(uid).collection("record").whereField("day", isEqualTo: now)
         docRef.getDocuments { (docu, error) in
@@ -228,7 +238,8 @@ extension HomeViewController {
     
     // 前回の記録情報取得処理
     func getLastRecord(uid: String) {
-        let now = dateRelation.todayYMDString()
+        //let now = dateRelation.todayYMDString()
+        let now = getNowDate()
         // 前回の記録取得
         let docRef = db.collection("users").document(uid).collection("record").order(by: "day").limit(to: 2)
         docRef.getDocuments { (docu, error) in
@@ -238,9 +249,10 @@ extension HomeViewController {
                 return
             } else {
                 for document in docu!.documents {
-                    let getDay = document.data()["day"] as! String
+                    let getDay: Timestamp = document.data()["day"] as! Timestamp
+                    let now2: Timestamp = Timestamp(date: now)
                     // 取得したデータが本日の場合は処理を飛ばす
-                    if getDay != now {
+                    if getDay != now2 {
                         self.lastWeight.text = (document.data()["weight"] as! String)
                         self.lastBreakfast.rating = Double(document.data()["breakfast"] as! Int)
                         self.lastLunch.rating = Double(document.data()["lunch"] as! Int)
@@ -327,5 +339,22 @@ extension HomeViewController {
         let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(okayButton)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// 日付関連処理
+extension HomeViewController {
+    
+    // Date型から強制的に「年月日」以外のデータを切り捨て、現在の年月日を取得する処理
+    func getNowDate() -> Date {
+        // 現在日付を取得(例えば 2017/07/12 12:01)
+        let todayDate = Date()
+        // カレンダーを取得
+        let  calendar = Calendar(identifier: .gregorian)
+        
+        // today_dateから年月日のみ抽出する -> 2017/07/12となる
+        let todayDateRounded =  dateRelation.roundDate(todayDate, calendar: calendar)
+        
+        return todayDateRounded
     }
 }

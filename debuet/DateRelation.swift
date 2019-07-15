@@ -21,4 +21,9 @@ class DateRelation {
         let calcNow: String = dateFormatter.string(from: nowDate)
         return calcNow
     }
+    
+    // Dateから年日月を抽出
+    func roundDate(_ date: Date, calendar cal: Calendar) -> Date {
+        return cal.date(from: DateComponents(year: cal.component(.year, from: date), month: cal.component(.month, from: date), day: cal.component(.day, from: date)))!
+    }
 }

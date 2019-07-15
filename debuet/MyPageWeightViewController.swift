@@ -26,7 +26,7 @@ class MyPageWeightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.parent?.navigationItem.title = "マイページ"
+        
         
         addGraph()
         addButton()
@@ -36,6 +36,7 @@ class MyPageWeightViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        self.parent?.navigationItem.title = "マイページ"
         getUserInfomation(uid: getUserID())
         getNowRecord(uid: getUserID())
     }
@@ -66,7 +67,6 @@ extension MyPageWeightViewController {
                 return
             } else {
                 self.standardWeight.text = String((document!.data()!["standardWeight"] as! Int))
-                //self.calcFoods = document!.data()!["oneDayAmountOfFood"] as! Int
             }
         }
     }
@@ -83,6 +83,7 @@ extension MyPageWeightViewController {
             } else {
                 for document in docu!.documents {
                     self.nowWeight.text = (document.data()["weight"] as! String)
+                    self.nowBMI.text = String(document.data()["BMI"] as! Float)
                 }
             }
         }
