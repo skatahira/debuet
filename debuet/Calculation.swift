@@ -24,16 +24,16 @@ class Calculation {
     
     // 標準体重計算
     // 標準体重(kg) = 22 * 身長(m2)
-    func calcStandardWeight(height: Float) -> Float {
-        var standardWeight:Float = 0.0
-        standardWeight = (height * height) * standardWeightCalcNum
-        standardWeight = floor(standardWeight * 10) / 10
+    func calcStandardWeight(height: Float) -> Int {
+        var standardWeight:Int = 0
+        standardWeight = Int(floor((height * height) * standardWeightCalcNum))
+        //standardWeight = floor(standardWeight * 10) / 10
         return standardWeight
     }
     
     // 男性基礎代謝量計算
-    func manCalcBasalMetabolicRate(weight: Float, height: Float, age:Int) -> Int {
-        let basalMetabolicRate0: Double = Double(13.397 * weight)
+    func manCalcBasalMetabolicRate(weight: Int, height: Float, age:Int) -> Int {
+        let basalMetabolicRate0: Double = Double(13.397 * Double(weight))
         let basalMetabolicRate1: Double = Double(4.799 * (height * 100))
         let basalMetabolicRate2: Double =  Double(-5.677 * Float(age) + 88.362)
         let basalMetabolicRate: Int = Int(floor(basalMetabolicRate0 + basalMetabolicRate1 + basalMetabolicRate2))
@@ -42,8 +42,8 @@ class Calculation {
     }
     
     // 女性基礎代謝量計算
-    func womanCalcBasalMetabolicRate(weight: Float, height: Float, age:Int) -> Int {
-        let basalMetabolicRate0: Double = Double(9.247 * weight)
+    func womanCalcBasalMetabolicRate(weight: Int, height: Float, age:Int) -> Int {
+        let basalMetabolicRate0: Double = Double(9.247 * Double(weight))
         let basalMetabolicRate1: Double = Double(3.098 * (height * 100))
         let basalMetabolicRate2: Double =  Double(-4.33 * Float(age) + 447.593)
         let basalMetabolicRate: Int = Int(floor(basalMetabolicRate0 + basalMetabolicRate1 + basalMetabolicRate2))

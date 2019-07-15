@@ -112,7 +112,7 @@ class UserDetailEditViewController: UIViewController,UITextFieldDelegate, Flexib
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toNext" {
-            var userGoalCreateViewController = segue.destination as! UserGoalCreateViewController
+            let userGoalCreateViewController = segue.destination as! UserGoalCreateViewController
             userGoalCreateViewController.userInfomation = sender as! UserInfomation
         }
     }

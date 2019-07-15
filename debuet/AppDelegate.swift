@@ -19,13 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
-        /*
-        if let _ = Auth.auth().currentUser {
-            // ログイン中
-            let storyboard: UIStoryboard = UIStoryboard(name: "ProfileCreateViewController", bundle: nil)
-            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "ProfileCreateViewController")
-        }
-         */
         
         return true
     }

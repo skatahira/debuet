@@ -40,13 +40,21 @@ class HomeViewController: UIViewController {
         
         setCosmos()
         
+        // ナビゲーションバー関連処理
+        // 戻るボタン消す処理
         self.navigationItem.hidesBackButton = true
+        let myBackButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = myBackButton
+        self.parent?.navigationItem.title = "ホーム"
+        
+
     }
     
     // 画面に表示される直前
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        self.navigationItem.hidesBackButton = true
         
     }
     
