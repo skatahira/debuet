@@ -10,6 +10,7 @@ import UIKit
 import Cosmos
 import Firebase
 import GuillotineMenu
+import PKHUD
 
 // ホーム画面
 class HomeViewController: UIViewController {
@@ -81,7 +82,7 @@ class HomeViewController: UIViewController {
     }
     // 記録ボタン押下
     @IBAction func todayRecord(_ sender: Any) {
-        
+        HUD.show(.progress)
         // 本日の記録処理を呼び出す
         createTodayRecord()
         
@@ -94,7 +95,7 @@ class HomeViewController: UIViewController {
             resultFoods = 0
         }
         needFoods.text = String(resultFoods)
-        
+        HUD.hide()
     }
     
     // viewを押下時にキーボードを閉じる処理

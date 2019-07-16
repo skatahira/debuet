@@ -17,5 +17,6 @@ target 'debuet' do
   pod 'RAMAnimatedTabBarController'
   pod 'Charts'
   pod 'GuillotineMenu'
+  pod 'PKHUD'
 
 end

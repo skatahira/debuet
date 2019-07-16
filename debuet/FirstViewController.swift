@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import PKHUD
 
 // スプラッシュ画面
 class FirstViewController: UIViewController {
@@ -44,6 +45,7 @@ class FirstViewController: UIViewController {
             completion: { (Bool) in
                 //self.imageView.removeFromSuperview()
                 // 画面遷移判断処理
+                HUD.show(.progress)
                 if Auth.auth().currentUser != nil {
                     // ログインしている場合
                     let user = Auth.auth().currentUser
@@ -54,15 +56,18 @@ class FirstViewController: UIViewController {
                         // 画面遷移判断
                         if let document = document, document.exists {
                             // ユーザ情報登録完了している場合
+                            HUD.hide()
                             self.performSegue(withIdentifier: "toHome", sender: nil)
                         } else {
                             // ユーザ情報登録をしていない場合
+                            HUD.hide()
                             self.performSegue(withIdentifier: "toCreate", sender: nil)
                         }
                     }
                 } else {
                     // ログインしていない場合
                     // TOP画面に遷移
+                    HUD.hide()
                     self.performSegue(withIdentifier: "toTop", sender: nil)
                 }
         })
