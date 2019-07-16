@@ -26,10 +26,8 @@ class MyPageWeightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        // グラフを追加する
         addGraph()
-        addButton()
         
     }
     
@@ -91,8 +89,9 @@ extension MyPageWeightViewController {
     
     // 体重記録取得処理
     func getWeight(uid: String) {
-        // 現在の記録取得
-        let docRef = db.collection("users").document(uid).collection("record").order(by: "day").limit(to: 1)
+        // 体重記録取得
+        let docRef = db.collection("users").document(uid).collection("record")
+            .whereField("population", isGreaterThan: 1000000).order(by: "day").limit(to: 7)
         docRef.getDocuments { (docu, error) in
             if error != nil {
                 // エラー発生した場合
@@ -125,28 +124,6 @@ extension MyPageWeightViewController {
         chartView?.data = getDataSet()
         // 画面に追加
         view.addSubview(chartView!)
-    }
-    
-    func addButton() {
-        let width: CGFloat = 200
-        let height: CGFloat = 50
-        let x: CGFloat = view.bounds.width / 2 - width / 2
-        let y: CGFloat = view.bounds.height / 8 * 7 - height / 2
-        let rect = CGRect(x: x, y: y, width: width, height: height)
-        
-        let button = UIButton(type: .system)
-        button.setTitle("+", for: .normal)
-        button.frame = rect
-        button.addTarget(
-            self,
-            action: #selector(didClickBtn(_:)),
-            for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func didClickBtn(_ sender: UIButton) {
-        data.append(Double.random(in: 1.0...20.0))
-        chartView!.data = getDataSet()
     }
     
     // 表示用のデータの整形

@@ -14,7 +14,6 @@ import GuillotineMenu
 // ホーム画面
 class HomeViewController: UIViewController {
     
-    
     @IBOutlet weak var barButton: UIButton!
     @IBOutlet weak var targetWeight: UILabel!
     @IBOutlet weak var needFoods: UILabel!
@@ -58,6 +57,12 @@ class HomeViewController: UIViewController {
         let myBackButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = myBackButton
         self.parent?.navigationItem.title = "ホーム"
+        let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
+                                         style: UIBarButtonItem.Style.plain,
+                                         target: self,
+                                         action: Selector(("OnMenuClicked:")))
+        self.navigationController!.navigationItem.leftBarButtonItem = menuButton
+
         
     }
     

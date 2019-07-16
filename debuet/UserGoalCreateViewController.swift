@@ -91,7 +91,11 @@
                     print("ユーザ情報登録失敗！！")
                 } else {
                     print("ユーザ情報登録成功！！")
-                    self.performSegue(withIdentifier: "toHome", sender: nil)
+                    let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc : UIViewController = storyboard.instantiateViewController(withIdentifier: "test") as! UITabBarController
+                    let nv = UINavigationController(rootViewController: vc)
+                    self.present(nv, animated: true, completion: nil)
+//                    self.performSegue(withIdentifier: "toHome", sender: nil)
                 }
             }
         }
