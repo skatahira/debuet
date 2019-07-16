@@ -31,6 +31,8 @@ class HomeViewController: UIViewController {
     let errormessage = ErrorMessage.self()
     // 日付関連クラス
     let dateRelation = DateRelation()
+    // ユーザ情報計算処理クラス呼び出し
+    let calculation = Calculation()
     // ドキュメントID
     var docuID = ""
     var calcWeight = 0
@@ -119,23 +121,10 @@ extension HomeViewController {
         
         if todayWeight != "" {
             // 本日の体重が記録されている場合
-            // TODO 後で小数点第一位まで表示されるようにする
-            bMI = Float(todayWeight!)! / (Float(calcHeight) / 100.0)
+            bMI = calculation.calcBMI(weight: Float(todayWeight!)!, height: (Float(calcHeight) / 100))
+//            bMI = Float(todayWeight!)! / (Float(calcHeight) / 100.0)
             //bMI = bMI * 10
             bMI = round(bMI)
-            //bMI = bMI / 10
-            //            let calcBMI: Double = Double(bMI)
-            //            let calcBMI2:NSDecimalNumber = NSDecimalNumber(floatLiteral: calcBMI)
-            //            let behaviors:NSDecimalNumberHandler = NSDecimalNumberHandler(
-            //                roundingMode: NSDecimalNumber.RoundingMode.up,
-            //                scale: 1,
-            //                raiseOnExactness: false,
-            //                raiseOnOverflow: false,
-            //                raiseOnUnderflow: false,
-            //                raiseOnDivideByZero: false)
-            //            let resultBMI:NSDecimalNumber = calcBMI2.rounding(accordingToBehavior: behaviors)
-            //
-            //            resultBMI2 = Float(truncating: resultBMI)
         }
         
         // データベースに格納する情報
@@ -240,7 +229,6 @@ extension HomeViewController {
     
     // 本日の記録情報取得処理
     func getTodayRecord(uid: String) {
-        //let now = dateRelation.todayYMDString()
         let now = getNowDate()
         // 本日の記録取得
         let docRef = db.collection("users").document(uid).collection("record").whereField("day", isEqualTo: now)

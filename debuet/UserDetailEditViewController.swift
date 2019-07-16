@@ -131,7 +131,7 @@ extension UserDetailEditViewController {
     func calcUser(height: String, sex: String, physicalActiveLevel: String, birth: String,calcNow: String, userInfomation: UserInfomation) {
         // ユーザ情報計算処理クラス呼び出し
         let calculation = Calculation()
-        let calcHeight: Float = Float(height) as! Float / 100
+        let calcHeight: Float = Float(height)! / 100
         // 標準体重取得
         let standardWeight = calculation.calcStandardWeight(height: calcHeight)
         // 年齢取得

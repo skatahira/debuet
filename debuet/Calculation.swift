@@ -18,7 +18,7 @@ class Calculation {
     // BMI = 体重(kg) / 身長(m2)
     func calcBMI(weight: Float, height: Float) -> Float {
         var bMI:Float = 0.0;
-        bMI = weight / height
+        bMI = weight / (height * height)
         return bMI
     }
     

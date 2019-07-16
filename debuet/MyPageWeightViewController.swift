@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import Firebase
+import FirebaseFirestore
 
 // マイページ(体重)画面
 class MyPageWeightViewController: UIViewController {
@@ -19,9 +20,12 @@ class MyPageWeightViewController: UIViewController {
     @IBOutlet weak var nowWeight: UILabel!
     
     // 表示に使うデータ
-    var data:[Double] = [3,1,6,8]
-    
+    //var data:[Double] = [3,1,6,8]
+    var data:[Double] = []
     let db = Firestore.firestore()
+    
+    // 日付関連クラス
+    let dateRelation = DateRelation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,10 +92,10 @@ extension MyPageWeightViewController {
     }
     
     // 体重記録取得処理
-    func getWeight(uid: String) {
+    func getWeight(uid: String, fromDay: Date, toDay: Date) {
         // 体重記録取得
         let docRef = db.collection("users").document(uid).collection("record")
-            .whereField("population", isGreaterThan: 1000000).order(by: "day").limit(to: 7)
+            .whereField("day", isGreaterThan: fromDay).whereField("day", isLessThan: toDay).order(by: "day").limit(to: 7)
         docRef.getDocuments { (docu, error) in
             if error != nil {
                 // エラー発生した場合
@@ -99,8 +103,8 @@ extension MyPageWeightViewController {
                 return
             } else {
                 for document in docu!.documents {
-                    self.nowWeight.text = (document.data()["weight"] as! String)
-                    self.nowBMI.text = String(document.data()["BMI"] as! Float)
+                    self.data.append(Double(document.data()["weight"] as! String) as! Double)
+                    print(self.data)
                 }
             }
         }
@@ -128,10 +132,33 @@ extension MyPageWeightViewController {
     
     // 表示用のデータの整形
     func getDataSet() -> LineChartData {
+        // 現在年日時を取得
+        let now = getNowDate()
+        // グラフ開始年月日取得
+        let before = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        
+        getWeight(uid: getUserID(), fromDay: now, toDay: before)
         // データにある情報をグラフ用のデータに変換
         let entries = data.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
         // 折れ線グラフのデータセット
         let dataSet = LineChartDataSet(entries: entries, label: "体重")
         return LineChartData(dataSet: dataSet)
+    }
+}
+
+// 日付関連処理
+extension MyPageWeightViewController {
+    
+    // Date型から強制的に「年月日」以外のデータを切り捨て、現在の年月日を取得する処理
+    func getNowDate() -> Date {
+        // 現在日付を取得(例えば 2017/07/12 12:01)
+        let todayDate = Date()
+        // カレンダーを取得
+        let  calendar = Calendar(identifier: .gregorian)
+        
+        // today_dateから年月日のみ抽出する -> 2017/07/12となる
+        let todayDateRounded =  dateRelation.roundDate(todayDate, calendar: calendar)
+        
+        return todayDateRounded
     }
 }
