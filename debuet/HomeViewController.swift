@@ -238,6 +238,7 @@ extension HomeViewController {
                 return
             } else {
                 for document in docu!.documents {
+                    // ユーザ情報のセット
                     self.docuID = document.documentID
                     self.todayWeightTextField.text = (document.data()["weight"] as! String)
                     self.todayBreakfast.rating = Double(document.data()["breakfast"] as! Int)
@@ -282,11 +283,13 @@ extension HomeViewController {
                 }
                 // 目標体重までの増量数設定
                 if self.todayWeightTextField.text != "" {
+                    // 本日の体重が記録されていた場合
                     if let todayWeight: Int = Int(self.todayWeightTextField.text!) {
                         let resultWeight = self.calcWeight - todayWeight
                         self.targetWeight.text = String(resultWeight)
                     }
                 } else if self.lastWeight.text != "" {
+                    // 本日の体重が記録されていないかつ前回の記録が表示されている場合
                     if let lastWeight2: Int = Int(self.lastWeight.text!) {
                         let resultWeight = self.calcWeight - lastWeight2
                         self.targetWeight.text = String(resultWeight)
