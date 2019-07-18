@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import PKHUD
 
 // ユーザ情報閲覧・編集画面
-class UserInfomationEditViewController: UIViewController {
+class UserInfomationEditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nickNameTextField: UITextField!
@@ -25,6 +26,8 @@ class UserInfomationEditViewController: UIViewController {
     
     let errormessage = ErrorMessage.self()
     let db = Firestore.firestore()
+    let picker = UIImagePickerController()
+
     // ユーザ情報受け取り変数の定義
     var receiveSex = ""
     var receivePhysicalActiveLevel = ""
@@ -42,6 +45,27 @@ class UserInfomationEditViewController: UIViewController {
         physicalActiveLevelRadio()
         // ユーザ情報取得処理呼び出し
         getUserInfomation(uid: uid)
+        // ユーザ画像取得処理呼び出し
+//        loadImage(uid: uid)
+    }
+    
+    // 選択ボタン押下
+    @IBAction func didTapImageChangeBtn(_ sender: Any) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            print("フォトライブラリが使用できません")
+        }
+    }
+    
+    // ホームに戻るボタン押下
+    @IBAction func didClickHomeBtn(_ sender: Any) {
+        // ホーム画面に遷移
+        performSegue(withIdentifier: "toHome", sender: nil)
     }
 }
 
@@ -69,6 +93,42 @@ extension UserInfomationEditViewController {
                 self.receivePhysicalActiveLevel = (document!.data()!["physicalActiveLevel"] as! String)
                 // 表示用のデータに変換し、画面にセットする処理呼び出し
                 self.userDisplayConversion()
+            }
+        }
+    }
+    
+    // ユーザ画像取得処理
+    func loadImage(uid: String) {
+        //StorageのURLを参照
+        let userImageURL: String = "gs://debuet-7732b.appspot.com/"
+        let storageRef = Storage.storage().reference(forURL: userImageURL).child("User").child(uid)
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+            // Create a UIImage, add it to the array
+            let pic = UIImage(data: data!)
+            //画像をセット
+            self.userImageView.image = pic
+        }
+    }
+    
+    // ユーザ画像登録処理
+    func uploadImage(uid: String) {
+        // ストレージサービスへの参照を取得
+        let storage = Storage.storage()
+        //保存するURLを指定
+        let storageRef = storage.reference(forURL: "gs://debuet-7732b.appspot.com/")
+        //ディレクトリを指定
+        let imageRef = storageRef.child("User").child(uid)
+        guard let data = userImageView.image else { return }
+        //保存を実行して、metadataにURLが含まれているので、あとはよしなに加工
+        let imageData = data.jpegData(compressionQuality: 0.1)! as NSData
+        imageRef.putData(imageData as Data, metadata: nil) { metadata, error in
+            if (error != nil) {
+                // HUDを表示して指定時間後に非表示にする
+                HUD.flash(.error, delay: 2)
+                self.errormessage.showErrorIfNeeded(error)
+                print("画像登録失敗！！")
+            } else {
+                print("画像登録成功！！")
             }
         }
     }

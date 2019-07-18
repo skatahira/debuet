@@ -459,6 +459,9 @@ gb7jgZfjgZ8
                                 <rect key="frame" x="323" y="261" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="選択"/>
+                                <connections>
+                                    <action selector="didTapImageChangeBtn:" destination="8KB-sG-bF3" eventType="touchUpInside" id="lgm-ax-8R7"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ニックネーム" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxX-Y7-CMp">
                                 <rect key="frame" x="33" y="325" width="316" height="21"/>
@@ -605,7 +608,11 @@ gb7jgZfjgZ8
                                 <rect key="frame" x="1" y="47" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="ホームへ" id="NjZ-p5-MMb"/>
+                                    <barButtonItem title="ホームに戻る" id="NjZ-p5-MMb">
+                                        <connections>
+                                            <action selector="didClickHomeBtn:" destination="8KB-sG-bF3" id="AxN-jI-cmv"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -623,6 +630,7 @@ gb7jgZfjgZ8
                         <outlet property="userGoalTextView" destination="jtO-Vk-GDb" id="SZ4-VM-dMP"/>
                         <outlet property="userImageView" destination="0kJ-Ix-EiO" id="QrA-QF-Mxp"/>
                         <outlet property="womanRadioButton" destination="2BB-hP-HxC" id="SGg-DE-1wm"/>
+                        <segue destination="ybP-1l-WCz" kind="show" identifier="toHome" id="cXb-QS-Ywq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyB-gX-L1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1984,6 +1992,7 @@ gb7jgZfjgZ8
         <segue reference="aeS-dV-kaR"/>
         <segue reference="eJu-g3-oAF"/>
         <segue reference="s3u-3S-JIO"/>
+        <segue reference="cXb-QS-Ywq"/>
         <segue reference="epn-hA-aYu"/>
     </inferredMetricsTieBreakers>
 </document>
