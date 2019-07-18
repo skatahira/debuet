@@ -148,6 +148,7 @@ extension MyPageWeightViewController {
         let rect = CGRect(x:0, y: 30, width: width, height: height)
         
         // グラフ表示部のインスタンス化
+        // ホゲホゲ後で消す
 //        chartView = LineChartView(frame: rect)
         // 表示データの設定
         chartView?.data = getDataSet()
