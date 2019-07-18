@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var lastLunch: CosmosView!
     @IBOutlet weak var lastDinner: CosmosView!
     
+    // Firestore呼び出し
     let db = Firestore.firestore()
     // エラーメッセージ
     let errormessage = ErrorMessage.self()
@@ -40,6 +41,7 @@ class HomeViewController: UIViewController {
     var calcFoods = 0
     var calcHeight = 0
     
+    // メニューライブラリ
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     
     // 初期表示時
@@ -60,6 +62,7 @@ class HomeViewController: UIViewController {
         let myBackButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = myBackButton
         self.parent?.navigationItem.title = "ホーム"
+        // メニューボタン
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
                                          style: UIBarButtonItem.Style.plain,
                                          target: self,
@@ -85,16 +88,19 @@ class HomeViewController: UIViewController {
         HUD.show(.progress)
         // 本日の記録処理を呼び出す
         createTodayRecord()
-        
+        // おにぎりの記録数を取得する
         let breakfoods = todayBreakfast.rating
         let lunchfoods = todayLunch.rating
         let dinnerfoods = todayDinner.rating
         // 残り食事量を計算
         var resultFoods = calcFoods - Int(breakfoods) - Int(lunchfoods) - Int(dinnerfoods)
         if resultFoods < 0 {
+            // 値がマイナスになった場合0とする
             resultFoods = 0
         }
+        // 残り食事量を表示する
         needFoods.text = String(resultFoods)
+        // 読み込みを閉じる
         HUD.hide()
     }
     
@@ -122,6 +128,7 @@ extension HomeViewController {
         
         if todayWeight != "" {
             // 本日の体重が記録されている場合
+            // 本日の体重からBMIを計算
             bMI = calculation.calcBMI(weight: Float(todayWeight!)!, height: (Float(calcHeight) / 100))
             bMI = round(bMI)
         }
@@ -136,7 +143,7 @@ extension HomeViewController {
             "dinner": dinnerAmountFood
         ]
         
-        
+        // ログインユーザIDを取得
         guard let uid = Auth.auth().currentUser?.uid else {
             print("uid is nil")
             return

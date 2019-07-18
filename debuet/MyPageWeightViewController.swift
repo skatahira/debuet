@@ -178,14 +178,14 @@ extension MyPageWeightViewController {
 // 日付関連処理
 extension MyPageWeightViewController {
     
-    // Date型から強制的に「年月日」以外のデータを切り捨て、現在の年月日を取得する処理
+    // Date型から強制的に「年月日」以外のデータを切り捨て、現在の年月日を取得
     func getNowDate() -> Date {
         // 現在日付を取得(例えば 2017/07/12 12:01)
         let todayDate = Date()
         // カレンダーを取得
         let  calendar = Calendar(identifier: .gregorian)
         
-        // today_dateから年月日のみ抽出する -> 2017/07/12となる
+        // today_dateから年月日のみ抽出 -> 2017/07/12となる
         let todayDateRounded =  dateRelation.roundDate(todayDate, calendar: calendar)
         
         return todayDateRounded

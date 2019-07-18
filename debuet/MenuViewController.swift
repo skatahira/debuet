@@ -10,6 +10,7 @@ import UIKit
 import GuillotineMenu
 import Firebase
 
+// メニュー画面
 class MenuViewController: UIViewController, GuillotineMenu {
     
     var dismissButton: UIButton?
