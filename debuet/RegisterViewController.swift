@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Validator
+import PKHUD
 
 // アカウント登録画面
 class RegisterViewController: UIViewController {
@@ -45,6 +46,7 @@ class RegisterViewController: UIViewController {
         registerFlg = true
         // バリデーションチェック
         didClickBtnValidationCheck()
+        HUD.hide()
     }
     
     // viewを押下時にキーボードを閉じる処理
@@ -63,11 +65,14 @@ extension RegisterViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
             
             if let e = err {
+                // HUDを表示して指定時間後に非表示にする
+                HUD.flash(.error, delay: 2)
                 self.resultLabel.text = self.errormessage.showErrorIfNeeded(e)
                 print("Fail : \(e)")
             }
             if let user = user {
-                print("Success : \(user.user.email!)")                
+                print("Success : \(user.user.email!)")
+                HUD.hide()
                 self.performSegue(withIdentifier: "toUserInfomation1", sender: user)
             }
         }
@@ -138,7 +143,7 @@ extension RegisterViewController {
     
     // アカウント登録バリデーションチェック
     func didClickBtnValidationCheck() {
-        
+        HUD.show(.progress)
         if let email = mailTextField.text,
             let password = passwordTextField.text,
             let password2 =  morePasswordTextField.text {

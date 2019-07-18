@@ -63,21 +63,21 @@ class HomeViewController: UIViewController {
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
                                          style: UIBarButtonItem.Style.plain,
                                          target: self,
-                                         action: Selector(("OnMenuClicked:")))
-        self.navigationController!.navigationItem.leftBarButtonItem = menuButton
-
+                                         action: #selector(HomeViewController.didTapMenuBtn))
+        self.parent?.navigationItem.leftBarButtonItem = menuButton
         
     }
     
     // メニューボタン押下時
-    @IBAction func didTapMenuBtn(_ sender: UIButton) {
+    @objc func didTapMenuBtn() {
         let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
         menuViewController.modalPresentationStyle = .custom
         menuViewController.transitioningDelegate = (self as UIViewControllerTransitioningDelegate)
         
         presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
         presentationAnimator.supportView = navigationController!.navigationBar
-        presentationAnimator.presentButton = sender
+        //presentationAnimator.presentButton = sender
+        presentationAnimator.presentButton = view
         present(menuViewController, animated: true, completion: nil)
     }
     // 記録ボタン押下
@@ -123,8 +123,6 @@ extension HomeViewController {
         if todayWeight != "" {
             // 本日の体重が記録されている場合
             bMI = calculation.calcBMI(weight: Float(todayWeight!)!, height: (Float(calcHeight) / 100))
-//            bMI = Float(todayWeight!)! / (Float(calcHeight) / 100.0)
-            //bMI = bMI * 10
             bMI = round(bMI)
         }
         
@@ -382,6 +380,7 @@ extension HomeViewController {
     }
 }
 
+// メニュー関連処理
 extension HomeViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

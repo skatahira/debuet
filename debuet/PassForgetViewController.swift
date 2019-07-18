@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Validator
+import PKHUD
 
 // パスワードリセットメール送信画面
 class PassForgetViewController: UIViewController {

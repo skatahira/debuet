@@ -10,6 +10,7 @@ import UIKit
 import Charts
 import Firebase
 import FirebaseFirestore
+import GuillotineMenu
 
 // マイページ(体重)画面
 class MyPageWeightViewController: UIViewController {
@@ -26,6 +27,7 @@ class MyPageWeightViewController: UIViewController {
     
     // 日付関連クラス
     let dateRelation = DateRelation()
+    fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,26 @@ class MyPageWeightViewController: UIViewController {
         self.parent?.navigationItem.title = "マイページ"
         getUserInfomation(uid: getUserID())
         getNowRecord(uid: getUserID())
+        
+        navigationController?.navigationBar.backgroundColor = .red
+        let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
+                                         style: UIBarButtonItem.Style.plain,
+                                         target: self,
+                                         action: #selector(MyPageWeightViewController.didTapMenuBtn))
+        self.parent?.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    // メニューボタン押下時
+    @objc func didTapMenuBtn() {
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
+        menuViewController.modalPresentationStyle = .custom
+        menuViewController.transitioningDelegate = (self as UIViewControllerTransitioningDelegate)
+        
+        presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
+        presentationAnimator.supportView = navigationController!.navigationBar
+        //presentationAnimator.presentButton = sender
+        presentationAnimator.presentButton = view
+        present(menuViewController, animated: true, completion: nil)
     }
     
     
@@ -95,7 +117,9 @@ extension MyPageWeightViewController {
     func getWeight(uid: String, fromDay: Date, toDay: Date) {
         // 体重記録取得
         let docRef = db.collection("users").document(uid).collection("record")
-            .whereField("day", isGreaterThan: fromDay).whereField("day", isLessThan: toDay).order(by: "day").limit(to: 7)
+            .whereField("day", isGreaterThan: toDay)
+            //.whereField("day", isLessThan: toDay)
+            .order(by: "day").limit(to: 7)
         docRef.getDocuments { (docu, error) in
             if error != nil {
                 // エラー発生した場合
@@ -104,6 +128,7 @@ extension MyPageWeightViewController {
             } else {
                 for document in docu!.documents {
                     self.data.append(Double(document.data()["weight"] as! String) as! Double)
+                    print("体重が取得できてるよ")
                     print(self.data)
                 }
             }
@@ -160,5 +185,19 @@ extension MyPageWeightViewController {
         let todayDateRounded =  dateRelation.roundDate(todayDate, calendar: calendar)
         
         return todayDateRounded
+    }
+}
+
+// メニュー関連処理
+extension MyPageWeightViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .presentation
+        return presentationAnimator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        presentationAnimator.mode = .dismissal
+        return presentationAnimator
     }
 }

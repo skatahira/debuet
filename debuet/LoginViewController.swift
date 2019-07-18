@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Validator
+import PKHUD
 
 // ログイン画面
 class LoginViewController: UIViewController, Error {
@@ -38,7 +39,7 @@ class LoginViewController: UIViewController, Error {
     
     // ログインボタン押下時
     @IBAction func didTapLoginBtn(_ sender: Any) {
-        
+        HUD.show(.progress)
         loginFlg = true
         didClickBtnValidationCheck()
     }
@@ -58,6 +59,7 @@ extension LoginViewController {
                 print("Fail : \(e)")
                 self.errorState.text = self.errormessage.showErrorIfNeeded(e)
                 // 失敗した場合は処理終了
+                HUD.hide()
                 return
             }
             if let r = result {
@@ -70,8 +72,10 @@ extension LoginViewController {
                     // 画面遷移判断
                     if let document = document, document.exists {
                         // ユーザ情報登録完了している場合
+                        HUD.hide()
                         self.performSegue(withIdentifier: "toHome", sender: nil)
                     } else {
+                        HUD.hide()
                         // ユーザ情報登録をしていない場合
                         self.performSegue(withIdentifier: "toCreate", sender: nil)
                     }
