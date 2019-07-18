@@ -443,7 +443,23 @@ gb7jgZfjgZ8
             </objects>
             <point key="canvasLocation" x="-643.47826086956525" y="843.75"/>
         </scene>
-        <!--User Infomation Edit View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="K52-bq-0jO">
+            <objects>
+                <navigationController id="Gpj-gc-NHY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xQi-Dj-6xq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8KB-sG-bF3" kind="relationship" relationship="rootViewController" id="P0c-IX-Crr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wR3-4P-1ME" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977" y="3447"/>
+        </scene>
+        <!--プロフィール-->
         <scene sceneID="xDL-6v-fDw">
             <objects>
                 <viewController id="8KB-sG-bF3" customClass="UserInfomationEditViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
@@ -452,17 +468,9 @@ gb7jgZfjgZ8
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0kJ-Ix-EiO">
-                                <rect key="frame" x="107" y="91" width="200" height="200"/>
+                                <rect key="frame" x="107" y="102" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM9-fQ-5P6">
-                                <rect key="frame" x="323" y="261" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="選択"/>
-                                <connections>
-                                    <action selector="didTapImageChangeBtn:" destination="8KB-sG-bF3" eventType="touchUpInside" id="lgm-ax-8R7"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ニックネーム" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxX-Y7-CMp">
                                 <rect key="frame" x="33" y="325" width="316" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -604,21 +612,41 @@ gb7jgZfjgZ8
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FoL-8L-m6J">
-                                <rect key="frame" x="1" y="47" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="ホームに戻る" id="NjZ-p5-MMb">
-                                        <connections>
-                                            <action selector="didClickHomeBtn:" destination="8KB-sG-bF3" id="AxN-jI-cmv"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM9-fQ-5P6">
+                                <rect key="frame" x="323" y="261" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="選択"/>
+                                <connections>
+                                    <action selector="didTapImageChangeBtn:" destination="8KB-sG-bF3" eventType="touchUpInside" id="lgm-ax-8R7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uVF-8k-AXY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="プロフィール" leftItemsSupplementBackButton="YES" id="Ndr-1p-icS">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="BDv-Fb-6Np">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O46-HL-5XI">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ホームに戻る"/>
+                                <connections>
+                                    <action selector="didClickHomeBtn:" destination="8KB-sG-bF3" eventType="touchUpInside" id="eT5-BY-xwS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rFq-zR-dpQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lZj-h1-qnq">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="保存"/>
+                            </button>
+                            <connections>
+                                <action selector="didClickSaveBtn:" destination="8KB-sG-bF3" id="6iY-Gx-quE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="birthDatePicker" destination="sKw-e7-0Kx" id="la2-ak-heg"/>
                         <outlet property="heightTextField" destination="hRJ-6f-VU0" id="tvJ-s4-u5V"/>
@@ -630,12 +658,12 @@ gb7jgZfjgZ8
                         <outlet property="userGoalTextView" destination="jtO-Vk-GDb" id="SZ4-VM-dMP"/>
                         <outlet property="userImageView" destination="0kJ-Ix-EiO" id="QrA-QF-Mxp"/>
                         <outlet property="womanRadioButton" destination="2BB-hP-HxC" id="SGg-DE-1wm"/>
-                        <segue destination="ybP-1l-WCz" kind="show" identifier="toHome" id="cXb-QS-Ywq"/>
+                        <segue destination="Gok-bK-JhD" kind="show" identifier="toHome" id="gDT-b6-uFN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyB-gX-L1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1381.1594202898552" y="1740.4017857142856"/>
+            <point key="canvasLocation" x="2367" y="3447"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="Z7C-a5-Uzu">
@@ -772,11 +800,11 @@ gb7jgZfjgZ8
                                     <action selector="todayRecord:" destination="ybP-1l-WCz" eventType="touchUpInside" id="W0G-jP-cuW"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzU-YY-lol" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzU-YY-lol" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="286" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0l-hC-hnN" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0l-hC-hnN" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="316" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -810,7 +838,7 @@ gb7jgZfjgZ8
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELY-Vz-UIW" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELY-Vz-UIW" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="346" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -842,15 +870,15 @@ gb7jgZfjgZ8
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VW-m9-WMV" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VW-m9-WMV" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="573" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXH-5g-cHj" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXH-5g-cHj" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="603" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="suG-Po-zjC" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suG-Po-zjC" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="633" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -1697,7 +1725,7 @@ gb7jgZfjgZ8
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76J-vY-3gS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="2164"/>
+            <point key="canvasLocation" x="548" y="2454"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PMc-gR-9hD">
@@ -1756,7 +1784,7 @@ gb7jgZfjgZ8
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxv-3H-fmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1908"/>
+            <point key="canvasLocation" x="548" y="1602"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="SSf-TJ-TAE">
@@ -1874,13 +1902,13 @@ gb7jgZfjgZ8
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="8KB-sG-bF3" kind="show" identifier="toProfile" id="zPF-yr-FSY"/>
                         <segue destination="0yC-U1-1n2" kind="show" identifier="toTop" id="3UV-S0-a3h"/>
+                        <segue destination="Gpj-gc-NHY" kind="show" identifier="toProfile" id="eo0-Vm-mdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7PN-t8-9uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-643" y="2312"/>
+            <point key="canvasLocation" x="2367" y="2454"/>
         </scene>
         <!--マイページ-->
         <scene sceneID="H4I-9O-0a8">
@@ -1989,10 +2017,9 @@ gb7jgZfjgZ8
     <inferredMetricsTieBreakers>
         <segue reference="Dre-Qk-mCd"/>
         <segue reference="3fT-LH-apb"/>
-        <segue reference="aeS-dV-kaR"/>
+        <segue reference="gDT-b6-uFN"/>
         <segue reference="eJu-g3-oAF"/>
         <segue reference="s3u-3S-JIO"/>
-        <segue reference="cXb-QS-Ywq"/>
         <segue reference="epn-hA-aYu"/>
     </inferredMetricsTieBreakers>
 </document>

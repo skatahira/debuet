@@ -62,11 +62,16 @@ class UserInfomationEditViewController: UIViewController, UIImagePickerControlle
         }
     }
     
+    // 保存ボタン押下
+    @IBAction func didClickSaveBtn(_ sender: Any) {
+        
+    }
+    
     // ホームに戻るボタン押下
     @IBAction func didClickHomeBtn(_ sender: Any) {
-        // ホーム画面に遷移
         performSegue(withIdentifier: "toHome", sender: nil)
     }
+    
 }
 
 // Firebase関連処理
