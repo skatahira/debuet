@@ -14,7 +14,7 @@ import GuillotineMenu
 
 // マイページ(体重)画面
 class MyPageWeightViewController: UIViewController {
-
+    
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var standardWeight: UILabel!
     @IBOutlet weak var nowBMI: UILabel!
@@ -31,10 +31,6 @@ class MyPageWeightViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // グラフを追加する
-        addGraph()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +46,16 @@ class MyPageWeightViewController: UIViewController {
                                          target: self,
                                          action: #selector(MyPageWeightViewController.didTapMenuBtn))
         self.parent?.navigationItem.leftBarButtonItem = menuButton
+        
+        // 現在年日時を取得
+        let now = getNowDate()
+        // グラフ開始年月日取得
+        let before = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        // 体重記録を取得
+        getWeight(uid: getUserID(), fromDay: before, toDay: now)
+        
+        // グラフを追加する
+        //        addGraph()
     }
     
     // メニューボタン押下時
@@ -115,11 +121,13 @@ extension MyPageWeightViewController {
     
     // 体重記録取得処理
     func getWeight(uid: String, fromDay: Date, toDay: Date) {
+        // 体重情報をリフレッシュする
+        data = []
         // 体重記録取得
         let docRef = db.collection("users").document(uid).collection("record")
-            .whereField("day", isGreaterThan: toDay)
-            //.whereField("day", isLessThan: toDay)
-            .order(by: "day").limit(to: 7)
+            .whereField("day", isGreaterThan: fromDay)
+            .whereField("day", isLessThan: toDay)
+            .order(by: "day")
         docRef.getDocuments { (docu, error) in
             if error != nil {
                 // エラー発生した場合
@@ -128,9 +136,9 @@ extension MyPageWeightViewController {
             } else {
                 for document in docu!.documents {
                     self.data.append(Double(document.data()["weight"] as! String) as! Double)
-                    print("体重が取得できてるよ")
-                    print(self.data)
                 }
+                // グラフを追加する
+                self.addGraph()
             }
         }
     }
@@ -148,8 +156,7 @@ extension MyPageWeightViewController {
         let rect = CGRect(x:0, y: 30, width: width, height: height)
         
         // グラフ表示部のインスタンス化
-        // ホゲホゲ後で消す
-//        chartView = LineChartView(frame: rect)
+        //        chartView = LineChartView(frame: rect)
         // 表示データの設定
         chartView?.data = getDataSet()
         // 画面に追加
@@ -158,13 +165,9 @@ extension MyPageWeightViewController {
     
     // 表示用のデータの整形
     func getDataSet() -> LineChartData {
-        // 現在年日時を取得
-        let now = getNowDate()
-        // グラフ開始年月日取得
-        let before = Calendar.current.date(byAdding: .day, value: -6, to: now)!
         
-        getWeight(uid: getUserID(), fromDay: now, toDay: before)
         // データにある情報をグラフ用のデータに変換
+        print(data)
         let entries = data.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
         // 折れ線グラフのデータセット
         let dataSet = LineChartDataSet(entries: entries, label: "体重")

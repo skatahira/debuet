@@ -64,15 +64,15 @@ class MenuViewController: UIViewController, GuillotineMenu {
         let defaultAction: UIAlertAction = UIAlertAction(title: "ログアウト",
                                                          style: UIAlertAction.Style.default,
                                                          handler:{
-            // ログアウトボタンが押された時の処理
-            (action: UIAlertAction!) -> Void in
-            print("ログアウト")
-            do {
-                try Auth.auth().signOut()
-                self.performSegue(withIdentifier: "toTop", sender: nil)
-            } catch let error {
-                self.errormessage.showErrorIfNeeded(error)
-            }
+                                                            // ログアウトボタンが押された時の処理
+                                                            (action: UIAlertAction!) -> Void in
+                                                            print("ログアウト")
+                                                            do {
+                                                                try Auth.auth().signOut()
+                                                                self.performSegue(withIdentifier: "toTop", sender: nil)
+                                                            } catch let error {
+                                                                self.errormessage.showErrorIfNeeded(error)
+                                                            }
         })
         // キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{

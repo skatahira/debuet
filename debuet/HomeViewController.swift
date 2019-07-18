@@ -302,6 +302,7 @@ extension HomeViewController {
     // 初期表示時
     func setCosmos() {
         
+        // ログインしているユーザIDを取得
         guard let uid = Auth.auth().currentUser?.uid else {
             print("uid is nil")
             return
