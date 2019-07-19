@@ -9,6 +9,7 @@
     import UIKit
     import Firebase
     import FlexibleSteppedProgressBar
+    import PKHUD
     
     // ユーザ目標記録画面
     class UserGoalCreateViewController: UIViewController, FlexibleSteppedProgressBarDelegate {
@@ -46,6 +47,7 @@
         
         // ユーザ情報登録処理
         func createUserInfomation() {
+            HUD.show(.progress)
             
             guard goalTextView.text != "" else {
                 return
@@ -79,6 +81,7 @@
             
             
             guard let uid = Auth.auth().currentUser?.uid else {
+                HUD.hide()
                 print("uid is nil")
                 return
             }
@@ -89,9 +92,16 @@
                 if err != nil {
                     self.resultLabel.text = self.errormessage.showErrorIfNeeded(err)
                     print("ユーザ情報登録失敗！！")
+                    HUD.hide()
+                    // HUDを表示して指定時間後に非表示にする
+                    HUD.flash(.error, delay: 2)
                 } else {
                     print("ユーザ情報登録成功！！")
-                    self.performSegue(withIdentifier: "toHome", sender: nil)
+                    let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc : UIViewController = storyboard.instantiateViewController(withIdentifier: "test") as! UITabBarController
+                    let nv = UINavigationController(rootViewController: vc)
+                    HUD.hide()
+                    self.present(nv, animated: true, completion: nil)
                 }
             }
         }
@@ -109,6 +119,9 @@
             let imageData = data.jpegData(compressionQuality: 0.1)! as NSData
             imageRef.putData(imageData as Data, metadata: nil) { metadata, error in
                 if (error != nil) {
+                    // HUDを表示して指定時間後に非表示にする
+                    HUD.hide()
+                    HUD.flash(.error, delay: 2)
                     self.resultLabel.text = self.errormessage.showErrorIfNeeded(error)
                     print("画像登録失敗！！")
                 } else {

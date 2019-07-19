@@ -33,7 +33,7 @@ class UserInfomation {
     // 年齢
     var age: Int = 0
     // 適正標準体重
-    var standardWeight:Float  = 0.0
+    var standardWeight:Int  = 0
     // 基礎代謝量
     var basalMetabolicRate:Int = 0
     // 必要推定エネルギー量
@@ -79,7 +79,7 @@ class UserInfomation {
         self.age = age
     }
     
-    func setStandardWeight(standardWeight: Float) -> Void {
+    func setStandardWeight(standardWeight: Int) -> Void {
         self.standardWeight = standardWeight
     }
     
