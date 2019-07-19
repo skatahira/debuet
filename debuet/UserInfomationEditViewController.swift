@@ -13,7 +13,7 @@ import PKHUD
 // ユーザ情報閲覧・編集画面
 class UserInfomationEditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: EnhancedCircleImageView!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var birthDatePicker: UIDatePicker!
     @IBOutlet weak var manRadioButton: LTHRadioButton!
@@ -34,7 +34,6 @@ class UserInfomationEditViewController: UIViewController, UIImagePickerControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // ログインしているユーザIDを取得
         guard let uid = Auth.auth().currentUser?.uid else {
             print("uid is nil")
@@ -44,9 +43,10 @@ class UserInfomationEditViewController: UIViewController, UIImagePickerControlle
         sexRadio()
         physicalActiveLevelRadio()
         // ユーザ情報取得処理呼び出し
-        getUserInfomation(uid: uid)
         // ユーザ画像取得処理呼び出し
-//        loadImage(uid: uid)
+        loadImage(uid: uid)
+        
+        
     }
     
     // 選択ボタン押下
@@ -79,6 +79,10 @@ extension UserInfomationEditViewController {
     
     // ユーザ情報取得処理
     func getUserInfomation(uid: String) {
+        
+        // ユーザ画像取得処理呼び出し
+        //loadImage(uid: uid)
+        
         // ユーザ情報取得
         let docRef = db.collection("users").document(uid)
         docRef.getDocument { (document, error) in
@@ -92,8 +96,7 @@ extension UserInfomationEditViewController {
                 self.heightTextField.text = (document!.data()!["height"] as! String)
                 self.userGoalTextView.text = (document!.data()!["goalText"] as! String)
                 let receiveBirth: Timestamp = (document!.data()!["birth"] as! Timestamp)
-//                let date = String(receiveBirth)
-//                self.birthDatePicker.date = NSDate(receiveBirth: Timestamp)
+                self.birthDatePicker.date = receiveBirth.dateValue()
                 self.receiveSex = (document!.data()!["sex"] as! String)
                 self.receivePhysicalActiveLevel = (document!.data()!["physicalActiveLevel"] as! String)
                 // 表示用のデータに変換し、画面にセットする処理呼び出し
@@ -104,15 +107,54 @@ extension UserInfomationEditViewController {
     
     // ユーザ画像取得処理
     func loadImage(uid: String) {
+        HUD.show(.progress)
         //StorageのURLを参照
-        let userImageURL: String = "gs://debuet-7732b.appspot.com/"
-        let storageRef = Storage.storage().reference(forURL: userImageURL).child("User").child(uid)
-        storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
-            // Create a UIImage, add it to the array
+        let storageRef = Storage.storage().reference().child("User/\(uid)")
+        storageRef.getData(maxSize: 1000 * 1024 * 1024) { (data, error) -> Void in
             let pic = UIImage(data: data!)
             //画像をセット
             self.userImageView.image = pic
         }
+        
+        getUserInfomation(uid: uid)
+    }
+    
+    // ユーザ情報アップデート処理
+    func updateUserInfomation() {
+        HUD.show(.progress)
+        
+        guard nickNameTextField.text != "" else {
+            return
+        }
+        guard heightTextField.text != "" else {
+            return
+        }
+        
+        // データベースに格納する情報
+//        let data: [String: Any] = [
+//            // ニックネーム
+//            "nickName": nickNameTextField.text,
+//            // 年齢
+//            "age": 23,
+//            // 誕生日
+//            "birth": ,
+//            // 性別
+//            "sex": userInfomation.sex,
+//            // 身体活動レベル
+//            "physicalActiveLevel": userInfomation.physicalActiveLevel,
+//            // 身長
+//            "height": userInfomation.height,
+//            // 目標
+//            "goalText": goalTextView.text!,
+//            // 1日の目標食事量
+//            "oneDayAmountOfFood": userInfomation.amountOfFood,
+//            // 推奨標準体重
+//            "standardWeight": userInfomation.standardWeight,
+//            // 基礎代謝量
+//            "basalMetabolicRate": userInfomation.basalMetabolicRate,
+//            // 必要推定エネルギー
+//            "requiredEnergy": userInfomation.requiredEnergy
+//        ]
     }
     
     // ユーザ画像登録処理
