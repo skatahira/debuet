@@ -37,6 +37,8 @@
 		EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BD922BF5D3D002E5592 /* ValidationErrorType.swift */; };
 		EDFD5BDC22BFFC37002E5592 /* UserDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BDB22BFFC37002E5592 /* UserDetailEditViewController.swift */; };
 		EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */; };
+		EDFE4BAD22E37D4300D4D5BF /* ChangeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE4BAC22E37D4300D4D5BF /* ChangeMailViewController.swift */; };
+		EDFE4BAF22E3851C00D4D5BF /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		EDFD5BD922BF5D3D002E5592 /* ValidationErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationErrorType.swift; sourceTree = "<group>"; };
 		EDFD5BDB22BFFC37002E5592 /* UserDetailEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailEditViewController.swift; sourceTree = "<group>"; };
 		EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTHRadioButton.swift; sourceTree = "<group>"; };
+		EDFE4BAC22E37D4300D4D5BF /* ChangeMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailViewController.swift; sourceTree = "<group>"; };
+		EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +156,9 @@
 				ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */,
 				EDFA9ED322DCED6E00E95B6F /* MenuViewController.swift */,
 				ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */,
+				EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */,
 				ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */,
+				EDFE4BAC22E37D4300D4D5BF /* ChangeMailViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
 				ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */,
@@ -288,6 +294,7 @@
 				EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */,
 				EDFD5BCE22BA1788002E5592 /* EnhancedCircleImageView.swift in Sources */,
 				EDB62A2122CCB928006F8B85 /* UserGoalCreateViewController.swift in Sources */,
+				EDFE4BAF22E3851C00D4D5BF /* ChangePassViewController.swift in Sources */,
 				EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */,
 				ED09F1EA22D808FE00E0C349 /* DateRelation.swift in Sources */,
 				ED12BC0122AEB53400DBFE60 /* ViewController.swift in Sources */,
@@ -299,6 +306,7 @@
 				ED2793C222E3141500EB3C81 /* UserSettingViewController.swift in Sources */,
 				EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */,
 				EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */,
+				EDFE4BAD22E37D4300D4D5BF /* ChangeMailViewController.swift in Sources */,
 				ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */,
 				EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */,
 			);

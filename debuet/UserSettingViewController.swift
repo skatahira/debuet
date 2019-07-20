@@ -77,8 +77,11 @@ class UserSettingViewController: UIViewController, UITableViewDelegate, UITableV
         case 0:
             // アカウントセクションの場合
             if indexPath.row == 0 {
-                // 
+                // メールアドレスの再設定押下
                 performSegue(withIdentifier: "toChangeMail", sender: nil)
+            } else if indexPath.row == 1 {
+                // パスワードの再設定押下
+                performSegue(withIdentifier: "toChangePass", sender: nil)
             }
             return indexPath
         case 1:
