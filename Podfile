@@ -18,5 +18,6 @@ target 'debuet' do
   pod 'Charts'
   pod 'GuillotineMenu'
   pod 'PKHUD'
+  pod 'XLPagerTabStrip'
 
 end
