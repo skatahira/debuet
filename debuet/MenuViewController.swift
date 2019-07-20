@@ -56,6 +56,11 @@ class MenuViewController: UIViewController, GuillotineMenu {
         performSegue(withIdentifier: "toProfile", sender: nil)
     }
     
+    // 設定ボタン押下
+    @IBAction func didTapSettingBtn(_ sender: Any) {
+        // 設定画面に遷移
+        performSegue(withIdentifier: "toSetting", sender: nil)
+    }
     // ログアウトボタン押下
     @IBAction func didTapLogoutBtn(_ sender: Any) {
         // アラートインスタンス作成

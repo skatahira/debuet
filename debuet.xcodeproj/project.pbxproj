@@ -20,6 +20,7 @@
 		ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */; };
 		ED2793BE22E0EC6000EB3C81 /* MyPageFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */; };
 		ED2793C022E2D92B00EB3C81 /* TopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */; };
+		ED2793C222E3141500EB3C81 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */; };
 		EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */; };
 		EDA5B99E22CE87F30080BE8F /* RetrySendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */; };
 		EDA5B9A022CE97E10080BE8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */; };
@@ -56,6 +57,7 @@
 		ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFoodViewController.swift; sourceTree = "<group>"; };
 		ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabViewController.swift; sourceTree = "<group>"; };
+		ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
 		EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrySendMailViewController.swift; sourceTree = "<group>"; };
 		EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -144,12 +146,13 @@
 				EDFD5B8322B3F6C7002E5592 /* LoginViewController.swift */,
 				EDB62A2222CE608A006F8B85 /* PassForgetViewController.swift */,
 				EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */,
-				EDFA9ED322DCED6E00E95B6F /* MenuViewController.swift */,
 				EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */,
 				ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */,
 				EDFA9ED122DA422000E95B6F /* MyPageWeightViewController.swift */,
 				ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */,
+				EDFA9ED322DCED6E00E95B6F /* MenuViewController.swift */,
 				ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */,
+				ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
 				ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */,
@@ -293,6 +296,7 @@
 				ED09F1E822D3A84800E0C349 /* UserInfomationEditViewController.swift in Sources */,
 				ED2793BE22E0EC6000EB3C81 /* MyPageFoodViewController.swift in Sources */,
 				EDA5B9A022CE97E10080BE8F /* HomeViewController.swift in Sources */,
+				ED2793C222E3141500EB3C81 /* UserSettingViewController.swift in Sources */,
 				EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */,
 				EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */,
 				ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */,
