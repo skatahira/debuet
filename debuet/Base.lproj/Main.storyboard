@@ -1043,11 +1043,11 @@ gb7jgZfjgZ8
                                     <action selector="todayRecord:" destination="ybP-1l-WCz" eventType="touchUpInside" id="W0G-jP-cuW"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzU-YY-lol" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzU-YY-lol" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="286" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0l-hC-hnN" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0l-hC-hnN" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="316" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -1081,7 +1081,7 @@ gb7jgZfjgZ8
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELY-Vz-UIW" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELY-Vz-UIW" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="346" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -1113,15 +1113,15 @@ gb7jgZfjgZ8
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VW-m9-WMV" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VW-m9-WMV" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="573" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXH-5g-cHj" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXH-5g-cHj" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="603" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suG-Po-zjC" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="suG-Po-zjC" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="170" y="633" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
