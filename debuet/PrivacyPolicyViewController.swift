@@ -18,7 +18,7 @@ class PrivacyPolicyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.hex(string: "#F9759D", alpha: 1)
+        self.view.backgroundColor = UIColor.hex(string: "#FFC0CB", alpha: 1)
         
         self.view.addSubview(UneditableText(frame: self.view.frame))
     }
