@@ -20,7 +20,7 @@ class PrivacyPolicyViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.hex(string: "#FFC0CB", alpha: 1)
         
-        self.view.addSubview(UneditableText(frame: self.view.frame))
+        self.view.addSubview(UneditableText(frame: self.view.frame, text: text))
     }
     
     override func didReceiveMemoryWarning() {
