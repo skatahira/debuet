@@ -1928,7 +1928,6 @@ gb7jgZfjgZ8
                     </tabBar>
                     <connections>
                         <segue destination="ybP-1l-WCz" kind="relationship" relationship="viewControllers" id="Lej-fA-YGr"/>
-                        <segue destination="Qtf-EX-Zwq" kind="relationship" relationship="viewControllers" id="7Em-e9-xH8"/>
                         <segue destination="iJT-KX-2n4" kind="relationship" relationship="viewControllers" id="vhv-m5-4qS"/>
                     </connections>
                 </tabBarController>
@@ -1987,6 +1986,9 @@ gb7jgZfjgZ8
                 <customObject id="n45-6K-XTO" customClass="RAMFlipBottomTransitionItemAnimations" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
                             <color key="value" red="0.97647058819999999" green="0.45882352939999999" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
