@@ -1295,14 +1295,6 @@ gb7jgZfjgZ8
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igc-VL-uz6">
-                                <rect key="frame" x="192" y="652" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="食事"/>
-                                <connections>
-                                    <segue destination="HF8-g0-riH" kind="show" id="I52-a8-96M"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YlU-0c-HPS"/>
@@ -2286,7 +2278,6 @@ gb7jgZfjgZ8
         <image name="settei" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I52-a8-96M"/>
         <segue reference="3fT-LH-apb"/>
         <segue reference="PQy-LT-vka"/>
         <segue reference="dAO-CH-4D9"/>

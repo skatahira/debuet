@@ -63,7 +63,6 @@ class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
         
         presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
         presentationAnimator.supportView = navigationController!.navigationBar
-        //presentationAnimator.presentButton = sender
         presentationAnimator.presentButton = view
         present(menuViewController, animated: true, completion: nil)
     }
@@ -97,7 +96,8 @@ extension MyPageFoodViewController {
                 print("Error")
                 return
             } else {
-                //self.standardWeight.text = String((document!.data()!["standardWeight"] as! Int))
+                // 目標一日の食事量を取得しセット
+                self.targetAmountOfFood.text = String((document!.data()!["oneDayAmountOfFood"] as! Int))
             }
         }
     }
@@ -113,7 +113,11 @@ extension MyPageFoodViewController {
                 return
             } else {
                 for document in docu!.documents {
-                    //self.nowWeight.text = (document.data()["weight"] as! String)
+                    let nowBreakfast = (document.data()["breakfast"] as! Int)
+                    let nowLunch = (document.data()["lunch"] as! Int)
+                    let nowDinner = (document.data()["dinner"] as! Int)
+                    let totalAmountOfFood = nowBreakfast + nowLunch + nowDinner
+                    self.nowAmoutOfFood.text = String(totalAmountOfFood)
                 }
             }
         }
@@ -166,7 +170,7 @@ extension MyPageFoodViewController {
         print(data)
         let entries = data.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
         // 折れ線グラフのデータセット
-        let dataSet = LineChartDataSet(entries: entries, label: "体重")
+        let dataSet = LineChartDataSet(entries: entries, label: "食事")
         return LineChartData(dataSet: dataSet)
     }
 }
