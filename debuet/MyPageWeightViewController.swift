@@ -11,9 +11,10 @@ import Charts
 import Firebase
 import FirebaseFirestore
 import GuillotineMenu
+import XLPagerTabStrip
 
 // マイページ(体重)画面
-class MyPageWeightViewController: UIViewController {
+class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
     
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var standardWeight: UILabel!
@@ -24,6 +25,9 @@ class MyPageWeightViewController: UIViewController {
     //var data:[Double] = [3,1,6,8]
     var data:[Double] = []
     let db = Firestore.firestore()
+    
+    // 上タブのタイトル
+    var itemInfo: IndicatorInfo = "体重"
     
     // 日付関連クラス
     let dateRelation = DateRelation()
@@ -71,6 +75,10 @@ class MyPageWeightViewController: UIViewController {
         present(menuViewController, animated: true, completion: nil)
     }
     
+    // 上タブ管理
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
+    }
     
 }
 

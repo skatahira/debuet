@@ -119,6 +119,7 @@ PODS:
   - Protobuf (3.8.0)
   - RAMAnimatedTabBarController (5.0.1)
   - Validator (3.1.1)
+  - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - Charts
@@ -133,6 +134,7 @@ DEPENDENCIES:
   - PKHUD
   - RAMAnimatedTabBarController
   - Validator
+  - XLPagerTabStrip
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -161,6 +163,7 @@ SPEC REPOS:
     - Protobuf
     - RAMAnimatedTabBarController
     - Validator
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -188,7 +191,8 @@ SPEC CHECKSUMS:
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   RAMAnimatedTabBarController: ec36fba2fa4679fd36db55098e3477fe9bd79f52
   Validator: b34ab17a8fffd0c1ffd8f9002ead4d1e02cd9e6e
+  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 3870c56e2a2942fff4ab59eb0de96ae20a85dd40
+PODFILE CHECKSUM: 253cf36e7b6a9fb3db8089118764ac6f44340d3f
 
 COCOAPODS: 1.7.0
