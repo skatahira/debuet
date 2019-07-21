@@ -21,6 +21,7 @@
 		ED2793BE22E0EC6000EB3C81 /* MyPageFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */; };
 		ED2793C022E2D92B00EB3C81 /* TopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */; };
 		ED2793C222E3141500EB3C81 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */; };
+		ED7C72A022E3F87A001B9E9A /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C729F22E3F87A001B9E9A /* PrivacyPolicyViewController.swift */; };
 		EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */; };
 		EDA5B99E22CE87F30080BE8F /* RetrySendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */; };
 		EDA5B9A022CE97E10080BE8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */; };
@@ -39,6 +40,8 @@
 		EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */; };
 		EDFE4BAD22E37D4300D4D5BF /* ChangeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE4BAC22E37D4300D4D5BF /* ChangeMailViewController.swift */; };
 		EDFE4BAF22E3851C00D4D5BF /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */; };
+		EDFE4BB122E3CD5100D4D5BF /* TOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE4BB022E3CD5100D4D5BF /* TOSViewController.swift */; };
+		EDFE4BB322E3D8BA00D4D5BF /* UneditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFE4BB222E3D8BA00D4D5BF /* UneditableText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,7 @@
 		ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFoodViewController.swift; sourceTree = "<group>"; };
 		ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabViewController.swift; sourceTree = "<group>"; };
 		ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
+		ED7C729F22E3F87A001B9E9A /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		EDA5B99D22CE87F30080BE8F /* RetrySendMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrySendMailViewController.swift; sourceTree = "<group>"; };
 		EDA5B99F22CE97E10080BE8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -78,6 +82,8 @@
 		EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTHRadioButton.swift; sourceTree = "<group>"; };
 		EDFE4BAC22E37D4300D4D5BF /* ChangeMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMailViewController.swift; sourceTree = "<group>"; };
 		EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
+		EDFE4BB022E3CD5100D4D5BF /* TOSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOSViewController.swift; sourceTree = "<group>"; };
+		EDFE4BB222E3D8BA00D4D5BF /* UneditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneditableText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 				EDFD5BDD22C08A79002E5592 /* LTHRadioButton.swift */,
 				EDA5B99B22CE6E7A0080BE8F /* ErrorMessage.swift */,
 				EDFD5BCF22BB6BC9002E5592 /* Color.swift */,
+				EDFE4BB222E3D8BA00D4D5BF /* UneditableText.swift */,
 				EDA5B9A122CF1E340080BE8F /* UserInfomation.swift */,
 				ED09F1E922D808FE00E0C349 /* DateRelation.swift */,
 				ED09F1E522D1E43B00E0C349 /* Calculation.swift */,
@@ -156,9 +163,11 @@
 				ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */,
 				EDFA9ED322DCED6E00E95B6F /* MenuViewController.swift */,
 				ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */,
-				EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */,
 				ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */,
 				EDFE4BAC22E37D4300D4D5BF /* ChangeMailViewController.swift */,
+				EDFE4BAE22E3851C00D4D5BF /* ChangePassViewController.swift */,
+				EDFE4BB022E3CD5100D4D5BF /* TOSViewController.swift */,
+				ED7C729F22E3F87A001B9E9A /* PrivacyPolicyViewController.swift */,
 				ED12BC0522AEB53700DBFE60 /* Assets.xcassets */,
 				ED12BC0A22AEB53700DBFE60 /* Info.plist */,
 				ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */,
@@ -283,8 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA5B9A222CF1E340080BE8F /* UserInfomation.swift in Sources */,
+				EDFE4BB322E3D8BA00D4D5BF /* UneditableText.swift in Sources */,
 				ED09F1E622D1E43B00E0C349 /* Calculation.swift in Sources */,
 				EDFA9ED222DA422000E95B6F /* MyPageWeightViewController.swift in Sources */,
+				EDFE4BB122E3CD5100D4D5BF /* TOSViewController.swift in Sources */,
 				EDFD5B8422B3F6C7002E5592 /* LoginViewController.swift in Sources */,
 				ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */,
 				EDFD5BDE22C08A79002E5592 /* LTHRadioButton.swift in Sources */,
@@ -307,6 +318,7 @@
 				EDFD5BDA22BF5D3D002E5592 /* ValidationErrorType.swift in Sources */,
 				EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */,
 				EDFE4BAD22E37D4300D4D5BF /* ChangeMailViewController.swift in Sources */,
+				ED7C72A022E3F87A001B9E9A /* PrivacyPolicyViewController.swift in Sources */,
 				ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */,
 				EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */,
 			);

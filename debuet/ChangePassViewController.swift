@@ -8,11 +8,11 @@
 
 import UIKit
 
+// パスワード再設定画面
 class ChangePassViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
 }

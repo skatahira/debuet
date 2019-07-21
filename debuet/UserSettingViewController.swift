@@ -72,7 +72,6 @@ class UserSettingViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
-        
         switch indexPath.section {
         case 0:
             // アカウントセクションの場合
@@ -86,11 +85,18 @@ class UserSettingViewController: UIViewController, UITableViewDelegate, UITableV
             return indexPath
         case 1:
             // プライバシーセクションの場合
+            if indexPath.row == 0 {
+                // 利用規約押下
+                performSegue(withIdentifier: "toTOS", sender: nil)
+            } else if indexPath.row == 1 {
+                // 個人情報保護方針押下
+                performSegue(withIdentifier: "toPrivacyPolicy", sender: nil)
+            }
             return indexPath
             
         case 2:
             // バージョンセクションの場合
-            // 洗濯不可
+            // 選択不可
             return nil
         default:
             return indexPath

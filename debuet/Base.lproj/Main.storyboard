@@ -72,7 +72,7 @@
                                 <color key="highlightedColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hamburgerTop" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-Fv-Ezz">
-                                <rect key="frame" x="107" y="214" width="200" height="200.00000000000011"/>
+                                <rect key="frame" x="107" y="214" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dtf-Fv-Ezz" secondAttribute="height" multiplier="200:200" id="TmJ-jQ-p9L"/>
                                     <constraint firstAttribute="width" constant="200" id="zuc-TN-dIQ"/>
@@ -728,6 +728,8 @@ gb7jgZfjgZ8
                         <segue destination="Gok-bK-JhD" kind="show" identifier="toHome" id="PQy-LT-vka"/>
                         <segue destination="k6v-cd-UMo" kind="show" identifier="toChangeMail" id="NES-sC-zU5"/>
                         <segue destination="J7f-bW-myT" kind="show" identifier="toChangePass" id="7sl-aQ-cFY"/>
+                        <segue destination="0nU-nD-E6J" kind="show" identifier="toTOS" id="4KG-Pa-ZSg"/>
+                        <segue destination="Ump-B2-XiP" kind="show" identifier="toPrivacyPolicy" id="eLr-Ko-jRY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77W-We-LmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -873,6 +875,53 @@ gb7jgZfjgZ8
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k51-W4-Y3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2758" y="4215"/>
+        </scene>
+        <!--利用規約-->
+        <scene sceneID="EOW-4D-QcO">
+            <objects>
+                <viewController id="0nU-nD-E6J" customClass="TOSViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="7cK-Ik-3GQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QkQ-Y4-aqd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1200" id="ffW-gQ-g9l"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="QkQ-Y4-aqd" firstAttribute="top" secondItem="GME-pq-x5w" secondAttribute="top" id="HGY-AL-gtg"/>
+                            <constraint firstItem="QkQ-Y4-aqd" firstAttribute="bottom" secondItem="GME-pq-x5w" secondAttribute="bottom" id="RtC-BM-KUa"/>
+                            <constraint firstItem="QkQ-Y4-aqd" firstAttribute="leading" secondItem="GME-pq-x5w" secondAttribute="leading" id="VHr-MR-dNl"/>
+                            <constraint firstItem="QkQ-Y4-aqd" firstAttribute="trailing" secondItem="GME-pq-x5w" secondAttribute="trailing" id="i2g-5D-6yg"/>
+                            <constraint firstItem="QkQ-Y4-aqd" firstAttribute="width" secondItem="7cK-Ik-3GQ" secondAttribute="width" id="uza-m5-9F7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GME-pq-x5w"/>
+                    </scrollView>
+                    <navigationItem key="navigationItem" title="利用規約" id="AyS-Dx-HrD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agc-fr-TL0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3515.9420289855075" y="4214.7321428571431"/>
+        </scene>
+        <!--個人情報保護方針-->
+        <scene sceneID="WW5-Ky-DUE">
+            <objects>
+                <viewController id="Ump-B2-XiP" customClass="PrivacyPolicyViewController" customModule="debuet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Es-oH-aPc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bOn-FH-BdK"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="個人情報保護方針" id="3h7-tK-acg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3S-I2-C6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4262" y="4215"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="Z7C-a5-Uzu">
