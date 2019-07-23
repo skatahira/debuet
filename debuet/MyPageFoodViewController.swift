@@ -12,6 +12,7 @@ import Firebase
 import GuillotineMenu
 import XLPagerTabStrip
 
+//var underLabel: [String] = []
 // マイページ(食事)画面
 class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
     
@@ -20,15 +21,15 @@ class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var chartView: LineChartView!
     // 上タブのタイトル
     var itemInfo: IndicatorInfo = "食　事"
-    // 表示に使うデータ
-//    var data:[Double] = [3,1,6,8]
     var data:[Int] = []
     let db = Firestore.firestore()
+    
+    // グラフ(食事量目標記録)
+    var targetFoodLine = 0
     
     // 日付関連クラス
     let dateRelation = DateRelation()
     fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,7 @@ extension MyPageFoodViewController {
                 return
             } else {
                 // 目標一日の食事量を取得しセット
+                self.targetFoodLine = (document!.data()!["oneDayAmountOfFood"] as! Int)
                 self.targetAmountOfFood.text = String((document!.data()!["oneDayAmountOfFood"] as! Int))
             }
         }
@@ -139,7 +141,15 @@ extension MyPageFoodViewController {
                 print("Error")
                 return
             } else {
+                // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                
                 for document in docu!.documents {
+                    let day = (document.data()["day"] as! Timestamp).dateValue()
+                    // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
+                    let dayStr: String = formatter.string(from: day)
+                    underLabel.append(dayStr)
                     let nowBreakfast = (document.data()["breakfast"] as! Int)
                     let nowLunch = (document.data()["lunch"] as! Int)
                     let nowDinner = (document.data()["dinner"] as! Int)
@@ -158,6 +168,19 @@ extension MyPageFoodViewController {
     
     // グラフを画面に追加する
     func addGraph() {
+        
+        // X軸のラベルを設定
+        chartView.xAxis.valueFormatter = BarChartFormatter()
+        // x軸のラベルをボトムに表示
+        chartView.xAxis.labelPosition = .bottom
+        // x軸のラベル数を設定(設定しない場合のラベル数は6)
+        chartView.xAxis.labelCount = 6
+        // 横に赤いボーダーラインを描く
+        let ll = ChartLimitLine(limit: Double(targetFoodLine), label: "目標")
+        chartView.rightAxis.addLimitLine(ll)
+        // 右ラベルを非表示
+        chartView.rightAxis.drawLabelsEnabled = false
+        
         // 位置とサイズ
         let width: CGFloat = view.bounds.width
         let height: CGFloat = view.bounds.height / 4 * 3
@@ -179,6 +202,22 @@ extension MyPageFoodViewController {
         let dataSet = LineChartDataSet(entries: entries, label: "食事(個)")
         return LineChartData(dataSet: dataSet)
     }
+    
+    //小数点表示を整数表示にする処理。バーの上部に表示される数字。
+    public class BarChartValueFormatter: NSObject, IValueFormatter{
+        public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String{
+            return String(Int(entry.y))
+        }
+    }
+    
+    //x軸のラベルを設定する処理。
+    public class BarChartFormatter: NSObject, IAxisValueFormatter{
+        
+        public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+            return underLabel[Int(value)]
+        }
+    }
+    
 }
 
 // 日付関連処理

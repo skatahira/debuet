@@ -25,7 +25,6 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var nowWeight: UILabel!
     
     // 表示に使うデータ
-    //var data:[Double] = [3,1,6,8]
     var data:[Double] = []
     let db = Firestore.firestore()
     
@@ -34,7 +33,6 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
     
     // グラフ(体重目標記録)
     var targetWeightLine = 0
-    
     
     // 日付関連クラス
     let dateRelation = DateRelation()
@@ -66,8 +64,6 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         // 体重記録を取得
         getWeight(uid: getUserID(), fromDay: before, toDay: far)
         
-        // グラフを追加する
-        //        addGraph()
     }
     
     // メニューボタン押下時
