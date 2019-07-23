@@ -73,6 +73,11 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         
     }
     
+    // プラスボタン押下
+    @IBAction func didClickPlusBtn(_ sender: Any) {
+        performSegue(withIdentifier: "toRecord", sender: nil)
+    }
+    
     // メニューボタン押下時
     @objc func didTapMenuBtn() {
         let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
