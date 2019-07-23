@@ -23,10 +23,13 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var standardWeight: UILabel!
     @IBOutlet weak var nowBMI: UILabel!
     @IBOutlet weak var nowWeight: UILabel!
+    @IBOutlet weak var fromDayLabel: UILabel!
+    @IBOutlet weak var toDayLabel: UILabel!
     
     // 表示に使うデータ
     var data:[Double] = []
     let db = Firestore.firestore()
+    let yMdFormatter = DateFormatter()
     
     // 上タブのタイトル
     var itemInfo: IndicatorInfo = "体　重"
@@ -61,9 +64,18 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         let far = Calendar.current.date(byAdding: .day, value: +1, to: now)!
         // グラフ開始年月日取得
         let before = Calendar.current.date(byAdding: .day, value: -7, to: now)!
+        let fromDay = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        yMdFormatter.dateFormat = "yyyy/MM/dd"
+        fromDayLabel.text = yMdFormatter.string(from: fromDay)
+        toDayLabel.text = yMdFormatter.string(from: now)
         // 体重記録を取得
         getWeight(uid: getUserID(), fromDay: before, toDay: far)
         
+    }
+    
+    // プラスボタン押下
+    @IBAction func didClickPlusBtn(_ sender: Any) {
+        performSegue(withIdentifier: "toRecord", sender: nil)
     }
     
     // メニューボタン押下時
@@ -188,6 +200,17 @@ extension MyPageWeightViewController {
         chartView.rightAxis.addLimitLine(ll)
         // 右ラベルを非表示
         chartView.rightAxis.drawLabelsEnabled = false
+        //ピンチでズームが可能か
+        chartView.pinchZoomEnabled = false
+        //ダブルタップでズームが可能か
+        chartView.doubleTapToZoomEnabled = false
+        //ドラッグ可能か
+        chartView.dragEnabled = false
+        //xy軸スケール拡大縮小をできなくする
+        chartView.scaleXEnabled = false
+        chartView.scaleYEnabled = false
+        // 記録データがないときの表示テキスト
+        chartView.noDataText = "表示データがありません"
         
         // 位置とサイズ
         let width: CGFloat = view.bounds.width

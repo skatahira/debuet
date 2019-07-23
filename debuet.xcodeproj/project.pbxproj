@@ -18,6 +18,8 @@
 		ED12BC0922AEB53700DBFE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC0722AEB53700DBFE60 /* LaunchScreen.storyboard */; };
 		ED12BC3322AFBD4C00DBFE60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */; };
 		ED12BC5D22B3D48200DBFE60 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */; };
+		ED27092B22E78B03008C1272 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED27092A22E78B03008C1272 /* RecordViewController.swift */; };
+		ED27092D22E78B3B008C1272 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED27092C22E78B3B008C1272 /* TimeLineViewController.swift */; };
 		ED2793BE22E0EC6000EB3C81 /* MyPageFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */; };
 		ED2793C022E2D92B00EB3C81 /* TopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */; };
 		ED2793C222E3141500EB3C81 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */; };
@@ -60,6 +62,8 @@
 		ED12BC0A22AEB53700DBFE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED12BC3222AFBD4C00DBFE60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED12BC5C22B3D48200DBFE60 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		ED27092A22E78B03008C1272 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		ED27092C22E78B3B008C1272 /* TimeLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
 		ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageFoodViewController.swift; sourceTree = "<group>"; };
 		ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabViewController.swift; sourceTree = "<group>"; };
 		ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				ED2793BF22E2D92B00EB3C81 /* TopTabViewController.swift */,
 				EDFA9ED122DA422000E95B6F /* MyPageWeightViewController.swift */,
 				ED2793BD22E0EC6000EB3C81 /* MyPageFoodViewController.swift */,
+				ED27092A22E78B03008C1272 /* RecordViewController.swift */,
+				ED27092C22E78B3B008C1272 /* TimeLineViewController.swift */,
 				EDFA9ED322DCED6E00E95B6F /* MenuViewController.swift */,
 				ED09F1E722D3A84700E0C349 /* UserInfomationEditViewController.swift */,
 				ED2793C122E3141500EB3C81 /* UserSettingViewController.swift */,
@@ -304,6 +310,7 @@
 				EDFD5BDC22BFFC37002E5592 /* UserDetailEditViewController.swift in Sources */,
 				EDFD5B8622B58270002E5592 /* ProfileCreateViewController.swift in Sources */,
 				EDFD5BCE22BA1788002E5592 /* EnhancedCircleImageView.swift in Sources */,
+				ED27092D22E78B3B008C1272 /* TimeLineViewController.swift in Sources */,
 				EDB62A2122CCB928006F8B85 /* UserGoalCreateViewController.swift in Sources */,
 				EDFE4BAF22E3851C00D4D5BF /* ChangePassViewController.swift in Sources */,
 				EDA5B99C22CE6E7A0080BE8F /* ErrorMessage.swift in Sources */,
@@ -319,6 +326,7 @@
 				EDFD5BD022BB6BC9002E5592 /* Color.swift in Sources */,
 				EDFE4BAD22E37D4300D4D5BF /* ChangeMailViewController.swift in Sources */,
 				ED7C72A022E3F87A001B9E9A /* PrivacyPolicyViewController.swift in Sources */,
+				ED27092B22E78B03008C1272 /* RecordViewController.swift in Sources */,
 				ED12BBFF22AEB53400DBFE60 /* AppDelegate.swift in Sources */,
 				EDFD5BAA22B8CC87002E5592 /* FirstViewController.swift in Sources */,
 			);

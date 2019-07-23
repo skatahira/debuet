@@ -19,10 +19,14 @@ class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var targetAmountOfFood: UILabel!
     @IBOutlet weak var nowAmoutOfFood: UILabel!
     @IBOutlet weak var chartView: LineChartView!
+    @IBOutlet weak var fromDayLabel: UILabel!
+    @IBOutlet weak var toDayLabel: UILabel!
+    
     // 上タブのタイトル
     var itemInfo: IndicatorInfo = "食　事"
     var data:[Int] = []
     let db = Firestore.firestore()
+    let yMdFormatter = DateFormatter()
     
     // グラフ(食事量目標記録)
     var targetFoodLine = 0
@@ -54,10 +58,18 @@ class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
         let far = Calendar.current.date(byAdding: .day, value: +1, to: now)!
         // グラフ開始年月日取得
         let before = Calendar.current.date(byAdding: .day, value: -7, to: now)!
+        let fromDay = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        yMdFormatter.dateFormat = "yyyy/MM/dd"
+        fromDayLabel.text = yMdFormatter.string(from: fromDay)
+        toDayLabel.text = yMdFormatter.string(from: now)
         // 体重記録を取得
         getWeight(uid: getUserID(), fromDay: before, toDay: far)
     }
     
+    // プラスボタン押下
+    @IBAction func didClickPlusBtn(_ sender: Any) {
+        performSegue(withIdentifier: "toRecord", sender: nil)
+    }
     // メニューボタン押下時
     @objc func didTapMenuBtn() {
         let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MenuViewController")
@@ -180,6 +192,17 @@ extension MyPageFoodViewController {
         chartView.rightAxis.addLimitLine(ll)
         // 右ラベルを非表示
         chartView.rightAxis.drawLabelsEnabled = false
+        //ピンチでズームが可能か
+        chartView.pinchZoomEnabled = false
+        //ダブルタップでズームが可能か
+        chartView.doubleTapToZoomEnabled = false
+        //xy軸スケール拡大縮小をできなくする
+        chartView.scaleXEnabled = false
+        chartView.scaleYEnabled = false
+        // 記録データがないときの表示テキスト
+        chartView.noDataText = "表示データがありません"
+        // タップでデータを選択できるか
+        chartView.highlightPerTapEnabled = false
         
         // 位置とサイズ
         let width: CGFloat = view.bounds.width
