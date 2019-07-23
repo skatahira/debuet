@@ -13,6 +13,9 @@ import FirebaseFirestore
 import GuillotineMenu
 import XLPagerTabStrip
 
+// グラフ(下ラベル)
+var underLabel: [String] = []
+
 // マイページ(体重)画面
 class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
     
@@ -27,7 +30,11 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
     let db = Firestore.firestore()
     
     // 上タブのタイトル
-    var itemInfo: IndicatorInfo = "体重"
+    var itemInfo: IndicatorInfo = "体　重"
+    
+    // グラフ(体重目標記録)
+    var targetWeightLine = 0
+    
     
     // 日付関連クラス
     let dateRelation = DateRelation()
@@ -53,10 +60,11 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         
         // 現在年日時を取得
         let now = getNowDate()
+        let far = Calendar.current.date(byAdding: .day, value: +1, to: now)!
         // グラフ開始年月日取得
-        let before = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        let before = Calendar.current.date(byAdding: .day, value: -7, to: now)!
         // 体重記録を取得
-        getWeight(uid: getUserID(), fromDay: before, toDay: now)
+        getWeight(uid: getUserID(), fromDay: before, toDay: far)
         
         // グラフを追加する
         //        addGraph()
@@ -70,7 +78,6 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         
         presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
         presentationAnimator.supportView = navigationController!.navigationBar
-        //presentationAnimator.presentButton = sender
         presentationAnimator.presentButton = view
         present(menuViewController, animated: true, completion: nil)
     }
@@ -104,7 +111,8 @@ extension MyPageWeightViewController {
                 print("Error")
                 return
             } else {
-                self.standardWeight.text = String((document!.data()!["standardWeight"] as! Int))
+                self.targetWeightLine = (document!.data()!["standardWeight"] as! Int)
+                self.standardWeight.text = String(self.targetWeightLine)
             }
         }
     }
@@ -129,8 +137,9 @@ extension MyPageWeightViewController {
     
     // 体重記録取得処理
     func getWeight(uid: String, fromDay: Date, toDay: Date) {
-        // 体重情報をリフレッシュする
+        // 体重・ラベル情報をリフレッシュする
         data = []
+        underLabel = []
         // 体重記録取得
         let docRef = db.collection("users").document(uid).collection("record")
             .whereField("day", isGreaterThan: fromDay)
@@ -142,7 +151,20 @@ extension MyPageWeightViewController {
                 print("Error")
                 return
             } else {
+                // 次の日付を格納
+                //var nextDay: Date = fromDay
+                // NSDate型を日時文字列に変換するためのNSDateFormatterを生成
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd"
+                
                 for document in docu!.documents {
+                    
+                    let day = (document.data()["day"] as! Timestamp).dateValue()
+                    
+                    // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
+                    let dayStr: String = formatter.string(from: day)
+                    
+                    underLabel.append(dayStr)
                     self.data.append(Double(document.data()["weight"] as! String) as! Double)
                 }
                 // グラフを追加する
@@ -158,12 +180,25 @@ extension MyPageWeightViewController {
     
     // グラフを画面に追加する
     func addGraph() {
+        
+        // X軸のラベルを設定
+        chartView.xAxis.valueFormatter = BarChartFormatter()
+        // x軸のラベルをボトムに表示
+        chartView.xAxis.labelPosition = .bottom
+        // x軸のラベル数を設定(設定しない場合のラベル数は6)
+        chartView.xAxis.labelCount = 6
+        // 横に赤いボーダーラインを描く
+        let ll = ChartLimitLine(limit: Double(targetWeightLine), label: "目標")
+        chartView.rightAxis.addLimitLine(ll)
+        // 右ラベルを非表示
+        chartView.rightAxis.drawLabelsEnabled = false
+        
         // 位置とサイズ
         let width: CGFloat = view.bounds.width
         let height: CGFloat = view.bounds.height / 4 * 3
         let rect = CGRect(x:0, y: 30, width: width, height: height)
-        
         // グラフ表示部のインスタンス化
+        
         //        chartView = LineChartView(frame: rect)
         // 表示データの設定
         chartView?.data = getDataSet()
@@ -175,11 +210,25 @@ extension MyPageWeightViewController {
     func getDataSet() -> LineChartData {
         
         // データにある情報をグラフ用のデータに変換
-        print(data)
         let entries = data.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
         // 折れ線グラフのデータセット
         let dataSet = LineChartDataSet(entries: entries, label: "体重")
         return LineChartData(dataSet: dataSet)
+    }
+    
+    //小数点表示を整数表示にする処理。バーの上部に表示される数字。
+    public class BarChartValueFormatter: NSObject, IValueFormatter{
+        public func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String{
+            return String(Int(entry.y))
+        }
+    }
+    
+    //x軸のラベルを設定する処理。
+    public class BarChartFormatter: NSObject, IAxisValueFormatter{
+        
+        public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+            return underLabel[Int(value)]
+        }
     }
 }
 

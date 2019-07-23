@@ -13,7 +13,20 @@ import XLPagerTabStrip
 class TopTabViewController: ButtonBarPagerTabStripViewController {
 
     override func viewDidLoad() {
+        //バーの色
+        settings.style.buttonBarBackgroundColor = UIColor.lightGray
+        //ボタンの色
+        settings.style.buttonBarItemBackgroundColor = UIColor.white
+        //セルの文字色
+        settings.style.buttonBarItemTitleColor = UIColor.black
+        //セレクトバーの色
+        settings.style.selectedBarBackgroundColor = UIColor.hex(string: "#F9759D", alpha: 1)
+        // ボタンの間隔
+        settings.style.buttonBarMinimumLineSpacing = CGFloat(1)
+
         super.viewDidLoad()
+        
+        
 
     }
     

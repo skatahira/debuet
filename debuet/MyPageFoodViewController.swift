@@ -19,9 +19,10 @@ class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var nowAmoutOfFood: UILabel!
     @IBOutlet weak var chartView: LineChartView!
     // 上タブのタイトル
-    var itemInfo: IndicatorInfo = "食事"
+    var itemInfo: IndicatorInfo = "食　事"
     // 表示に使うデータ
-    var data:[Double] = [3,1,6,8]
+//    var data:[Double] = [3,1,6,8]
+    var data:[Int] = []
     let db = Firestore.firestore()
     
     // 日付関連クラス
@@ -49,10 +50,11 @@ class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
         
         // 現在年日時を取得
         let now = getNowDate()
+        let far = Calendar.current.date(byAdding: .day, value: +1, to: now)!
         // グラフ開始年月日取得
-        let before = Calendar.current.date(byAdding: .day, value: -6, to: now)!
+        let before = Calendar.current.date(byAdding: .day, value: -7, to: now)!
         // 体重記録を取得
-        getWeight(uid: getUserID(), fromDay: before, toDay: now)
+        getWeight(uid: getUserID(), fromDay: before, toDay: far)
     }
     
     // メニューボタン押下時
@@ -138,7 +140,11 @@ extension MyPageFoodViewController {
                 return
             } else {
                 for document in docu!.documents {
-                    self.data.append(Double(document.data()["weight"] as! String) as! Double)
+                    let nowBreakfast = (document.data()["breakfast"] as! Int)
+                    let nowLunch = (document.data()["lunch"] as! Int)
+                    let nowDinner = (document.data()["dinner"] as! Int)
+                    let totalAmountOfFood = nowBreakfast + nowLunch + nowDinner
+                    self.data.append(totalAmountOfFood)
                 }
                 // グラフを追加する
                 self.addGraph()
@@ -168,7 +174,7 @@ extension MyPageFoodViewController {
         
         // データにある情報をグラフ用のデータに変換
         print(data)
-        let entries = data.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
+        let entries = data.enumerated().map { ChartDataEntry(x: Double(Int($0.offset)), y: Double($0.element)) }
         // 折れ線グラフのデータセット
         let dataSet = LineChartDataSet(entries: entries, label: "食事")
         return LineChartData(dataSet: dataSet)
