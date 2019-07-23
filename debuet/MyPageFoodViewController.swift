@@ -176,7 +176,7 @@ extension MyPageFoodViewController {
         print(data)
         let entries = data.enumerated().map { ChartDataEntry(x: Double(Int($0.offset)), y: Double($0.element)) }
         // 折れ線グラフのデータセット
-        let dataSet = LineChartDataSet(entries: entries, label: "食事")
+        let dataSet = LineChartDataSet(entries: entries, label: "食事(個)")
         return LineChartData(dataSet: dataSet)
     }
 }

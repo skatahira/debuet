@@ -212,7 +212,7 @@ extension MyPageWeightViewController {
         // データにある情報をグラフ用のデータに変換
         let entries = data.enumerated().map { ChartDataEntry(x: Double($0.offset), y: $0.element) }
         // 折れ線グラフのデータセット
-        let dataSet = LineChartDataSet(entries: entries, label: "体重")
+        let dataSet = LineChartDataSet(entries: entries, label: "体重(kg)")
         return LineChartData(dataSet: dataSet)
     }
     
