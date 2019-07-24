@@ -12,7 +12,6 @@ import Firebase
 import GuillotineMenu
 import XLPagerTabStrip
 
-//var underLabel: [String] = []
 // マイページ(食事)画面
 class MyPageFoodViewController: UIViewController, IndicatorInfoProvider {
     
@@ -161,7 +160,7 @@ extension MyPageFoodViewController {
                     let day = (document.data()["day"] as! Timestamp).dateValue()
                     // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
                     let dayStr: String = formatter.string(from: day)
-                    underLabel.append(dayStr)
+                    //underLabel.append(dayStr)
                     let nowBreakfast = (document.data()["breakfast"] as! Int)
                     let nowLunch = (document.data()["lunch"] as! Int)
                     let nowDinner = (document.data()["dinner"] as! Int)
@@ -203,6 +202,8 @@ extension MyPageFoodViewController {
         chartView.noDataText = "表示データがありません"
         // タップでデータを選択できるか
         chartView.highlightPerTapEnabled = false
+        chartView.dragEnabled = false
+        chartView.drawBordersEnabled = false
         
         // 位置とサイズ
         let width: CGFloat = view.bounds.width

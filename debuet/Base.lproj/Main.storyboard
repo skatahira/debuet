@@ -2094,6 +2094,7 @@ gb7jgZfjgZ8
                             <outlet property="animation" destination="n45-6K-XTO" id="hF9-9j-jg4"/>
                         </connections>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" title="マイページ" id="AHf-Df-5Ea"/>
                     <connections>
                         <outlet property="buttonBarView" destination="UP1-1J-xcw" id="WuC-ei-t3M"/>
                         <outlet property="containerView" destination="6au-yd-xMm" id="auA-6d-XFU"/>
@@ -2682,6 +2683,7 @@ gb7jgZfjgZ8
                             <outlet property="animation" destination="MHE-iQ-TxP" id="xan-if-PKK"/>
                         </connections>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" title="タイムライン" id="uoG-Rj-bdr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCd-Jr-n9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="MHE-iQ-TxP" customClass="RAMFlipBottomTransitionItemAnimations" customModule="RAMAnimatedTabBarController">
@@ -2711,7 +2713,8 @@ gb7jgZfjgZ8
         <image name="timeLine" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3fT-LH-apb"/>
+        <segue reference="r0H-9G-ekz"/>
+        <segue reference="6DZ-gt-KAJ"/>
         <segue reference="PQy-LT-vka"/>
         <segue reference="eJu-g3-oAF"/>
         <segue reference="7fe-B8-h7c"/>

@@ -14,7 +14,8 @@ import GuillotineMenu
 import XLPagerTabStrip
 
 // グラフ(下ラベル)
-var underLabel: [String] = []
+//var underLabel: [String] = []
+var underLabel: [String] = ["07/19", "07/20", "07/21", "07/22", "07/23", "07/24", "07/25"]
 
 // マイページ(体重)画面
 class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
@@ -52,7 +53,6 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         getUserInfomation(uid: getUserID())
         getNowRecord(uid: getUserID())
         
-        navigationController?.navigationBar.backgroundColor = .red
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu"),
                                          style: UIBarButtonItem.Style.plain,
                                          target: self,
@@ -147,7 +147,7 @@ extension MyPageWeightViewController {
     func getWeight(uid: String, fromDay: Date, toDay: Date) {
         // 体重・ラベル情報をリフレッシュする
         data = []
-        underLabel = []
+        //underLabel = []
         // 体重記録取得
         let docRef = db.collection("users").document(uid).collection("record")
             .whereField("day", isGreaterThan: fromDay)
@@ -172,7 +172,7 @@ extension MyPageWeightViewController {
                     // NSDateFormatterを使ってNSDate型 "date" を日時文字列 "dateStr" に変換
                     let dayStr: String = formatter.string(from: day)
                     
-                    underLabel.append(dayStr)
+                    //underLabel.append(dayStr)
                     self.data.append(Double(document.data()["weight"] as! String) as! Double)
                 }
                 // グラフを追加する
@@ -260,6 +260,7 @@ extension MyPageWeightViewController {
         let todayDate = Date()
         // カレンダーを取得
         let  calendar = Calendar(identifier: .gregorian)
+        
         
         // today_dateから年月日のみ抽出 -> 2017/07/12となる
         let todayDateRounded =  dateRelation.roundDate(todayDate, calendar: calendar)
