@@ -63,7 +63,8 @@ class MyPageWeightViewController: UIViewController, IndicatorInfoProvider {
         let now = getNowDate()
         let far = Calendar.current.date(byAdding: .day, value: +1, to: now)!
         // グラフ開始年月日取得
-        let before = Calendar.current.date(byAdding: .day, value: -7, to: now)!
+        //let before = Calendar.current.date(byAdding: .day, value: -7, to: now)!
+        let before = Calendar.current.date(byAdding: .day, value: -8, to: now)!
         let fromDay = Calendar.current.date(byAdding: .day, value: -6, to: now)!
         yMdFormatter.dateFormat = "yyyy/MM/dd"
         fromDayLabel.text = yMdFormatter.string(from: fromDay)
